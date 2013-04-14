@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class Jeu
+    partial class FormJeu
     {
         /// <summary>
         /// Required designer variable.

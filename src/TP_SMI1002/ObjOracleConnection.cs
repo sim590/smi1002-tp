@@ -7,23 +7,25 @@ using Oracle.DataAccess.Client;
 
 namespace TP_SMI1002
 {
-    public class clsDbConnection
+    public class ObjOracleConnection
     {
         public static string connectionString;
         private OracleConnection cnLanUQTR;
 
-        public clsDbConnection()
+        public ObjOracleConnection()
         {
             cnLanUQTR = new OracleConnection(connectionString);
             cnLanUQTR.Open();
         }
 
-        /*public OleDbCommand cmd()
+        public OracleDataReader cmdData(String sql)
         {
-            return new OracleCommand(cnLanUQTR);
-        }*/
+            OracleCommand cmd = new OracleCommand(sql, cnLanUQTR);
+            OracleDataReader rs = cmd.ExecuteReader();
+            return rs;
+        }
 
-        ~clsDbConnection()
+        ~ObjOracleConnection()
         {
             try
             {

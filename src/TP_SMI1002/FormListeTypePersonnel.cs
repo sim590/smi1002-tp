@@ -9,11 +9,17 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class Jeu : Form
+    public partial class FormListeTypePersonnel : Form
     {
-        public Jeu()
+        public FormListeTypePersonnel()
         {
             InitializeComponent();
+        }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            FormTypePersonnel FormTypePersonnel = new FormTypePersonnel();
+            FormTypePersonnel.ShowDialog();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

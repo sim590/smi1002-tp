@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class Evenement
+    partial class FormEvenement
     {
         /// <summary>
         /// Required designer variable.

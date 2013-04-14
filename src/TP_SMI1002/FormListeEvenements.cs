@@ -9,17 +9,22 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class ListeTypePersonnel : Form
+    public partial class FormListeEvenements : Form
     {
-        public ListeTypePersonnel()
+        public FormListeEvenements()
         {
             InitializeComponent();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            TypePersonnel FormTypePersonnel = new TypePersonnel();
-            FormTypePersonnel.ShowDialog();
+            FormEvenement formEvenement = new FormEvenement();
+            formEvenement.ShowDialog();
+        }
+
+        private void ListeEvenements_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

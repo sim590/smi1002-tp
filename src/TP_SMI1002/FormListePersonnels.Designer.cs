@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class ListePersonnels
+    partial class FormListePersonnels
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class Equipe
+    partial class FormEquipe
     {
         /// <summary>
         /// Required designer variable.
@@ -154,6 +154,7 @@
             this.Name = "Equipe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Équipe";
+            this.Load += new System.EventHandler(this.Equipe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

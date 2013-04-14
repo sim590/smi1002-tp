@@ -9,27 +9,22 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class ListeEquipes : Form
+    public partial class FormListeJoueurs : Form
     {
-        public ListeEquipes()
+        public FormListeJoueurs()
         {
             InitializeComponent();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            Equipe FormEquipe = new Equipe();
-            FormEquipe.ShowDialog();
+            FormJoueur formJoueur = new FormJoueur();
+            formJoueur.ShowDialog();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ListeEquipes_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

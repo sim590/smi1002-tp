@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class ListeJoueurs
+    partial class FormListeJoueurs
     {
         /// <summary>
         /// Required designer variable.

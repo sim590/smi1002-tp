@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class ListePersonnels : Form
+    public partial class FormListePersonnels : Form
     {
-        public ListePersonnels()
+        public FormListePersonnels()
         {
             InitializeComponent();
         }

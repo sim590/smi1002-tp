@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class ListeJeux : Form
+    public partial class FormListeJeux : Form
     {
-        public ListeJeux()
+        public FormListeJeux()
         {
             InitializeComponent();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            Jeu formJeu = new Jeu();
+            FormJeu formJeu = new FormJeu();
             formJeu.ShowDialog();
         }
 

@@ -15,7 +15,7 @@ namespace TP_SMI1002
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new FormMain());
         }
     }
 }

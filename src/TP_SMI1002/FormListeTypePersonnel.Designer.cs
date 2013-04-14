@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class ListeJeux
+    partial class FormListeTypePersonnel
     {
         /// <summary>
         /// Required designer variable.
@@ -39,10 +39,10 @@
             this.btnSupprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupprimer.Image = global::TP_SMI1002.Properties.Resources.Delete;
             this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSupprimer.Location = new System.Drawing.Point(357, 320);
+            this.btnSupprimer.Location = new System.Drawing.Point(311, 256);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.btnSupprimer.TabIndex = 8;
+            this.btnSupprimer.TabIndex = 2;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSupprimer.UseVisualStyleBackColor = true;
@@ -52,10 +52,10 @@
             this.btnModifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModifier.Image = global::TP_SMI1002.Properties.Resources.Modify;
             this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModifier.Location = new System.Drawing.Point(276, 320);
+            this.btnModifier.Location = new System.Drawing.Point(230, 256);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(75, 23);
-            this.btnModifier.TabIndex = 7;
+            this.btnModifier.TabIndex = 1;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModifier.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             this.btnAjouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAjouter.Image = global::TP_SMI1002.Properties.Resources.New_document;
             this.btnAjouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAjouter.Location = new System.Drawing.Point(195, 320);
+            this.btnAjouter.Location = new System.Drawing.Point(149, 256);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouter.TabIndex = 6;
+            this.btnAjouter.TabIndex = 0;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(438, 320);
+            this.btnAnnuler.Location = new System.Drawing.Point(392, 256);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 11;
@@ -88,27 +88,27 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // ListeJeux
+            // ListeTypePersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 355);
+            this.ClientSize = new System.Drawing.Size(472, 291);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAjouter);
-            this.Name = "ListeJeux";
+            this.Name = "ListeTypePersonnel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ListeJeux";
+            this.Text = "Liste des types de personnel";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnSupprimer;
-        private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.Button btnModifier;
+        private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnAnnuler;
     }
 }

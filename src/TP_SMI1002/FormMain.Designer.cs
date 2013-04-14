@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class Main
+    partial class FormMain
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

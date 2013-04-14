@@ -53,72 +53,73 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="clsDbConnection.cs" />
-    <Compile Include="Equipe.cs">
+    <Compile Include="ObjOracleConnection.cs" />
+    <Compile Include="Equipe.cs" />
+    <Compile Include="FormEquipe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Equipe.Designer.cs">
-      <DependentUpon>Equipe.cs</DependentUpon>
+    <Compile Include="FormEquipe.Designer.cs">
+      <DependentUpon>FormEquipe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Evenement.cs">
+    <Compile Include="FormEvenement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Evenement.Designer.cs">
-      <DependentUpon>Evenement.cs</DependentUpon>
+    <Compile Include="FormEvenement.Designer.cs">
+      <DependentUpon>FormEvenement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Jeu.cs">
+    <Compile Include="FormJeu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Jeu.Designer.cs">
-      <DependentUpon>Jeu.cs</DependentUpon>
+    <Compile Include="FormJeu.Designer.cs">
+      <DependentUpon>FormJeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Joueur.cs">
+    <Compile Include="FormJoueur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Joueur.Designer.cs">
-      <DependentUpon>Joueur.cs</DependentUpon>
+    <Compile Include="FormJoueur.Designer.cs">
+      <DependentUpon>FormJoueur.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeEquipes.cs">
+    <Compile Include="FormListeEquipes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListeEquipes.Designer.cs">
-      <DependentUpon>ListeEquipes.cs</DependentUpon>
+    <Compile Include="FormListeEquipes.Designer.cs">
+      <DependentUpon>FormListeEquipes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeEvenements.cs">
+    <Compile Include="FormListeEvenements.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListeEvenements.Designer.cs">
-      <DependentUpon>ListeEvenements.cs</DependentUpon>
+    <Compile Include="FormListeEvenements.Designer.cs">
+      <DependentUpon>FormListeEvenements.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeJeux.cs">
+    <Compile Include="FormListeJeux.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListeJeux.Designer.cs">
-      <DependentUpon>ListeJeux.cs</DependentUpon>
+    <Compile Include="FormListeJeux.Designer.cs">
+      <DependentUpon>FormListeJeux.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeJoueurs.cs">
+    <Compile Include="FormListeJoueurs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListeJoueurs.Designer.cs">
-      <DependentUpon>ListeJoueurs.cs</DependentUpon>
+    <Compile Include="FormListeJoueurs.Designer.cs">
+      <DependentUpon>FormListeJoueurs.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListePersonnels.cs">
+    <Compile Include="FormListePersonnels.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListePersonnels.Designer.cs">
-      <DependentUpon>ListePersonnels.cs</DependentUpon>
+    <Compile Include="FormListePersonnels.Designer.cs">
+      <DependentUpon>FormListePersonnels.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeTypePersonnel.cs">
+    <Compile Include="FormListeTypePersonnel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListeTypePersonnel.Designer.cs">
-      <DependentUpon>ListeTypePersonnel.cs</DependentUpon>
+    <Compile Include="FormListeTypePersonnel.Designer.cs">
+      <DependentUpon>FormListeTypePersonnel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Personnel.cs">
       <SubType>Form</SubType>
@@ -128,53 +129,53 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tournoi.cs">
+    <Compile Include="FormTournoi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tournoi.Designer.cs">
-      <DependentUpon>Tournoi.cs</DependentUpon>
+    <Compile Include="FormTournoi.Designer.cs">
+      <DependentUpon>FormTournoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="TypePersonnel.cs">
+    <Compile Include="FormTypePersonnel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TypePersonnel.Designer.cs">
-      <DependentUpon>TypePersonnel.cs</DependentUpon>
+    <Compile Include="FormTypePersonnel.Designer.cs">
+      <DependentUpon>FormTypePersonnel.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Equipe.resx">
-      <DependentUpon>Equipe.cs</DependentUpon>
+    <EmbeddedResource Include="FormEquipe.resx">
+      <DependentUpon>FormEquipe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Evenement.resx">
-      <DependentUpon>Evenement.cs</DependentUpon>
+    <EmbeddedResource Include="FormEvenement.resx">
+      <DependentUpon>FormEvenement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Jeu.resx">
-      <DependentUpon>Jeu.cs</DependentUpon>
+    <EmbeddedResource Include="FormJeu.resx">
+      <DependentUpon>FormJeu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Joueur.resx">
-      <DependentUpon>Joueur.cs</DependentUpon>
+    <EmbeddedResource Include="FormJoueur.resx">
+      <DependentUpon>FormJoueur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeEquipes.resx">
-      <DependentUpon>ListeEquipes.cs</DependentUpon>
+    <EmbeddedResource Include="FormListeEquipes.resx">
+      <DependentUpon>FormListeEquipes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeEvenements.resx">
-      <DependentUpon>ListeEvenements.cs</DependentUpon>
+    <EmbeddedResource Include="FormListeEvenements.resx">
+      <DependentUpon>FormListeEvenements.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeJeux.resx">
-      <DependentUpon>ListeJeux.cs</DependentUpon>
+    <EmbeddedResource Include="FormListeJeux.resx">
+      <DependentUpon>FormListeJeux.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeJoueurs.resx">
-      <DependentUpon>ListeJoueurs.cs</DependentUpon>
+    <EmbeddedResource Include="FormListeJoueurs.resx">
+      <DependentUpon>FormListeJoueurs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListePersonnels.resx">
-      <DependentUpon>ListePersonnels.cs</DependentUpon>
+    <EmbeddedResource Include="FormListePersonnels.resx">
+      <DependentUpon>FormListePersonnels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeTypePersonnel.resx">
-      <DependentUpon>ListeTypePersonnel.cs</DependentUpon>
+    <EmbeddedResource Include="FormListeTypePersonnel.resx">
+      <DependentUpon>FormListeTypePersonnel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Personnel.resx">
       <DependentUpon>Personnel.cs</DependentUpon>
@@ -189,11 +190,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tournoi.resx">
-      <DependentUpon>Tournoi.cs</DependentUpon>
+    <EmbeddedResource Include="FormTournoi.resx">
+      <DependentUpon>FormTournoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TypePersonnel.resx">
-      <DependentUpon>TypePersonnel.cs</DependentUpon>
+    <EmbeddedResource Include="FormTypePersonnel.resx">
+      <DependentUpon>FormTypePersonnel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

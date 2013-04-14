@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class Tournoi : Form
+    public partial class FormEquipe : Form
     {
-        public Tournoi()
+        public FormEquipe()
         {
             InitializeComponent();
+        }
+
+        private void Equipe_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

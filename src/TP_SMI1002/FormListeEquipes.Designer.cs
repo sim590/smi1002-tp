@@ -1,6 +1,6 @@
 ﻿namespace TP_SMI1002
 {
-    partial class ListeEquipes
+    partial class FormListeEquipes
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,9 @@
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lsvEquipe = new System.Windows.Forms.ListView();
+            this.clnNom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clnSiteWeb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,14 +98,39 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 15);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(548, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(548, 72);
             this.dataGridView1.TabIndex = 12;
+            // 
+            // lsvEquipe
+            // 
+            this.lsvEquipe.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnNom,
+            this.clnSiteWeb});
+            this.lsvEquipe.FullRowSelect = true;
+            this.lsvEquipe.Location = new System.Drawing.Point(13, 113);
+            this.lsvEquipe.MultiSelect = false;
+            this.lsvEquipe.Name = "lsvEquipe";
+            this.lsvEquipe.Size = new System.Drawing.Size(550, 194);
+            this.lsvEquipe.TabIndex = 24;
+            this.lsvEquipe.UseCompatibleStateImageBehavior = false;
+            this.lsvEquipe.View = System.Windows.Forms.View.Details;
+            // 
+            // clnNom
+            // 
+            this.clnNom.Text = "Nom équipe";
+            this.clnNom.Width = 184;
+            // 
+            // clnSiteWeb
+            // 
+            this.clnSiteWeb.Text = "Site Web";
+            this.clnSiteWeb.Width = 337;
             // 
             // ListeEquipes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 369);
+            this.Controls.Add(this.lsvEquipe);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
@@ -124,5 +152,8 @@
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ListView lsvEquipe;
+        private System.Windows.Forms.ColumnHeader clnNom;
+        private System.Windows.Forms.ColumnHeader clnSiteWeb;
     }
 }

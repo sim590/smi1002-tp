@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class Main : Form
+    public partial class FormMain : Form
     {
-        clsDbConnection cn;
-        public Main()
+        ObjOracleConnection cn;
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -37,13 +37,13 @@ namespace TP_SMI1002
             }
             
             //Connection base de données
-            clsDbConnection.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
+            ObjOracleConnection.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
                 
             //"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.GetDirectoryName(Application.ExecutablePath) + "\\dspMillageFuel.accdb";
 
             try
             {
-                cn = new clsDbConnection();
+                cn = new ObjOracleConnection();
             }
             catch
             {
@@ -55,7 +55,7 @@ namespace TP_SMI1002
 
         private void optEquipes_Click(object sender, EventArgs e)
         {
-            ListeEquipes FormEquipes = new ListeEquipes();
+            FormListeEquipes FormEquipes = new FormListeEquipes();
             FormEquipes.ShowDialog();
 
 
@@ -63,31 +63,31 @@ namespace TP_SMI1002
 
         private void optEvenements_Click(object sender, EventArgs e)
         {
-            ListeEvenements FormEvenements = new ListeEvenements();
+            FormListeEvenements FormEvenements = new FormListeEvenements();
             FormEvenements.ShowDialog();
         }
 
         private void optJeux_Click(object sender, EventArgs e)
         {
-            ListeJeux FormJeux = new ListeJeux();
+            FormListeJeux FormJeux = new FormListeJeux();
             FormJeux.ShowDialog();
         }
 
         private void optJoueur_Click(object sender, EventArgs e)
         {
-            ListeJoueurs FormJoueurs = new ListeJoueurs();
+            FormListeJoueurs FormJoueurs = new FormListeJoueurs();
             FormJoueurs.ShowDialog();
         }
 
         private void optPersonnel_Click(object sender, EventArgs e)
         {
-            ListePersonnels FormPersonnels = new ListePersonnels();
+            FormListePersonnels FormPersonnels = new FormListePersonnels();
             FormPersonnels.ShowDialog();
         }
 
         private void optTypePersonnel_Click(object sender, EventArgs e)
         {
-            ListeTypePersonnel FormTypePersonnel = new ListeTypePersonnel();
+            FormListeTypePersonnel FormTypePersonnel = new FormListeTypePersonnel();
             FormTypePersonnel.ShowDialog();
         }
 

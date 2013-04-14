@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class Joueur : Form
+    public partial class FormJeu : Form
     {
-        public Joueur()
+        public FormJeu()
         {
             InitializeComponent();
         }
