@@ -32,6 +32,12 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.lsvJoueurs = new System.Windows.Forms.ListView();
+            this.clmNom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmGamerTag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmCourriel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSexe = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDateNaissance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSupprimer
@@ -88,18 +94,57 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // ListeJoueurs
+            // lsvJoueurs
+            // 
+            this.lsvJoueurs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmNom,
+            this.clmGamerTag,
+            this.clmCourriel,
+            this.clmSexe,
+            this.clmDateNaissance});
+            this.lsvJoueurs.FullRowSelect = true;
+            this.lsvJoueurs.Location = new System.Drawing.Point(12, 12);
+            this.lsvJoueurs.MultiSelect = false;
+            this.lsvJoueurs.Name = "lsvJoueurs";
+            this.lsvJoueurs.Size = new System.Drawing.Size(474, 239);
+            this.lsvJoueurs.TabIndex = 12;
+            this.lsvJoueurs.UseCompatibleStateImageBehavior = false;
+            this.lsvJoueurs.View = System.Windows.Forms.View.Details;
+            // 
+            // clmNom
+            // 
+            this.clmNom.Text = "Nom";
+            // 
+            // clmGamerTag
+            // 
+            this.clmGamerTag.Text = "GamerTag";
+            // 
+            // clmCourriel
+            // 
+            this.clmCourriel.Text = "Courriel";
+            // 
+            // clmSexe
+            // 
+            this.clmSexe.Text = "Sexe";
+            // 
+            // clmDateNaissance
+            // 
+            this.clmDateNaissance.Text = "Date de Naissance";
+            // 
+            // FormListeJoueurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 305);
+            this.Controls.Add(this.lsvJoueurs);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAjouter);
-            this.Name = "ListeJoueurs";
+            this.Name = "FormListeJoueurs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListeJoueurs";
+            this.Load += new System.EventHandler(this.FormListeJoueurs_Load);
             this.ResumeLayout(false);
 
         }
@@ -110,5 +155,11 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.ListView lsvJoueurs;
+        private System.Windows.Forms.ColumnHeader clmNom;
+        private System.Windows.Forms.ColumnHeader clmGamerTag;
+        private System.Windows.Forms.ColumnHeader clmCourriel;
+        private System.Windows.Forms.ColumnHeader clmSexe;
+        private System.Windows.Forms.ColumnHeader clmDateNaissance;
     }
 }
