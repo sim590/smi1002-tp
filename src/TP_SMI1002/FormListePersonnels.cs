@@ -18,7 +18,7 @@ namespace TP_SMI1002
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            Personnel formPersonnel = new Personnel();
+            FormPersonnel formPersonnel = new FormPersonnel();
             formPersonnel.ShowDialog();
         }
 
