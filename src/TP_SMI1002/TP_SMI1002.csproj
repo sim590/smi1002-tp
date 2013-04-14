@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72DF7B79-687D-4CCA-8022-072F4DEC6B4B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TP_SMI1002</RootNamespace>
+    <AssemblyName>TP_SMI1002</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clsDbConnection.cs" />
+    <Compile Include="Equipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipe.Designer.cs">
+      <DependentUpon>Equipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Evenement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Evenement.Designer.cs">
+      <DependentUpon>Evenement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jeu.Designer.cs">
+      <DependentUpon>Jeu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Joueur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Joueur.Designer.cs">
+      <DependentUpon>Joueur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeEquipes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeEquipes.Designer.cs">
+      <DependentUpon>ListeEquipes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeEvenements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeEvenements.Designer.cs">
+      <DependentUpon>ListeEvenements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeJeux.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeJeux.Designer.cs">
+      <DependentUpon>ListeJeux.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeJoueurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeJoueurs.Designer.cs">
+      <DependentUpon>ListeJoueurs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListePersonnels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListePersonnels.Designer.cs">
+      <DependentUpon>ListePersonnels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeTypePersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeTypePersonnel.Designer.cs">
+      <DependentUpon>ListeTypePersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personnel.Designer.cs">
+      <DependentUpon>Personnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tournoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tournoi.Designer.cs">
+      <DependentUpon>Tournoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TypePersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TypePersonnel.Designer.cs">
+      <DependentUpon>TypePersonnel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipe.resx">
+      <DependentUpon>Equipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Evenement.resx">
+      <DependentUpon>Evenement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jeu.resx">
+      <DependentUpon>Jeu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Joueur.resx">
+      <DependentUpon>Joueur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeEquipes.resx">
+      <DependentUpon>ListeEquipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeEvenements.resx">
+      <DependentUpon>ListeEvenements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeJeux.resx">
+      <DependentUpon>ListeJeux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeJoueurs.resx">
+      <DependentUpon>ListeJoueurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListePersonnels.resx">
+      <DependentUpon>ListePersonnels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeTypePersonnel.resx">
+      <DependentUpon>ListeTypePersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personnel.resx">
+      <DependentUpon>Personnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tournoi.resx">
+      <DependentUpon>Tournoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypePersonnel.resx">
+      <DependentUpon>TypePersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Create.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
