@@ -7,6 +7,7 @@ using Oracle.DataAccess.Client;
 
 namespace TP_SMI1002
 {
+    //TODO: FAIRE UN SINGLETON OU PATRON FABRIQUE..
     public class ObjOracleConnection
     {
         public static string connectionString;
