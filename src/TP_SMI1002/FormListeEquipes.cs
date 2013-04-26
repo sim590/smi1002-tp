@@ -32,6 +32,20 @@ namespace TP_SMI1002
 
         private void ListeEquipes_Load(object sender, EventArgs e)
         {
+            List<Equipe> lstEquipe = new List<Equipe>();
+            InterfaceBD bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstEquipe);
+
+            ListViewItem lsv;
+            for (int i = 0; i<lstEquipe.Count;i++)
+            {
+                lsv = new ListViewItem(lstEquipe[i].Nom);
+                lsv.SubItems.Add(lstEquipe[i].SiteWeb);
+                lsv.Tag = lstEquipe[i].Id;
+
+                lsvEquipe.Items.Add(lsv);
+            }
+
             /*cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idequipe, nom, siteweb from equipe order by idequipe");
             while (rs.Read())

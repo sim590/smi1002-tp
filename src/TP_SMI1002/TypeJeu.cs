@@ -15,6 +15,12 @@ namespace TP_SMI1002
             this.NomTypeJeu = NomTypeJeu;
         }
 
+        public TypeJeu(int Id, string NomTypeJeu)
+        {
+            this.Id = Id;
+            this.NomTypeJeu = NomTypeJeu;
+        }
+
         //override ToString
         public override string ToString()
         {

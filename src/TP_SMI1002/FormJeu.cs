@@ -26,5 +26,18 @@ namespace TP_SMI1002
           //TODO: faire appel au singleton pour ajouter le jeu a la BD
         }
 
+        private void FormJeu_Load(object sender, EventArgs e)
+        {
+            InterfaceBD bd = InterfaceBD.accesInstance();
+            List<TypeJeu> lstTypeJeu = new List<TypeJeu>();
+
+            bd.remplirListe(ref lstTypeJeu);
+
+            for (int i = 0; i < lstTypeJeu.Count(); i++)
+            {
+                cbTypeJeu.Items.Add(lstTypeJeu[i]);
+            }
+        }
+
     }
 }

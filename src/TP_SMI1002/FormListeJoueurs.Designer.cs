@@ -118,6 +118,7 @@
             // clmGamerTag
             // 
             this.clmGamerTag.Text = "GamerTag";
+            this.clmGamerTag.Width = 119;
             // 
             // clmCourriel
             // 

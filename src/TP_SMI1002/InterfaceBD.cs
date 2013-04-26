@@ -42,6 +42,109 @@ namespace TP_SMI1002
             return instance;
         }
 
+        //Fonction pour remplir les différentes liste
+        public void remplirListe(ref List<Equipe> lstEquipe)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDEQUIPE, SITEWEB, NOM FROM EQUIPE ORDER BY NOM";
+            
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstEquipe.Add(new Equipe(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), rs.GetOracleValue(2).ToString()));
+            }
+            rs.Close();           
+            
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<Joueur> lstJoueur)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDJOUEUR, NOM, GAMERTAG, COURRIEL, SEXE, DATENAISSANCE  FROM JOUEUR ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstJoueur.Add(new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()), 
+                                                    rs.GetOracleValue(1).ToString(), rs.GetOracleValue(2).ToString(), 
+                                                    rs.GetOracleValue(3).ToString(), rs.GetOracleValue(4).ToString(), 
+                                                    Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<TypeJeu> lstTypeJeu)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDTYPEJEU, NOM FROM TYPEJEU ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstTypeJeu.Add(new TypeJeu(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString()));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<JeuAvecType> lstTypeJeuAvecType)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT J.IDJEU, J.NOM, J.IDTYPEJEU, T.NOM FROM JEU J, TYPEJEU T ORDER BY J.NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstTypeJeuAvecType.Add(new JeuAvecType(Convert.ToInt32(rs.GetOracleValue(0).ToString()), 
+                                                        rs.GetOracleValue(1).ToString(), 
+                                                        Convert.ToInt32(rs.GetOracleValue(2).ToString()), 
+                                                        rs.GetOracleValue(3).ToString()));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
 
         //TODO:
         //-------------------------------------------
@@ -142,9 +245,9 @@ namespace TP_SMI1002
             {
                 cmdString = "update equipe set nom = :param1, siteweb = param2 where idjoueur = :keyValue";
                 cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((Equipe)donnee).nom);
-                cmd.Parameters.Add("@param2", ((Equipe)donnee).siteWeb);
-                cmd.Parameters.Add("@keyValue", ((Equipe)donnee).Id);
+                cmd.Parameters.Add("param1", ((Equipe)donnee).Nom);
+                cmd.Parameters.Add("param2", ((Equipe)donnee).SiteWeb);
+                cmd.Parameters.Add("keyValue", ((Equipe)donnee).Id);
             }
             else if (donnee is Joueur)
             {
