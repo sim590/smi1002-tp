@@ -32,10 +32,6 @@ namespace TP_SMI1002
 
         private void ListeEquipes_Load(object sender, EventArgs e)
         {
-            
-            
-            
-            
             cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idequipe, nom, siteweb from equipe order by idequipe");
             while (rs.Read())

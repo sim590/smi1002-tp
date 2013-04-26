@@ -11,7 +11,6 @@ namespace TP_SMI1002
 {
     public partial class FormMain : Form
     {
-        ObjOracleConnexion cn;
         public FormMain()
         {
             InitializeComponent();

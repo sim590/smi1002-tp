@@ -30,8 +30,8 @@
         {
             this.lblNom = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.txtSite = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lsvMembre = new System.Windows.Forms.ListView();
             this.btnSupprimerMembre = new System.Windows.Forms.Button();
@@ -58,19 +58,19 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Site web :";
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(226, 20);
-            this.textBox1.TabIndex = 20;
+            this.txtNom.Location = new System.Drawing.Point(86, 21);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(226, 20);
+            this.txtNom.TabIndex = 20;
             // 
-            // textBox2
+            // txtSite
             // 
-            this.textBox2.Location = new System.Drawing.Point(88, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 20);
-            this.textBox2.TabIndex = 21;
+            this.txtSite.Location = new System.Drawing.Point(88, 46);
+            this.txtSite.Name = "txtSite";
+            this.txtSite.Size = new System.Drawing.Size(224, 20);
+            this.txtSite.TabIndex = 21;
             // 
             // label2
             // 
@@ -146,8 +146,8 @@
             this.Controls.Add(this.btnAjouterMembre);
             this.Controls.Add(this.lsvMembre);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSite);
+            this.Controls.Add(this.txtNom);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.btnEnregistrer);
@@ -166,8 +166,8 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.TextBox txtSite;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView lsvMembre;
         private System.Windows.Forms.Button btnAjouterMembre;

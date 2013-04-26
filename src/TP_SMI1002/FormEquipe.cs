@@ -18,7 +18,25 @@ namespace TP_SMI1002
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            
+            bool okay = true;
+
+            if (txtNom.Text == "")
+            {
+                okay = false;
+            }
+            if (txtSite.Text == "")
+            {
+                okay = false;
+            }
+
+            if (okay)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

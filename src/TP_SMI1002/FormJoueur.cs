@@ -24,12 +24,34 @@ namespace TP_SMI1002
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            bool okay;
+            bool okay = true;
 
             if (txtNom.Text == "")
             {
+                okay = false;
+            }
+            if (txtGamerTag.Text == "")
+            {
+                okay = false;
+            }
+            if (txtCourriel.Text == "")
+            {
+                okay = false;
+            }
+            if (cbSexe.SelectedText == "")
+            {
+                okay = false;
+            }
+
+            if (okay)
+            {
 
             }
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
 
