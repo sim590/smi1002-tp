@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace TP_SMI1002
 {
@@ -20,5 +21,17 @@ namespace TP_SMI1002
         {
             this.Close();
         }
+
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+            bool okay;
+
+            if (txtNom.Text == "")
+            {
+
+            }
+        }
+
+
     }
 }

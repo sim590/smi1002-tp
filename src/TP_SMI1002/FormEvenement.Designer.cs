@@ -34,7 +34,6 @@
             this.lblLieu = new System.Windows.Forms.Label();
             this.lblAdresse = new System.Windows.Forms.Label();
             this.lblVille = new System.Windows.Forms.Label();
-            this.lblProvince = new System.Windows.Forms.Label();
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
@@ -42,7 +41,6 @@
             this.txtLieu = new System.Windows.Forms.TextBox();
             this.txtAdresse = new System.Windows.Forms.TextBox();
             this.txtVille = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtCodePostale = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -107,23 +105,15 @@
             this.lblVille.TabIndex = 5;
             this.lblVille.Text = "Ville :";
             // 
-            // lblProvince
-            // 
-            this.lblProvince.AutoSize = true;
-            this.lblProvince.Location = new System.Drawing.Point(23, 159);
-            this.lblProvince.Name = "lblProvince";
-            this.lblProvince.Size = new System.Drawing.Size(55, 13);
-            this.lblProvince.TabIndex = 6;
-            this.lblProvince.Text = "Province :";
-            // 
             // lblCodePostal
             // 
             this.lblCodePostal.AutoSize = true;
-            this.lblCodePostal.Location = new System.Drawing.Point(23, 185);
+            this.lblCodePostal.Location = new System.Drawing.Point(22, 164);
             this.lblCodePostal.Name = "lblCodePostal";
             this.lblCodePostal.Size = new System.Drawing.Size(75, 13);
             this.lblCodePostal.TabIndex = 7;
             this.lblCodePostal.Text = "Code postale :";
+            this.lblCodePostal.Click += new System.EventHandler(this.lblCodePostal_Click);
             // 
             // txtNom
             // 
@@ -136,14 +126,14 @@
             // 
             this.dtpDebut.Location = new System.Drawing.Point(106, 44);
             this.dtpDebut.Name = "dtpDebut";
-            this.dtpDebut.Size = new System.Drawing.Size(138, 20);
+            this.dtpDebut.Size = new System.Drawing.Size(145, 20);
             this.dtpDebut.TabIndex = 17;
             // 
             // dtpFin
             // 
             this.dtpFin.Location = new System.Drawing.Point(106, 67);
             this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(138, 20);
+            this.dtpFin.Size = new System.Drawing.Size(145, 20);
             this.dtpFin.TabIndex = 18;
             // 
             // txtLieu
@@ -167,18 +157,9 @@
             this.txtVille.Size = new System.Drawing.Size(248, 20);
             this.txtVille.TabIndex = 21;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(105, 156);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // txtCodePostale
             // 
-            this.txtCodePostale.Location = new System.Drawing.Point(106, 185);
+            this.txtCodePostale.Location = new System.Drawing.Point(108, 161);
             this.txtCodePostale.Name = "txtCodePostale";
             this.txtCodePostale.Size = new System.Drawing.Size(120, 20);
             this.txtCodePostale.TabIndex = 23;
@@ -186,24 +167,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 218);
+            this.label1.Location = new System.Drawing.Point(25, 200);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 24;
             this.label1.Text = "Liste des tournois";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(26, 235);
+            this.listView1.Location = new System.Drawing.Point(26, 216);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(327, 148);
+            this.listView1.Size = new System.Drawing.Size(327, 167);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btnSupprimerMembre
             // 
             this.btnSupprimerMembre.Image = global::TP_SMI1002.Properties.Resources.Delete;
-            this.btnSupprimerMembre.Location = new System.Drawing.Point(325, 208);
+            this.btnSupprimerMembre.Location = new System.Drawing.Point(325, 190);
             this.btnSupprimerMembre.Name = "btnSupprimerMembre";
             this.btnSupprimerMembre.Size = new System.Drawing.Size(27, 23);
             this.btnSupprimerMembre.TabIndex = 27;
@@ -212,7 +194,7 @@
             // btnAjouterMembre
             // 
             this.btnAjouterMembre.Image = global::TP_SMI1002.Properties.Resources.Create;
-            this.btnAjouterMembre.Location = new System.Drawing.Point(259, 208);
+            this.btnAjouterMembre.Location = new System.Drawing.Point(259, 190);
             this.btnAjouterMembre.Name = "btnAjouterMembre";
             this.btnAjouterMembre.Size = new System.Drawing.Size(27, 23);
             this.btnAjouterMembre.TabIndex = 26;
@@ -231,6 +213,7 @@
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnAnnuler
             // 
@@ -249,13 +232,13 @@
             // button1
             // 
             this.button1.Image = global::TP_SMI1002.Properties.Resources.Modify;
-            this.button1.Location = new System.Drawing.Point(292, 208);
+            this.button1.Location = new System.Drawing.Point(292, 190);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 23);
             this.button1.TabIndex = 28;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Evenement
+            // FormEvenement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -266,7 +249,6 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodePostale);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtVille);
             this.Controls.Add(this.txtAdresse);
             this.Controls.Add(this.txtLieu);
@@ -276,16 +258,16 @@
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.lblCodePostal);
-            this.Controls.Add(this.lblProvince);
             this.Controls.Add(this.lblVille);
             this.Controls.Add(this.lblAdresse);
             this.Controls.Add(this.lblLieu);
             this.Controls.Add(this.lblFin);
             this.Controls.Add(this.lblDebut);
             this.Controls.Add(this.lblNom);
-            this.Name = "Evenement";
+            this.Name = "FormEvenement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Évènement";
+            this.Load += new System.EventHandler(this.FormEvenement_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,7 +281,6 @@
         private System.Windows.Forms.Label lblLieu;
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.Label lblVille;
-        private System.Windows.Forms.Label lblProvince;
         private System.Windows.Forms.Label lblCodePostal;
         private System.Windows.Forms.Button btnEnregistrer;
         private System.Windows.Forms.Button btnAnnuler;
@@ -309,7 +290,6 @@
         private System.Windows.Forms.TextBox txtLieu;
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.TextBox txtVille;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox txtCodePostale;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;

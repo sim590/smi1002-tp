@@ -32,7 +32,7 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.cbTypeJeu = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnAnnuler
             // 
@@ -81,12 +82,13 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Type de jeu :";
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(84, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 20);
-            this.textBox1.TabIndex = 16;
+            this.txtNom.Location = new System.Drawing.Point(84, 13);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(304, 20);
+            this.txtNom.TabIndex = 16;
+            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // cbTypeJeu
             // 
@@ -97,18 +99,18 @@
             this.cbTypeJeu.Size = new System.Drawing.Size(214, 21);
             this.cbTypeJeu.TabIndex = 17;
             // 
-            // Jeu
+            // FormJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 125);
             this.Controls.Add(this.cbTypeJeu);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNom);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.btnAnnuler);
-            this.Name = "Jeu";
+            this.Name = "FormJeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jeu";
             this.ResumeLayout(false);
@@ -122,7 +124,7 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.ComboBox cbTypeJeu;
     }
 }
