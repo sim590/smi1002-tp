@@ -12,7 +12,9 @@ namespace TP_SMI1002
 {
     public partial class FormTypePersonnel : Form
     {
+        //---------------
         // Constructeur
+        //---------------
         public FormTypePersonnel()
         {
             InitializeComponent();

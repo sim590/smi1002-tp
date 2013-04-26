@@ -11,7 +11,7 @@ namespace TP_SMI1002
 {
     public partial class FormMain : Form
     {
-        ObjOracleConnection cn;
+        ObjOracleConnexion cn;
         public FormMain()
         {
             InitializeComponent();
@@ -37,13 +37,13 @@ namespace TP_SMI1002
             }
             
             //Connection base de données
-            ObjOracleConnection.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
+            ObjOracleConnexion.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
                 
             //"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.GetDirectoryName(Application.ExecutablePath) + "\\dspMillageFuel.accdb";
 
             try
             {
-                cn = new ObjOracleConnection();
+                cn = new ObjOracleConnexion();
             }
             catch
             {
