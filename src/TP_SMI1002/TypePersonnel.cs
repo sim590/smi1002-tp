@@ -21,12 +21,21 @@ namespace TP_SMI1002
         private int couleur;
         private string nom;
 
-        // Constructeur
-        public TypePersonnel(byte A, byte R, byte G, byte B, string nom, int id)
+        //----------------
+        // Constructeurs
+        //----------------
+        public TypePersonnel(byte A, byte R, byte G, byte B, string nom)
         {
             this.couleur = A*6*0x10+R*4*0x10+G*2*0x10+B; // Entier codé selon le standard ARGB (4*1octet = 4octet = sizeof(int))
             this.nom = nom;
         }
+        public TypePersonnel(byte A, byte R, byte G, byte B, string nom, int id)
+        {
+            this.couleur = A * 6 * 0x10 + R * 4 * 0x10 + G * 2 * 0x10 + B; // Entier codé selon le standard ARGB (4*1octet = 4octet = sizeof(int))
+            this.nom = nom;
+            this.Id = id;
+        }
+
 
         // Accesseur(s) et mutateur(s)
         public int Couleur

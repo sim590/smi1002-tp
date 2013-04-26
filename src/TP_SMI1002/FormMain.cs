@@ -11,7 +11,6 @@ namespace TP_SMI1002
 {
     public partial class FormMain : Form
     {
-        ObjOracleConnexion cn;
         public FormMain()
         {
             InitializeComponent();
@@ -35,30 +34,14 @@ namespace TP_SMI1002
                     break;
                 }
             }
-            
-            //Connection base de données
-            ObjOracleConnexion.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
                 
             //"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.GetDirectoryName(Application.ExecutablePath) + "\\dspMillageFuel.accdb";
-
-            try
-            {
-                cn = new ObjOracleConnexion();
-            }
-            catch
-            {
-                MessageBox.Show("le fichier dspMillageFuel.accdb est nécessaire au bon fonctionnement de cette application, de plus il doit se trouver dans le même dossier que le fichier DspMillageFuel.exe " +
-                                    "\nVous devez également disposer d'une version de microsoft access 2007 ou supérieure installé sur votre système");
-                System.Environment.Exit(-1);
-            }
         }
 
         private void optEquipes_Click(object sender, EventArgs e)
         {
             FormListeEquipes FormEquipes = new FormListeEquipes();
             FormEquipes.ShowDialog();
-
-
         }
 
         private void optEvenements_Click(object sender, EventArgs e)

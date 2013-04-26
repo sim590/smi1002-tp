@@ -19,7 +19,7 @@ namespace TP_SMI1002
         // Variables d'instance
         private static InterfaceBD instance;
         private OracleConnection cnLanUQTR;
-        public static string connectionString;
+        public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
 
         //----------------
         // Constructeur 
@@ -42,50 +42,75 @@ namespace TP_SMI1002
             return instance;
         }
 
+
+        //TODO:
         //-------------------------------------------
         // Ajout d'une donnée à la base de données
         //-------------------------------------------
         public int ajoutBD(DonneeBD donnee)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            string cmdString;
+            cmd.Connection = cnLanUQTR;
+            string cmdString="";
+            int rangesEcrites;
 
+            // Ouverture d'une connexion
             cnLanUQTR.Open();
 
+            // Ajout d'un personnel
             if (donnee is Personnel)
             {
-
-                //cmdString = "insert into personnel (id, nom, fatest) values(" + (DonneeBD))"
+                cmdString = "INSERT INTO PERSONNEL {VALUES ('','"+
+                                                ((Personnel)donnee).Nom+"','"+
+                                                ((Personnel)donnee).DateNaissance+"','"+
+                                                ((Personnel)donnee).Courriel+"')}";
             }
+            // Ajout d'un type de personnel
             else if (donnee is TypePersonnel)
             {
-
+                
             }
+            // Ajout d'une équipe
             else if (donnee is Equipe)
 	        {
 		        
 	        }
+            // Ajout d'un joueur
             else if (donnee is Joueur)
 	        {
 	        	 
 	        }
+            // Ajout d'un type de jeu
             else if (donnee is TypeJeu)
             {
 
             }
-            
+            // Ajout d'un jeu
+            else if (donnee is Jeu)
+            {
+
+            }
+            // Ajout d'un tournoi
+            else if (donnee is Tournoi)
+            {
+
+            }
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
             // Envoie la commande
-            cmd.ExecuteReader();
+            rangesEcrites = cmd.ExecuteNonQuery();
 
             // Fermeture de la connexion
             cnLanUQTR.Close();
+            
+            // Une erreur est survenue
+            if (rangesEcrites == -1)
+                return -1;
+
+            return rangesEcrites;
         }
 
-        public int modifierBD(DonneeBD donnee)
-        {
-
-        }
-
-        public int supprimmerDansBD
     }
 }

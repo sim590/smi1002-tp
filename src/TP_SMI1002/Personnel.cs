@@ -20,13 +20,21 @@ namespace TP_SMI1002
         // Variables d'instances
         private string nom,courriel,dateNaissance;
 
-        // Constructeur
-        public Personnel(int id, string nom, string courriel, string dateNaissance)
+        //----------------
+        // Constructeurs
+        //----------------
+        public Personnel(string nom, string courriel, string dateNaissance)
         {
-            this.id = id;
             this.nom = nom;
             this.courriel = courriel;
             this.dateNaissance = dateNaissance;
+        }
+        public Personnel(string nom, string courriel, string dateNaissance, int id)
+        {
+            this.nom = nom;
+            this.courriel = courriel;
+            this.dateNaissance = dateNaissance;
+            this.Id = id;
         }
 
 

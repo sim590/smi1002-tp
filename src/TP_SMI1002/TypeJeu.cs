@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TP_SMI1002
 {
-    class TypeJeu
+    class TypeJeu : DonneeBD
     {
         int ID{get; set;}
         string NomTypeJeu {get; set;}
