@@ -20,5 +20,11 @@ namespace TP_SMI1002
         {
             this.Close();
         }
+
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+          //TODO: faire appel au singleton pour ajouter le jeu a la BD
+        }
+
     }
 }

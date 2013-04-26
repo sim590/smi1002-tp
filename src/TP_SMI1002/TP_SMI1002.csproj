@@ -54,6 +54,7 @@
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="DonneeBD.cs" />
+    <Compile Include="Jeu.cs" />
     <Compile Include="ObjOracleConnection.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="FormEquipe.cs">
@@ -143,6 +144,7 @@
     <Compile Include="FormTypePersonnel.Designer.cs">
       <DependentUpon>FormTypePersonnel.cs</DependentUpon>
     </Compile>
+    <Compile Include="TypeJeu.cs" />
     <Compile Include="TypePersonnel.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
