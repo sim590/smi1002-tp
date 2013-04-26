@@ -54,6 +54,7 @@
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="DonneeBD.cs" />
+    <Compile Include="Joueur.cs" />
     <Compile Include="ObjOracleConnection.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="FormEquipe.cs">

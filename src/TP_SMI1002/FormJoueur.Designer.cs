@@ -33,9 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.txtGamerTag = new System.Windows.Forms.TextBox();
+            this.txtCourriel = new System.Windows.Forms.TextBox();
             this.cbSexe = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnEnregistrer = new System.Windows.Forms.Button();
@@ -87,31 +87,34 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Date naissance :";
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtNom.Location = new System.Drawing.Point(130, 27);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(267, 20);
+            this.txtNom.TabIndex = 5;
             // 
-            // textBox2
+            // txtGamerTag
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(267, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtGamerTag.Location = new System.Drawing.Point(130, 57);
+            this.txtGamerTag.Name = "txtGamerTag";
+            this.txtGamerTag.Size = new System.Drawing.Size(267, 20);
+            this.txtGamerTag.TabIndex = 6;
             // 
-            // textBox3
+            // txtCourriel
             // 
-            this.textBox3.Location = new System.Drawing.Point(130, 88);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(267, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtCourriel.Location = new System.Drawing.Point(130, 88);
+            this.txtCourriel.Name = "txtCourriel";
+            this.txtCourriel.Size = new System.Drawing.Size(267, 20);
+            this.txtCourriel.TabIndex = 7;
             // 
             // cbSexe
             // 
             this.cbSexe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSexe.FormattingEnabled = true;
+            this.cbSexe.Items.AddRange(new object[] {
+            "Masculin",
+            "Féminin"});
             this.cbSexe.Location = new System.Drawing.Point(130, 114);
             this.cbSexe.Name = "cbSexe";
             this.cbSexe.Size = new System.Drawing.Size(121, 21);
@@ -136,6 +139,7 @@
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnAnnuler
             // 
@@ -151,7 +155,7 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // Joueur
+            // FormJoueur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,15 +164,15 @@
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.cbSexe);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCourriel);
+            this.Controls.Add(this.txtGamerTag);
+            this.Controls.Add(this.txtNom);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Joueur";
+            this.Name = "FormJoueur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Joueur";
             this.ResumeLayout(false);
@@ -183,9 +187,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.TextBox txtGamerTag;
+        private System.Windows.Forms.TextBox txtCourriel;
         private System.Windows.Forms.ComboBox cbSexe;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnEnregistrer;
