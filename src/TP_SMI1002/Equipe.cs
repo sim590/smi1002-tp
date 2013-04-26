@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TP_SMI1002
 {
-    class Equipe
+    class Equipe : DonneeBD
     {
         public string nom {get; set;}
         public string siteWeb{get; set;}
