@@ -16,9 +16,9 @@ namespace TP_SMI1002
             InitializeComponent();
         }
 
-        private void Equipe_Load(object sender, EventArgs e)
+        private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
