@@ -123,27 +123,46 @@ namespace TP_SMI1002
 
             if (donnee is Personnel)
             {
-
+                cmdString = "update personnel set nom = :param1, datenaissance = :param2, courriel = :param3 where idpersonnel = :keyValue";
+                cmd.CommandText = cmdString;
+                cmd.Parameters.Add("@param1", ((Personnel)donnee).Nom);
+                cmd.Parameters.Add("@param2", ((Personnel)donnee).DateNaissance);
+                cmd.Parameters.Add("@param3", ((Personnel)donnee).Courriel);
+                cmd.Parameters.Add("@keyValue", ((Personnel)donnee).Id);
             }
             else if (donnee is TypePersonnel)
             {
-
+                cmdString = "update typepersonnel set nom = :param1, couleur = :param2 where idtypepersonnel = :keyValue";
+                cmd.CommandText = cmdString;
+                cmd.Parameters.Add("@param1", ((TypePersonnel)donnee).Nom);
+                cmd.Parameters.Add("@param2", ((TypePersonnel)donnee).Couleur);
+                cmd.Parameters.Add("@keyValue", ((TypePersonnel)donnee).Id);
             }
             else if (donnee is Equipe)
             {
-                cmdString = "update joueur set nom = :param1, siteweb = param2 where idjoueur = :keyValue";
+                cmdString = "update equipe set nom = :param1, siteweb = param2 where idjoueur = :keyValue";
                 cmd.CommandText = cmdString;
-                cmd.Parameters.Add("param1", ((Equipe)donnee).nom);
-                cmd.Parameters.Add("param2", ((Equipe)donnee).siteWeb);
-                cmd.Parameters.Add("keyValue", ((Equipe)donnee).Id);
+                cmd.Parameters.Add("@param1", ((Equipe)donnee).nom);
+                cmd.Parameters.Add("@param2", ((Equipe)donnee).siteWeb);
+                cmd.Parameters.Add("@keyValue", ((Equipe)donnee).Id);
             }
             else if (donnee is Joueur)
             {
-                
+                cmdString = "update joueur set nom = :param1, gamertag = :param2, courriel = :param3, sexe = :param4, datenaissance = :param5 where idequipe = :keyValue";
+                cmd.CommandText = cmdString;
+                cmd.Parameters.Add("@param1", ((Joueur)donnee).Nom);
+                cmd.Parameters.Add("@param2", ((Joueur)donnee).GamerTag);
+                cmd.Parameters.Add("@param3", ((Joueur)donnee).Courriel);
+                cmd.Parameters.Add("@param4", ((Joueur)donnee).Sexe);
+                cmd.Parameters.Add("@param5", ((Joueur)donnee).Date);
+                cmd.Parameters.Add("@keyValue", ((Joueur)donnee).Id);
             }
             else if (donnee is TypeJeu)
             {
-
+                cmdString = "update typejeu set nom = :param1 where idtype = :keyValue";
+                cmd.CommandText = cmdString;
+                cmd.Parameters.Add("@param1", ((TypeJeu)donnee).NomTypeJeu);
+                cmd.Parameters.Add("@keyValue", ((TypeJeu)donnee).Id);
             }
 
             cmd.Connection = cnLanUQTR;

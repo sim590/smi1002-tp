@@ -7,8 +7,9 @@ namespace TP_SMI1002
 {
     class Jeu : DonneeBD
     {       
-        String Nom {get; set;}
-        int IDTypeJeu{get; set;}
+        public string Nom {get; set;}
+        public int IDTypeJeu{get; set;}
+
         public Jeu(String Nom,int IDTypeJeu)
         {
             this.Nom = Nom;

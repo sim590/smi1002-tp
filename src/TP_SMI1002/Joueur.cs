@@ -7,11 +7,11 @@ namespace TP_SMI1002
 {
     class Joueur : DonneeBD
     {
-        private string Nom{get; set;}
-        private string GamerTag { get; set; }
-        private string Courriel { get; set; }
-        public string sexe;
-        public DateTime date;
+        public string Nom{get; set;}
+        public string GamerTag { get; set; }
+        public string Courriel { get; set; }
+        public string Sexe { get; set; }
+        public DateTime Date { get; set; }
 
         //------------------------------------------------------
         // Constructeur
@@ -21,13 +21,13 @@ namespace TP_SMI1002
             this.Nom = nom;
             this.GamerTag = gamerTag;
             this.Courriel = courriel;
-            this.sexe = sexe;
-            this.date = date;
+            this.Sexe = sexe;
+            this.Date = date;
         }
 
         public override string ToString()
         {
-            return this.Nom + "\t" + this.GamerTag + "\t" + this.Courriel + "\t" + this.sexe + "\t" + this.date;
+            return this.Nom + "\t" + this.GamerTag + "\t" + this.Courriel + "\t" + this.Sexe + "\t" + this.Date;
         }
 
     }

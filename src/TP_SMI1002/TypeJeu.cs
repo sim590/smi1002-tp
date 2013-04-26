@@ -7,7 +7,7 @@ namespace TP_SMI1002
 {
     class TypeJeu : DonneeBD
     {
-        string NomTypeJeu {get; set;}
+        public string NomTypeJeu {get; set;}
 
         //constructeur
         public TypeJeu(string NomTypeJeu)
