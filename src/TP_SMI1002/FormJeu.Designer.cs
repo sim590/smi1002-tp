@@ -88,7 +88,6 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(304, 20);
             this.txtNom.TabIndex = 16;
-            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // cbTypeJeu
             // 
