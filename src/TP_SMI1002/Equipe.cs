@@ -9,7 +9,6 @@ namespace TP_SMI1002
     {
         public string nom {get; set;}
         public string siteWeb{get; set;}
-        private int id;
 
         public int Id
         {
