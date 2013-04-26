@@ -14,7 +14,7 @@ namespace TP_SMI1002
     abstract class DonneeBD
     {
         // Variables d'instance
-        protected int Id { get; set; }
+        public int Id { get; set; }
 
         //---------------
         // Constructeur
