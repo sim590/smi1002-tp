@@ -243,7 +243,7 @@ namespace TP_SMI1002
             }
             else if (donnee is Equipe)
             {
-                cmdString = "update equipe set nom = :param1, siteweb = param2 where idjoueur = :keyValue";
+                cmdString = "update equipe set nom = :param1, siteweb = :param2 where idequipe = :keyValue";
                 cmd.CommandText = cmdString;
                 cmd.Parameters.Add("param1", ((Equipe)donnee).Nom);
                 cmd.Parameters.Add("param2", ((Equipe)donnee).SiteWeb);
@@ -251,7 +251,7 @@ namespace TP_SMI1002
             }
             else if (donnee is Joueur)
             {
-                cmdString = "update joueur set nom = :param1, gamertag = :param2, courriel = :param3, sexe = :param4, datenaissance = :param5 where idequipe = :keyValue";
+                cmdString = "update joueur set nom = :param1, gamertag = :param2, courriel = :param3, sexe = :param4, datenaissance = :param5 where idjoueur = :keyValue";
                 cmd.CommandText = cmdString;
                 cmd.Parameters.Add("@param1", ((Joueur)donnee).Nom);
                 cmd.Parameters.Add("@param2", ((Joueur)donnee).GamerTag);

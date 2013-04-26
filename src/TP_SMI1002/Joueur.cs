@@ -25,6 +25,15 @@ namespace TP_SMI1002
             this.Date = Date;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id">Id</param>
+        /// <param name="Nom">Nom</param>
+        /// <param name="GamerTag">GamerTag</param>
+        /// <param name="Courriel">Courriel</param>
+        /// <param name="Sexe">Sexe</param>
+        /// <param name="Date">Date</param>
         public Joueur(int Id, string Nom, string GamerTag, string Courriel, string Sexe, DateTime Date)
         {
             this.Id = Id;
