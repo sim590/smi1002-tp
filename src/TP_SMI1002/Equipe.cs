@@ -18,6 +18,10 @@ namespace TP_SMI1002
                 return this.id;
             }
         }
+
+        //------------------------------------------------------
+        // Constructeur
+        //------------------------------------------------------
         public Equipe(int id, string nom, string siteWeb)
         {
             this.id = id;

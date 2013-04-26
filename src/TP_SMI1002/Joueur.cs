@@ -13,6 +13,9 @@ namespace TP_SMI1002
         public string sexe;
         public DateTime date;
 
+        //------------------------------------------------------
+        // Constructeur
+        //------------------------------------------------------
         public Joueur(string nom, string gamerTag, string courriel, string sexe, DateTime date)
         {
             this.Nom = nom;
