@@ -32,6 +32,23 @@ namespace TP_SMI1002
 
         private void FormListeJoueurs_Load(object sender, EventArgs e)
         {
+            List<Joueur> lstJoueur = new List<Joueur>();
+            InterfaceBD bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstJoueur);
+
+            ListViewItem lsv;
+            for (int i = 0; i < lstJoueur.Count; i++)
+            {
+                lsv = new ListViewItem(lstJoueur[i].Nom);
+                lsv.SubItems.Add(lstJoueur[i].GamerTag);
+                lsv.SubItems.Add(lstJoueur[i].Courriel);
+                lsv.SubItems.Add(lstJoueur[i].Sexe);
+                lsv.SubItems.Add(lstJoueur[i].Date.ToString());
+                lsv.Tag = lstJoueur[i].Id;
+
+                lsvJoueurs.Items.Add(lsv);
+            }
+            
             /*cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idjoueur, nom, gamertag, courriel, sexe, datenaissance from joueur order by idjoueur");
             while (rs.Read())

@@ -97,7 +97,7 @@
             this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // ListeJeux
+            // FormListeJeux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,9 +107,10 @@
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAjouter);
-            this.Name = "ListeJeux";
+            this.Name = "FormListeJeux";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListeJeux";
+            this.Load += new System.EventHandler(this.FormListeJeux_Load);
             this.ResumeLayout(false);
 
         }

@@ -26,5 +26,18 @@ namespace TP_SMI1002
         {
             this.Close();
         }
+
+        private void FormListeJeux_Load(object sender, EventArgs e)
+        {
+            InterfaceBD bd = InterfaceBD.accesInstance();
+            List<JeuAvecType> lstJeuAvecType = new List<JeuAvecType>();
+
+            bd.remplirListe(ref lstJeuAvecType);
+
+            for (int i = 0; i < lstJeuAvecType.Count(); i++)
+            {
+
+            }
+        }
     }
 }
