@@ -12,7 +12,7 @@ namespace TP_SMI1002
 {
     public partial class FormListeJoueurs : Form
     {
-        ObjOracleConnexion cn;
+        //ObjOracleConnexion cn;
 
         public FormListeJoueurs()
         {
@@ -32,7 +32,7 @@ namespace TP_SMI1002
 
         private void FormListeJoueurs_Load(object sender, EventArgs e)
         {
-            cn = new ObjOracleConnexion();
+            /*cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idjoueur, nom, gamertag, courriel, sexe, datenaissance from joueur order by idjoueur");
             while (rs.Read())
             {
@@ -45,7 +45,7 @@ namespace TP_SMI1002
 
                 lsvJoueurs.Items.Add(lsv);
             }
-            rs.Close();
+            rs.Close();*/
         }
 
         

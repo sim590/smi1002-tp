@@ -12,7 +12,7 @@ namespace TP_SMI1002
 {
     public partial class FormListeEquipes : Form
     {
-        ObjOracleConnexion cn;
+        //ObjOracleConnexion cn;
 
         public FormListeEquipes()
         {
@@ -32,7 +32,7 @@ namespace TP_SMI1002
 
         private void ListeEquipes_Load(object sender, EventArgs e)
         {
-            cn = new ObjOracleConnexion();
+            /*cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idequipe, nom, siteweb from equipe order by idequipe");
             while (rs.Read())
             {
@@ -42,7 +42,7 @@ namespace TP_SMI1002
 
                 lsvEquipe.Items.Add(lsv);
             }
-            rs.Close();
+            rs.Close();*/
             
         }
     }

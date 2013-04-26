@@ -161,7 +161,7 @@ namespace TP_SMI1002
         public int supprimmerDansBD(DonneeBD donnee)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            string cmdString;
+            string cmdString ="";
 
             cnLanUQTR.Open();
 
@@ -217,11 +217,10 @@ namespace TP_SMI1002
 
             cmd.CommandText = cmdString;
 
-            cmd.ExecuteNonquery();
+            cmd.ExecuteNonQuery();
 
             // Fermeture de la connexion
             cnLanUQTR.Close();
-        }
 
             return 1;
         }
