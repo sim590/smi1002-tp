@@ -28,7 +28,7 @@ namespace TP_SMI1002
         private void RefreshListe()
         {
 
-            lsvEvenement.Clear();
+            lstEvenement.Clear();
             lsvEvenement.Items.Clear();
             bd = InterfaceBD.accesInstance();
             bd.remplirListe(ref lstEvenement);

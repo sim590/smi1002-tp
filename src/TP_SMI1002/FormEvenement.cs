@@ -11,6 +11,7 @@ namespace TP_SMI1002
 {
     public partial class FormEvenement : Form
     {
+        InterfaceBD bd;
         private int IdEvenement = 0;
         public FormEvenement()
         {
@@ -87,8 +88,9 @@ namespace TP_SMI1002
                 }
                 else
                 {
-                    //Ajout
-                    
+                    Evenement mEvenement = new Evenement(txtNom.Text, dtpDebut.Value, dtpFin.Value, txtLieu.Text, txtAdresse.Text, Convert.ToInt32(txtNbrPlace.Text), Convert.ToDouble(txtPrix.Text));
+                    bd = InterfaceBD.accesInstance();
+                    bd.ajoutBD(mEvenement);
                 }
                 this.DialogResult = DialogResult.OK;
             }

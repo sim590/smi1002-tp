@@ -47,7 +47,7 @@
             this.btnSupprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupprimer.Image = global::TP_SMI1002.Properties.Resources.Delete;
             this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSupprimer.Location = new System.Drawing.Point(518, 321);
+            this.btnSupprimer.Location = new System.Drawing.Point(522, 321);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
             this.btnSupprimer.TabIndex = 8;
@@ -60,7 +60,7 @@
             this.btnModifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModifier.Image = global::TP_SMI1002.Properties.Resources.Modify;
             this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModifier.Location = new System.Drawing.Point(437, 321);
+            this.btnModifier.Location = new System.Drawing.Point(441, 321);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(75, 23);
             this.btnModifier.TabIndex = 7;
@@ -73,7 +73,7 @@
             this.btnAjouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAjouter.Image = global::TP_SMI1002.Properties.Resources.New_document;
             this.btnAjouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAjouter.Location = new System.Drawing.Point(356, 321);
+            this.btnAjouter.Location = new System.Drawing.Point(360, 321);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(75, 23);
             this.btnAjouter.TabIndex = 6;
@@ -87,7 +87,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(599, 321);
+            this.btnAnnuler.Location = new System.Drawing.Point(603, 321);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 11;
@@ -110,7 +110,7 @@
             this.lsvEvenement.Location = new System.Drawing.Point(12, 12);
             this.lsvEvenement.MultiSelect = false;
             this.lsvEvenement.Name = "lsvEvenement";
-            this.lsvEvenement.Size = new System.Drawing.Size(662, 295);
+            this.lsvEvenement.Size = new System.Drawing.Size(671, 295);
             this.lsvEvenement.TabIndex = 25;
             this.lsvEvenement.UseCompatibleStateImageBehavior = false;
             this.lsvEvenement.View = System.Windows.Forms.View.Details;
@@ -118,17 +118,17 @@
             // clnNom
             // 
             this.clnNom.Text = "Nom évènement";
-            this.clnNom.Width = 145;
+            this.clnNom.Width = 112;
             // 
             // clnDebut
             // 
             this.clnDebut.Text = "Début";
-            this.clnDebut.Width = 102;
+            this.clnDebut.Width = 120;
             // 
             // clnFin
             // 
             this.clnFin.Text = "Fin";
-            this.clnFin.Width = 87;
+            this.clnFin.Width = 109;
             // 
             // clnLieu
             // 
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 356);
+            this.ClientSize = new System.Drawing.Size(690, 356);
             this.Controls.Add(this.lsvEvenement);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);

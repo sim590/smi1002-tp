@@ -254,14 +254,15 @@ namespace TP_SMI1002
             }
             else if (donnee is Evenement)
             {
-                cmd.CommandText = "insert into tournoi (nom,debut,fin,nbjoueurs,idjeu,idevenement) " +
-                                                 "values (@nom,@debut,@fin,@nbjoueurs,@idjeu,@idevenement)";
-                cmd.Parameters.Add("@nom", ((Tournoi)donnee).Nom);
-                cmd.Parameters.Add("@debut", ((Tournoi)donnee).dateDebut);
-                cmd.Parameters.Add("@fin", ((Tournoi)donnee).dateFin);
-                cmd.Parameters.Add("@nbjoueurs", ((Tournoi)donnee).nbJoueur);
-                cmd.Parameters.Add("@idjeu", ((Tournoi)donnee).IdJeu);
-                cmd.Parameters.Add("@idevenement", ((Tournoi)donnee).idEvenement);         
+                cmd.CommandText = "insert into EVENEMENT (idevenement, nom,debut,fin,LIEU,ADRESSE,NBRPLACES,PRIX) " +
+                                                 "values (1,:nom,:debut,:fin,:lieu,:adresse,:nbrplaces, :prix)";
+                cmd.Parameters.Add("nom", ((Evenement)donnee).Nom);
+                cmd.Parameters.Add("debut", ((Evenement)donnee).Debut);
+                cmd.Parameters.Add("fin", ((Evenement)donnee).Fin);
+                cmd.Parameters.Add("lieu", ((Evenement)donnee).Lieu);
+                cmd.Parameters.Add("adresse", ((Evenement)donnee).Adresse);
+                cmd.Parameters.Add("nbrplaces", ((Evenement)donnee).NbrPlace);
+                cmd.Parameters.Add("prix", ((Evenement)donnee).Prix); 
             }
 
             // Envoie la commande

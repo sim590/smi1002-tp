@@ -49,6 +49,10 @@
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtNbrPlace = new System.Windows.Forms.TextBox();
+            this.lblNombrePlace = new System.Windows.Forms.Label();
+            this.txtPrix = new System.Windows.Forms.TextBox();
+            this.lblPrix = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNom
@@ -117,49 +121,49 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(106, 16);
+            this.txtNom.Location = new System.Drawing.Point(120, 16);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(248, 20);
             this.txtNom.TabIndex = 16;
             // 
             // dtpDebut
             // 
-            this.dtpDebut.Location = new System.Drawing.Point(106, 44);
+            this.dtpDebut.Location = new System.Drawing.Point(120, 44);
             this.dtpDebut.Name = "dtpDebut";
             this.dtpDebut.Size = new System.Drawing.Size(145, 20);
             this.dtpDebut.TabIndex = 17;
             // 
             // dtpFin
             // 
-            this.dtpFin.Location = new System.Drawing.Point(106, 67);
+            this.dtpFin.Location = new System.Drawing.Point(120, 67);
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(145, 20);
             this.dtpFin.TabIndex = 18;
             // 
             // txtLieu
             // 
-            this.txtLieu.Location = new System.Drawing.Point(105, 89);
+            this.txtLieu.Location = new System.Drawing.Point(119, 89);
             this.txtLieu.Name = "txtLieu";
             this.txtLieu.Size = new System.Drawing.Size(248, 20);
             this.txtLieu.TabIndex = 19;
             // 
             // txtAdresse
             // 
-            this.txtAdresse.Location = new System.Drawing.Point(105, 111);
+            this.txtAdresse.Location = new System.Drawing.Point(119, 111);
             this.txtAdresse.Name = "txtAdresse";
             this.txtAdresse.Size = new System.Drawing.Size(248, 20);
             this.txtAdresse.TabIndex = 20;
             // 
             // txtVille
             // 
-            this.txtVille.Location = new System.Drawing.Point(105, 132);
+            this.txtVille.Location = new System.Drawing.Point(119, 132);
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(248, 20);
             this.txtVille.TabIndex = 21;
             // 
             // txtCodePostale
             // 
-            this.txtCodePostale.Location = new System.Drawing.Point(108, 161);
+            this.txtCodePostale.Location = new System.Drawing.Point(119, 158);
             this.txtCodePostale.Name = "txtCodePostale";
             this.txtCodePostale.Size = new System.Drawing.Size(120, 20);
             this.txtCodePostale.TabIndex = 23;
@@ -167,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 200);
+            this.label1.Location = new System.Drawing.Point(26, 261);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 24;
@@ -176,16 +180,16 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(26, 216);
+            this.listView1.Location = new System.Drawing.Point(27, 277);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(327, 167);
+            this.listView1.Size = new System.Drawing.Size(341, 167);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btnSupprimerMembre
             // 
             this.btnSupprimerMembre.Image = global::TP_SMI1002.Properties.Resources.Delete;
-            this.btnSupprimerMembre.Location = new System.Drawing.Point(325, 190);
+            this.btnSupprimerMembre.Location = new System.Drawing.Point(341, 251);
             this.btnSupprimerMembre.Name = "btnSupprimerMembre";
             this.btnSupprimerMembre.Size = new System.Drawing.Size(27, 23);
             this.btnSupprimerMembre.TabIndex = 27;
@@ -194,7 +198,7 @@
             // btnAjouterMembre
             // 
             this.btnAjouterMembre.Image = global::TP_SMI1002.Properties.Resources.Create;
-            this.btnAjouterMembre.Location = new System.Drawing.Point(259, 190);
+            this.btnAjouterMembre.Location = new System.Drawing.Point(275, 251);
             this.btnAjouterMembre.Name = "btnAjouterMembre";
             this.btnAjouterMembre.Size = new System.Drawing.Size(27, 23);
             this.btnAjouterMembre.TabIndex = 26;
@@ -206,7 +210,7 @@
             this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.Image = global::TP_SMI1002.Properties.Resources.Apply;
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnregistrer.Location = new System.Drawing.Point(269, 389);
+            this.btnEnregistrer.Location = new System.Drawing.Point(284, 450);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(84, 23);
             this.btnEnregistrer.TabIndex = 15;
@@ -220,7 +224,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(188, 389);
+            this.btnAnnuler.Location = new System.Drawing.Point(203, 450);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 14;
@@ -232,17 +236,53 @@
             // button1
             // 
             this.button1.Image = global::TP_SMI1002.Properties.Resources.Modify;
-            this.button1.Location = new System.Drawing.Point(292, 190);
+            this.button1.Location = new System.Drawing.Point(308, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 23);
             this.button1.TabIndex = 28;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // txtNbrPlace
+            // 
+            this.txtNbrPlace.Location = new System.Drawing.Point(119, 184);
+            this.txtNbrPlace.Name = "txtNbrPlace";
+            this.txtNbrPlace.Size = new System.Drawing.Size(120, 20);
+            this.txtNbrPlace.TabIndex = 30;
+            // 
+            // lblNombrePlace
+            // 
+            this.lblNombrePlace.AutoSize = true;
+            this.lblNombrePlace.Location = new System.Drawing.Point(22, 190);
+            this.lblNombrePlace.Name = "lblNombrePlace";
+            this.lblNombrePlace.Size = new System.Drawing.Size(94, 13);
+            this.lblNombrePlace.TabIndex = 29;
+            this.lblNombrePlace.Text = "Nombre de place :";
+            // 
+            // txtPrix
+            // 
+            this.txtPrix.Location = new System.Drawing.Point(119, 206);
+            this.txtPrix.Name = "txtPrix";
+            this.txtPrix.Size = new System.Drawing.Size(120, 20);
+            this.txtPrix.TabIndex = 32;
+            // 
+            // lblPrix
+            // 
+            this.lblPrix.AutoSize = true;
+            this.lblPrix.Location = new System.Drawing.Point(22, 212);
+            this.lblPrix.Name = "lblPrix";
+            this.lblPrix.Size = new System.Drawing.Size(30, 13);
+            this.lblPrix.TabIndex = 31;
+            this.lblPrix.Text = "Prix :";
+            // 
             // FormEvenement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 424);
+            this.ClientSize = new System.Drawing.Size(380, 485);
+            this.Controls.Add(this.txtPrix);
+            this.Controls.Add(this.lblPrix);
+            this.Controls.Add(this.txtNbrPlace);
+            this.Controls.Add(this.lblNombrePlace);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSupprimerMembre);
             this.Controls.Add(this.btnAjouterMembre);
@@ -296,5 +336,9 @@
         private System.Windows.Forms.Button btnSupprimerMembre;
         private System.Windows.Forms.Button btnAjouterMembre;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtNbrPlace;
+        private System.Windows.Forms.Label lblNombrePlace;
+        private System.Windows.Forms.TextBox txtPrix;
+        private System.Windows.Forms.Label lblPrix;
     }
 }
