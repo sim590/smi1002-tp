@@ -53,7 +53,7 @@ namespace TP_SMI1002
 
             // Ouverture d'une connexion
             cnLanUQTR.Open();
-            cmd.CommandText = "SELECT NOM, DEBUT, FIN, LIEU, NBRPLACES, PRIX FROM EVENEMENT WHERE IDEVENEMENT = :id";
+            cmd.CommandText = "SELECT NOM, DEBUT, FIN, LIEU, ADRESSE, NBRPLACES, PRIX FROM EVENEMENT WHERE IDEVENEMENT = :id";
             cmd.Parameters.Add("id", Id);
 
             OracleDataReader rs = cmd.ExecuteReader();
@@ -377,6 +377,21 @@ namespace TP_SMI1002
                 cmd.Parameters.Add("@param1", ((TypeJeu)donnee).NomTypeJeu);
                 cmd.Parameters.Add("@keyValue", ((TypeJeu)donnee).Id);
             }
+            else if (donnee is Evenement)
+            {
+                cmd.CommandText = "update EVENEMENT set nom = :nom, debut = :debut, fin=:fin, lieu=:lieu, adresse=:adresse, nbrplaces=:nbrplaces, prix=:prix " +
+                                    "where IDEVENEMENT = :id";
+
+                cmd.Parameters.Add("nom", ((Evenement)donnee).Nom);
+                cmd.Parameters.Add("debut", ((Evenement)donnee).Debut);
+                cmd.Parameters.Add("fin", ((Evenement)donnee).Fin);
+                cmd.Parameters.Add("lieu", ((Evenement)donnee).Lieu);
+                cmd.Parameters.Add("adresse", ((Evenement)donnee).Adresse);
+                cmd.Parameters.Add("nbrplaces", ((Evenement)donnee).NbrPlace);
+                cmd.Parameters.Add("prix", ((Evenement)donnee).Prix);
+
+                cmd.Parameters.Add("id", ((Evenement)donnee).Id);
+            }
 
 
             cmd.Connection = cnLanUQTR;
@@ -429,11 +444,6 @@ namespace TP_SMI1002
             {
                 cmdString = @"DELETE FROM TYPEJEU WHERE ID=" + ((TypeJeu)donnee).Id;
             }
-            //suppression d'un objet Evenement
-            else if (donnee is Evenement)
-            {
-                cmdString = @"DELETE FROM EVENEMENT WHERE ID=" + ((Evenement)donnee).Id;
-            }
             //suppression d'un objet Tournoi
             else if (donnee is Tournoi)
             {
@@ -442,7 +452,7 @@ namespace TP_SMI1002
             //suppression d'un objet Evenement
             else if (donnee is Evenement)
             {
-                cmdString = @"DELETE FROM EVENEMENT WHERE ID=" + ((Evenement)donnee).Id;
+                cmdString = "DELETE FROM EVENEMENT WHERE IDEVENEMENT=" + ((Evenement)donnee).Id;
             }
 
 

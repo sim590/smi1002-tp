@@ -75,5 +75,27 @@ namespace TP_SMI1002
                 }
             }
         }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (lsvEvenement.SelectedItems.Count == 1)
+            {
+                bd = InterfaceBD.accesInstance();
+                bd.supprimmerDansBD(rechercheEvenement(Convert.ToInt32(lsvEvenement.SelectedItems[0].Tag)));
+                RefreshListe();
+            }
+        }
+
+        private Evenement rechercheEvenement(int idEvenement)
+        {
+            for (int i = 0; i < lstEvenement.Count(); i++)
+            {
+                if (lstEvenement[i].Id == idEvenement)
+                {
+                    return lstEvenement[i];
+                }
+            }
+            return null;
+        }
     }
 }

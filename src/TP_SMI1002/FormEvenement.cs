@@ -98,14 +98,16 @@ namespace TP_SMI1002
             }
             else
             {
+                bd = InterfaceBD.accesInstance();
                 if (IdEvenement > 0)
                 {
                     //Modifier
+                    Evenement mEvenement = new Evenement(this.IdEvenement,txtNom.Text, dtpDebut.Value, dtpFin.Value, txtLieu.Text, txtAdresse.Text, Convert.ToInt32(txtNbrPlace.Text), Convert.ToDouble(txtPrix.Text));
+                    bd.modifierBD(mEvenement);
                 }
                 else
                 {
                     Evenement mEvenement = new Evenement(txtNom.Text, dtpDebut.Value, dtpFin.Value, txtLieu.Text, txtAdresse.Text, Convert.ToInt32(txtNbrPlace.Text), Convert.ToDouble(txtPrix.Text));
-                    bd = InterfaceBD.accesInstance();
                     bd.ajoutBD(mEvenement);
                 }
                 this.DialogResult = DialogResult.OK;

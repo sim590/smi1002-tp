@@ -55,6 +55,18 @@
     </Compile>
     <Compile Include="DonneeBD.cs" />
     <Compile Include="Evenement.cs" />
+    <Compile Include="FormListeTypeJeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListeTypeJeu.Designer.cs">
+      <DependentUpon>FormListeTypeJeu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeJeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeJeu.Designer.cs">
+      <DependentUpon>FormTypeJeu.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceBD.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Joueur.cs" />
@@ -182,6 +194,9 @@
     <EmbeddedResource Include="FormListePersonnels.resx">
       <DependentUpon>FormListePersonnels.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormListeTypeJeu.resx">
+      <DependentUpon>FormListeTypeJeu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormListeTypePersonnel.resx">
       <DependentUpon>FormListeTypePersonnel.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPersonnel.resx">
       <DependentUpon>FormPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeJeu.resx">
+      <DependentUpon>FormTypeJeu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

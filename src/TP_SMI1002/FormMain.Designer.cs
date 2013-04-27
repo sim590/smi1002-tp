@@ -40,6 +40,7 @@
             this.optTypePersonnel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAide = new System.Windows.Forms.ToolStripMenuItem();
             this.optAProposDe = new System.Windows.Forms.ToolStripMenuItem();
+            this.typeDeJeuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,8 @@
             this.optJeux,
             this.optJoueur,
             this.optPersonnel,
-            this.optTypePersonnel});
+            this.optTypePersonnel,
+            this.typeDeJeuToolStripMenuItem});
             this.mnuListe.Name = "mnuListe";
             this.mnuListe.Size = new System.Drawing.Size(43, 20);
             this.mnuListe.Text = "&Liste";
@@ -136,11 +138,18 @@
             // optAProposDe
             // 
             this.optAProposDe.Name = "optAProposDe";
-            this.optAProposDe.Size = new System.Drawing.Size(152, 22);
+            this.optAProposDe.Size = new System.Drawing.Size(147, 22);
             this.optAProposDe.Text = "À propos de...";
             this.optAProposDe.Click += new System.EventHandler(this.optAProposDe_Click);
             // 
-            // Main
+            // typeDeJeuToolStripMenuItem
+            // 
+            this.typeDeJeuToolStripMenuItem.Name = "typeDeJeuToolStripMenuItem";
+            this.typeDeJeuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.typeDeJeuToolStripMenuItem.Text = "Type de Jeu";
+            this.typeDeJeuToolStripMenuItem.Click += new System.EventHandler(this.typeDeJeuToolStripMenuItem_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +157,7 @@
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenu;
-            this.Name = "Main";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LAN UQTR";
             this.Load += new System.EventHandler(this.FMain_Load);
@@ -173,6 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem optJoueur;
         private System.Windows.Forms.ToolStripMenuItem optPersonnel;
         private System.Windows.Forms.ToolStripMenuItem optTypePersonnel;
+        private System.Windows.Forms.ToolStripMenuItem typeDeJeuToolStripMenuItem;
     }
 }
 

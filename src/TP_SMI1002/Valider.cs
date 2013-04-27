@@ -15,7 +15,7 @@ namespace TP_SMI1002
             // Vérifie que le string est composé d'une 
             // chaîne de caractère puis @ puis une autre chaîne de caractere suivi de . puis com|ca|org|qc.ca
             //-------------------------------------------
-            if (!Regex.IsMatch(courriel, @"^[a-zA-Z0-9_]+@+[a-zA-Z0-9_]+.+[com|ca|org|qc.ca]$"))
+            if (!Regex.IsMatch(courriel, @"^[a-zA-Z0-9_-\.]+@+[a-zA-Z0-9_]+.+[a-zA-Z0-9\.]{7}$"))
                 return false;
             return true;
         }
@@ -26,7 +26,7 @@ namespace TP_SMI1002
             // Vérifie que le string est composé que de 
             // 2 à 20 lettres et/ou accents et/ou "-"
             //-------------------------------------------
-            if (!Regex.IsMatch(nom, @"^[a-zA-ZéèàêïÉÈÀÊ-]{2,20}+$"))
+            if (!Regex.IsMatch(nom, @"^[a-zA-ZéèàêïÉÈÀÊ-]{2,}$"))
                 return false;
             return true;
         }
