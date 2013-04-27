@@ -36,7 +36,7 @@ namespace TP_SMI1002
 
             for (int i = 0; i < lstJeuAvecType.Count(); i++)
             {
-
+                
             }
         }
     }

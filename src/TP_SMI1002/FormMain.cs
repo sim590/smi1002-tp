@@ -79,5 +79,11 @@ namespace TP_SMI1002
             About formAbout = new About();
             formAbout.ShowDialog();
         }
+
+        private void typeDeJeuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormListeTypeJeu TypeJeu = new FormListeTypeJeu();
+            TypeJeu.ShowDialog();
+        }
     }
 }
