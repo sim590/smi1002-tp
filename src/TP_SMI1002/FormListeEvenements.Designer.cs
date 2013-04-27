@@ -54,6 +54,7 @@
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnModifier
             // 
