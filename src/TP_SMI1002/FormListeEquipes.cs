@@ -37,20 +37,7 @@ namespace TP_SMI1002
 
         private void ListeEquipes_Load(object sender, EventArgs e)
         {
-            this.RefreshListe();
-
-            /*cn = new ObjOracleConnexion();
-            OracleDataReader rs = cn.cmdData("select idequipe, nom, siteweb from equipe order by idequipe");
-            while (rs.Read())
-            {
-                ListViewItem lsv = new ListViewItem(rs.GetOracleValue(1).ToString());
-                lsv.SubItems.Add(rs.GetOracleValue(2).ToString());
-                lsv.Tag = rs.GetOracleValue(0).ToString();
-
-                lsvEquipe.Items.Add(lsv);
-            }
-            rs.Close();*/
-            
+            this.RefreshListe();            
         }
 
         private void RefreshListe()
@@ -90,6 +77,35 @@ namespace TP_SMI1002
                 MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (lsvEquipe.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show("Voulez-vous vraiment supprimer cette équipe?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bd.supprimmerDansBD(rechercheEquipe(Convert.ToInt32(lsvEquipe.SelectedItems[0].Tag)));
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private Equipe rechercheEquipe(int idEquipe)
+        {
+            for (int i = 0; i < lstEquipe.Count(); i++)
+            {
+                if (lstEquipe[i].Id == idEquipe)
+                {
+                    return lstEquipe[i];
+                }
+            }
+            return null;
         }
 
         

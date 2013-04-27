@@ -417,37 +417,37 @@ namespace TP_SMI1002
             //suppression d'un objet Personnel
             if (donnee is Personnel)
             {
-                cmdString = @"DELETE FROM PERSONNEL WHERE ID=" + ((Personnel)donnee).Id;   
+                cmdString = "DELETE FROM PERSONNEL WHERE ID=" + ((Personnel)donnee).Id;   
             }
             //suppression d'un objet TypePersonnel
             else if (donnee is TypePersonnel)
             {
-                cmdString = @"DELETE FROM TYPEPERSONNEL WHERE ID=" + ((TypePersonnel)donnee).Id;
+                cmdString = "DELETE FROM TYPEPERSONNEL WHERE IDTYPEPERSONNEL=" + ((TypePersonnel)donnee).Id;
             }
             //suppression d'un objet Equipe
             else if (donnee is Equipe)
             {
-                cmdString = @"DELETE FROM EQUIPE WHERE ID=" + ((Equipe)donnee).Id;
+                cmdString = "DELETE FROM EQUIPE WHERE IDEQUIPE=" + ((Equipe)donnee).Id;
             }
             //suppression d'un objet Joueur
             else if (donnee is Joueur)
             {
-                cmdString = @"DELETE FROM JOUEUR WHERE ID=" + ((Joueur)donnee).Id;
+                cmdString = "DELETE FROM JOUEUR WHERE IDJOUEUR=" + ((Joueur)donnee).Id;
             }
             //suppression d'un objet Jeu
             else if (donnee is Jeu)
             {
-                cmdString = @"DELETE FROM JEU WHERE ID=" + ((Jeu)donnee).Id;
+                cmdString = "DELETE FROM JEU WHERE ID=" + ((Jeu)donnee).Id;
             }
             //suppression d'un objet TypeJeu
             else if (donnee is TypeJeu)
             {
-                cmdString = @"DELETE FROM TYPEJEU WHERE ID=" + ((TypeJeu)donnee).Id;
+                cmdString = "DELETE FROM TYPEJEU WHERE ID=" + ((TypeJeu)donnee).Id;
             }
             //suppression d'un objet Tournoi
             else if (donnee is Tournoi)
             {
-                cmdString = @"DELETE FROM TOURNOI WHERE ID=" + ((Tournoi)donnee).Id;
+                cmdString = "DELETE FROM TOURNOI WHERE ID=" + ((Tournoi)donnee).Id;
             }
             //suppression d'un objet Evenement
             else if (donnee is Evenement)

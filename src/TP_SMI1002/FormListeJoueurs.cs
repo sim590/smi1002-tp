@@ -37,37 +37,7 @@ namespace TP_SMI1002
 
         private void FormListeJoueurs_Load(object sender, EventArgs e)
         {
-            List<Joueur> lstJoueur = new List<Joueur>();
-            InterfaceBD bd = InterfaceBD.accesInstance();
-            bd.remplirListe(ref lstJoueur);
-
-            ListViewItem lsv;
-            for (int i = 0; i < lstJoueur.Count; i++)
-            {
-                lsv = new ListViewItem(lstJoueur[i].Nom);
-                lsv.SubItems.Add(lstJoueur[i].GamerTag);
-                lsv.SubItems.Add(lstJoueur[i].Courriel);
-                lsv.SubItems.Add(lstJoueur[i].Sexe);
-                lsv.SubItems.Add(lstJoueur[i].Date.ToString());
-                lsv.Tag = lstJoueur[i].Id;
-
-                lsvJoueurs.Items.Add(lsv);
-            }
-            
-            /*cn = new ObjOracleConnexion();
-            OracleDataReader rs = cn.cmdData("select idjoueur, nom, gamertag, courriel, sexe, datenaissance from joueur order by idjoueur");
-            while (rs.Read())
-            {
-                ListViewItem lsv = new ListViewItem(rs.GetOracleValue(1).ToString());
-                lsv.SubItems.Add(rs.GetOracleValue(2).ToString());
-                lsv.SubItems.Add(rs.GetOracleValue(3).ToString());
-                lsv.SubItems.Add(rs.GetOracleValue(4).ToString());
-                lsv.SubItems.Add(rs.GetOracleValue(5).ToString());
-                lsv.Tag = rs.GetOracleValue(0).ToString();
-
-                lsvJoueurs.Items.Add(lsv);
-            }
-            rs.Close();*/
+            this.RefreshListe();
         }
 
         private void RefreshListe()
@@ -110,6 +80,37 @@ namespace TP_SMI1002
             {
                 MessageBox.Show("Veuillez choisir un joueur parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (lsvJoueurs.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show("Voulez-vous vraiment supprimer ce joueur?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bd.supprimmerDansBD(rechercheJoueur(Convert.ToInt32(lsvJoueurs.SelectedItems[0].Tag)));
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir un joueur parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private Joueur rechercheJoueur(int idJoueur)
+        {
+            for (int i = 0; i < lstJoueur.Count(); i++)
+            {
+                if (lstJoueur[i].Id == idJoueur)
+                {
+                    return lstJoueur[i];
+                }
+            }
+            return null;
         }
 
         
