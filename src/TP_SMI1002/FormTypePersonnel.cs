@@ -6,20 +6,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+
 
 namespace TP_SMI1002
 {
-    public partial class FormTypePersonnel : Form
+    public partial class FormTypePersonnel : FormIdiotProof
     {
+        InterfaceBD interfaceBD;
         //---------------
         // Constructeur
         //---------------
         public FormTypePersonnel()
         {
+            interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
         }
 
+        //----------------------
+        // Choix de la couleur
+        //----------------------
         private void btnCouleur_Click(object sender, EventArgs e)
         {
             if (cdCouleur.ShowDialog() == DialogResult.OK)
@@ -28,28 +33,21 @@ namespace TP_SMI1002
             }
         }
 
+        //-----------------------------------
         // Enregistrer un type de personnel
+        //-----------------------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            TypePersonnel type;
+
             if (pbCouleur.BackColor != null && estNomValide(this.txtNom.Text))
             {
-                TypePersonnel type = new TypePersonnel(pbCouleur.BackColor.A, pbCouleur.BackColor.R,
-                    pbCouleur.BackColor.G,pbCouleur.BackColor.B,this.txtNom.Text);
-                
-                /*
-                 * //TODO: DEMANDER AU SINGLETON (AVEC PATRON FABRIQUE) D'AJOUTER LA DONNÉE DANS LA BD
-                 */
-            }
-        }
+                type = new TypePersonnel(pbCouleur.BackColor.A, pbCouleur.BackColor.R,
+                                                pbCouleur.BackColor.G,pbCouleur.BackColor.B,this.txtNom.Text);
 
-        // Vérifie que le nom entré est vrai-semblablement un nom
-        private bool estNomValide(string nom)
-        {
-            // Première vérification
-            foreach (char c in nom)
-                if (c != ' ' && Regex.IsMatch(nom, @"^[a-zA-Z]+$"))
-                    return true;
-            return false;
+                // Ajout à la BD par le singleton
+                interfaceBD.ajoutBD(type);
+            }
         }
 
         // Annuler la transaction

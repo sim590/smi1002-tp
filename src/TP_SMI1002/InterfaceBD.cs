@@ -19,7 +19,8 @@ namespace TP_SMI1002
         // Variables d'instance
         private static InterfaceBD instance;
         private OracleConnection cnLanUQTR;
-        public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
+        public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))"
+                                                                +"(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
 
         //----------------
         // Constructeur 
@@ -145,8 +146,8 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-
-        //TODO:
+        #region ajoutBD
+        //TODO: La query fonctionne pas.................
         //-------------------------------------------
         // Ajout d'une donnée à la base de données
         //-------------------------------------------
@@ -154,8 +155,7 @@ namespace TP_SMI1002
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
             cmd.Connection = cnLanUQTR;
-            string cmdString="";
-            int rangesEcrites;
+            int rangesEcrites = 0;
 
             // Ouverture d'une connexion
             cnLanUQTR.Open();
@@ -163,47 +163,74 @@ namespace TP_SMI1002
             // Ajout d'un personnel
             if (donnee is Personnel)
             {
-                cmdString = "INSERT INTO PERSONNEL {VALUES ('','"+
-                                                ((Personnel)donnee).Nom+"','"+
-                                                ((Personnel)donnee).DateNaissance+"','"+
-                                                ((Personnel)donnee).Courriel+"')}";
+                cmd.CommandText = "insert into personnel (nom,datenaissance,courriel) " +
+                "values (@nom,@date,@courriel)";
+                cmd.Parameters.Add("@name", ((Personnel)donnee).Nom);
+                cmd.Parameters.Add("@date", ((Personnel)donnee).DateNaissance);
+                cmd.Parameters.Add("@courriel", ((Personnel)donnee).Courriel);
             }
             // Ajout d'un type de personnel
             else if (donnee is TypePersonnel)
             {
-                
+                cmd.CommandText = "insert into typepersonnel (nom,couleur) values (@nom,@couleur)";
+                cmd.Parameters.Add("@nom", ((TypePersonnel)donnee).Nom);
+                cmd.Parameters.Add("@couleur", ((TypePersonnel)donnee).Couleur);
             }
             // Ajout d'une équipe
             else if (donnee is Equipe)
 	        {
-		        
+                cmd.CommandText = "insert into equipe (nom,siteweb) values (@nom,@siteweb)";
+                cmd.Parameters.Add("@nom", ((Equipe)donnee).Nom);
+                cmd.Parameters.Add("@siteweb", ((Equipe)donnee).Nom);
 	        }
             // Ajout d'un joueur
             else if (donnee is Joueur)
 	        {
-	        	 
+                cmd.CommandText = "insert into joueur (nom,gamertag,courriel,sexe,datenaissance) "+
+                    "values (@nom,@gamertag,@courriel,@sexe,@datenaissance)";
+                cmd.Parameters.Add("@nom", ((Joueur)donnee).Nom);
+                cmd.Parameters.Add("@gamertag", ((Joueur)donnee).GamerTag);
+                cmd.Parameters.Add("@courriel", ((Joueur)donnee).Courriel);
+                cmd.Parameters.Add("@sexe", ((Joueur)donnee).Sexe);
+                cmd.Parameters.Add("@datenaissance", ((Joueur)donnee).Date);
 	        }
             // Ajout d'un type de jeu
             else if (donnee is TypeJeu)
             {
-
+                cmd.CommandText = "insert into typejeu (nom) values (@nom)";
+                cmd.Parameters.Add("@nom", ((TypeJeu)donnee).NomTypeJeu);
             }
             // Ajout d'un jeu
             else if (donnee is Jeu)
             {
-
+                cmd.CommandText = "insert into typejeu (nom,idtypejeu) values (@nom,@idtypejeu)";
+                cmd.Parameters.Add("@nom", ((Jeu)donnee).Nom);
+                cmd.Parameters.Add("@idtypejeu", ((Jeu)donnee).IDTypeJeu);
             }
             // Ajout d'un tournoi
             else if (donnee is Tournoi)
             {
-
+                cmd.CommandText = "insert into tournoi (nom,debut,fin,nbjoueurs,idjeu,idevenement) "+
+                                                        "values (@nom,@debut,@fin,@nbjoueurs,@idjeu,@idevenement)";
+                cmd.Parameters.Add("@nom", ((Tournoi)donnee).Nom);
+                cmd.Parameters.Add("@debut", ((Tournoi)donnee).dateDebut);
+                cmd.Parameters.Add("@fin", ((Tournoi)donnee).dateFin);
+                cmd.Parameters.Add("@nbjoueurs", ((Tournoi)donnee).nbJoueur);
+                cmd.Parameters.Add("@idjeu", ((Tournoi)donnee).IdJeu);
+                cmd.Parameters.Add("@idevenement", ((Tournoi)donnee).idEvenement);
             }
 
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
             // Envoie la commande
-            rangesEcrites = cmd.ExecuteNonQuery();
+            try
+            {
+                rangesEcrites = cmd.ExecuteNonQuery();
+            }
+            catch (Oracle.DataAccess.Client.OracleException)
+            {
+                // Fermeture de la connexion
+                cnLanUQTR.Close();
+                return -1;
+            }
 
             // Fermeture de la connexion
             cnLanUQTR.Close();
@@ -214,7 +241,7 @@ namespace TP_SMI1002
 
             return rangesEcrites;
         }
-
+        #endregion
 
         #region ModifierBD
         public int modifierBD(DonneeBD donnee)

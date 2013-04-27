@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class FormEvenement : Form
+    public partial class FormEvenement : FormIdiotProof
     {
         private int IdEvenement = 0;
         public FormEvenement()

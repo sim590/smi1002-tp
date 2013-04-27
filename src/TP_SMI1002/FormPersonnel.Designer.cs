@@ -98,6 +98,7 @@
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnAnnuler
             // 
@@ -113,7 +114,7 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // Personnel
+            // FormPersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,10 +127,9 @@
             this.Controls.Add(this.lblCourriel);
             this.Controls.Add(this.lblDateNaissance);
             this.Controls.Add(this.lblNom);
-            this.Name = "Personnel";
+            this.Name = "FormPersonnel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personnel";
-            this.Load += new System.EventHandler(this.Personnel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

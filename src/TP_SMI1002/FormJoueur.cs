@@ -10,7 +10,7 @@ using Oracle.DataAccess.Client;
 
 namespace TP_SMI1002
 {
-    public partial class FormJoueur : Form
+    public partial class FormJoueur : FormIdiotProof
     {
         public FormJoueur()
         {
