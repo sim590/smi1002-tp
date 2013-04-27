@@ -11,6 +11,10 @@ namespace TP_SMI1002
 {
     public partial class FormListeJeux : Form
     {
+
+        InterfaceBD bd = InterfaceBD.accesInstance();
+        List<JeuAvecType> lstJeuAvecType = new List<JeuAvecType>();
+
         public FormListeJeux()
         {
             InitializeComponent();
@@ -29,7 +33,6 @@ namespace TP_SMI1002
 
         private void FormListeJeux_Load(object sender, EventArgs e)
         {
-            InterfaceBD bd = InterfaceBD.accesInstance();
             List<JeuAvecType> lstJeuAvecType = new List<JeuAvecType>();
 
             bd.remplirListe(ref lstJeuAvecType);
@@ -38,6 +41,25 @@ namespace TP_SMI1002
             {
                 
             }
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (lsvJeuAvecType.SelectedItems.Count == 1)
+            {
+                bd.supprimmerDansBD(rechercheJeu(Convert.ToInt32(lsvJeuAvecType.SelectedItems[0].Tag)));
+            }
+        }
+        private Evenement rechercheJeu(int idEvenement)
+        {
+            for (int i = 0; i < lstJeuAvecType.Count(); i++)
+            {
+                if (lstJeuAvecType[i].Id == idEvenement)
+                {
+                    return null;
+                }
+            }
+            return null;
         }
     }
 }
