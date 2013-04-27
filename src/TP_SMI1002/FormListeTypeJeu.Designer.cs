@@ -121,6 +121,7 @@
             this.Name = "FormListeTypeJeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Type Jeu";
+            this.Load += new System.EventHandler(this.FormListeTypeJeu_Load);
             this.ResumeLayout(false);
 
         }

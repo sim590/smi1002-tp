@@ -41,6 +41,11 @@ namespace TP_SMI1002
         {
             
         }
+
+        private void FormListeTypeJeu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

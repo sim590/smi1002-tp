@@ -47,6 +47,11 @@ namespace TP_SMI1002
             return true;
         }
 
+        private void FormPersonnel_Load(object sender, EventArgs e)
+        {
+
+        }
+
           
     }
 }
