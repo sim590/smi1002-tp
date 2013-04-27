@@ -22,7 +22,10 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormEvenement formEvenement = new FormEvenement();
-            formEvenement.ShowDialog();
+            if (formEvenement.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
         }
 
         private void RefreshListe()
@@ -59,6 +62,18 @@ namespace TP_SMI1002
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            if (lsvEvenement.SelectedItems.Count == 1)
+            {
+                FormEvenement formEvenement = new FormEvenement(Convert.ToInt32(lsvEvenement.SelectedItems[0].Tag));
+                if (formEvenement.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshListe();
+                }
+            }
         }
     }
 }

@@ -43,6 +43,44 @@ namespace TP_SMI1002
             return instance;
         }
 
+        //Fonction pour aller chercher un objet pour le modifier
+        public Evenement retournerObjet(int Id)
+        {
+            Evenement mEvenement = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT NOM, DEBUT, FIN, LIEU, NBRPLACES, PRIX FROM EVENEMENT WHERE IDEVENEMENT = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mEvenement = new Evenement(Id,
+                                            rs.GetOracleValue(0).ToString(),
+                                            Convert.ToDateTime(rs.GetOracleValue(1).ToString()),
+                                            Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                            rs.GetOracleValue(3).ToString(),
+                                            rs.GetOracleValue(4).ToString(),
+                                            Convert.ToInt32(rs.GetOracleValue(5).ToString()),
+                                            Convert.ToDouble(rs.GetOracleValue(6).ToString()));
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+           
+            cnLanUQTR.Close();
+            return mEvenement;
+        }
+
         //Fonction pour remplir les différentes liste
         public void remplirListe(ref List<Equipe> lstEquipe)
         {
@@ -254,8 +292,8 @@ namespace TP_SMI1002
             }
             else if (donnee is Evenement)
             {
-                cmd.CommandText = "insert into EVENEMENT (idevenement, nom,debut,fin,LIEU,ADRESSE,NBRPLACES,PRIX) " +
-                                                 "values (1,:nom,:debut,:fin,:lieu,:adresse,:nbrplaces, :prix)";
+                cmd.CommandText = "insert into EVENEMENT (nom,debut,fin,LIEU,ADRESSE,NBRPLACES,PRIX) " +
+                                                 "values (:nom,:debut,:fin,:lieu,:adresse,:nbrplaces, :prix)";
                 cmd.Parameters.Add("nom", ((Evenement)donnee).Nom);
                 cmd.Parameters.Add("debut", ((Evenement)donnee).Debut);
                 cmd.Parameters.Add("fin", ((Evenement)donnee).Fin);

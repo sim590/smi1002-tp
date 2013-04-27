@@ -22,6 +22,27 @@ namespace TP_SMI1002
         {
             InitializeComponent();
             this.IdEvenement = IdEvenement;
+
+            bd = InterfaceBD.accesInstance();
+
+            Evenement mEvenement = bd.retournerObjet(IdEvenement);
+            if (mEvenement == null)
+            {
+                MessageBox.Show("Cet évènement à été supprimer de la base de données", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                IdEvenement = 0;
+            }
+            else
+            {
+                txtNom.Text = mEvenement.Nom;
+                dtpDebut.Value = mEvenement.Debut;
+                dtpFin.Value = mEvenement.Fin;
+                txtLieu.Text = mEvenement.Lieu;
+                txtAdresse.Text = mEvenement.Adresse;
+                txtVille.Text = mEvenement.Adresse;
+                txtNbrPlace.Text = mEvenement.NbrPlace.ToString();
+                txtPrix.Text = mEvenement.Prix.ToString();
+            }
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,7 +75,6 @@ namespace TP_SMI1002
             txtLieu.Text.Trim();
             txtAdresse.Text.Trim();
             txtVille.Text.Trim();
-            txtCodePostale.Text.Trim();
 
             if (txtNom.Text == "")
             {
@@ -72,10 +92,6 @@ namespace TP_SMI1002
             {
                 MessageBox.Show("Vous devez spécifier une ville pour l'évènement.", "Erreur de ville", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtCodePostale.Text == "")
-            {
-                MessageBox.Show("Vous devez spécifier un code postale", "Erreur de code postale", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else if (dtpDebut.Value >= dtpFin.Value)
             {
                 MessageBox.Show("La date de début ne peut être supérieure à la date de fin");
@@ -84,7 +100,7 @@ namespace TP_SMI1002
             {
                 if (IdEvenement > 0)
                 {
-                    //Modif
+                    //Modifier
                 }
                 else
                 {
