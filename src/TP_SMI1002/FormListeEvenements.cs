@@ -11,6 +11,9 @@ namespace TP_SMI1002
 {
     public partial class FormListeEvenements : Form
     {
+        List<Evenement> lstEvenement = new List<Evenement>();
+        InterfaceBD bd;
+
         public FormListeEvenements()
         {
             InitializeComponent();
@@ -22,9 +25,35 @@ namespace TP_SMI1002
             formEvenement.ShowDialog();
         }
 
-        private void ListeEvenements_Load(object sender, EventArgs e)
+        private void RefreshListe()
         {
 
+            lsvEvenement.Clear();
+            lsvEvenement.Items.Clear();
+            bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstEvenement);
+
+            ListViewItem lsv;
+            for (int i = 0; i < lstEvenement.Count; i++)
+            {
+                lsv = new ListViewItem(lstEvenement[i].Nom);
+                lsv.SubItems.Add(lstEvenement[i].Debut.ToString());
+                lsv.SubItems.Add(lstEvenement[i].Fin.ToString());
+                lsv.SubItems.Add(lstEvenement[i].Lieu.ToString());
+                lsv.SubItems.Add(lstEvenement[i].Adresse.ToString());
+                lsv.SubItems.Add(lstEvenement[i].NbrPlace.ToString());
+                lsv.SubItems.Add(lstEvenement[i].Prix.ToString());
+                lsv.Tag = lstEvenement[i].Id;
+
+                lsvEvenement.Items.Add(lsv);
+            }
+
+            lsvEvenement.Refresh();
+        }
+
+        private void ListeEvenements_Load(object sender, EventArgs e)
+        {
+            RefreshListe();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

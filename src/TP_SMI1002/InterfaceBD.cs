@@ -87,7 +87,7 @@ namespace TP_SMI1002
             {
                 lstJoueur.Add(new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()), 
                                                     rs.GetOracleValue(1).ToString(), rs.GetOracleValue(2).ToString(), 
-                                                    rs.GetOracleValue(3).ToString(), rs.GetOracleValue(4).ToString(), 
+                                                    rs.GetOracleValue(3).ToString(), rs.GetOracleValue(4).ToString(),
                                                     Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
             }
             rs.Close();
@@ -140,6 +140,39 @@ namespace TP_SMI1002
                                                         rs.GetOracleValue(1).ToString(), 
                                                         Convert.ToInt32(rs.GetOracleValue(2).ToString()), 
                                                         rs.GetOracleValue(3).ToString()));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<Evenement> lstEvenement)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDEVENEMENT, NOM, DEBUT, FIN, LIEU, ADRESSE, NBRPLACES, PRIX FROM EVENEMENT ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstEvenement.Add(new Evenement(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                    rs.GetOracleValue(1).ToString(),
+                                                    Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                                    Convert.ToDateTime(rs.GetOracleValue(3).ToString()), 
+                                                    rs.GetOracleValue(4).ToString(),
+                                                    rs.GetOracleValue(5).ToString(),
+                                                    Convert.ToInt32(rs.GetOracleValue(6).ToString()),
+                                                    Convert.ToDouble(rs.GetOracleValue(7).ToString())));
+                    
+
             }
             rs.Close();
 
