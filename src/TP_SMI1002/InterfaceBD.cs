@@ -307,6 +307,7 @@ namespace TP_SMI1002
         }
         #endregion
 
+        #region SupprimerBD
         public int supprimmerDansBD(DonneeBD donnee)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
@@ -373,5 +374,6 @@ namespace TP_SMI1002
 
             return 1;
         }
+        #endregion
     }
 }

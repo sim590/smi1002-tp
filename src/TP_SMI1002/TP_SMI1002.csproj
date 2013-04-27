@@ -163,6 +163,9 @@
     <EmbeddedResource Include="FormEvenement.resx">
       <DependentUpon>FormEvenement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormIdiotProof.resx">
+      <DependentUpon>FormIdiotProof.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormJeu.resx">
       <DependentUpon>FormJeu.cs</DependentUpon>
     </EmbeddedResource>
