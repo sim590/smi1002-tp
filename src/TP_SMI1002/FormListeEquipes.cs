@@ -23,8 +23,11 @@ namespace TP_SMI1002
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            FormEquipe FormEquipe = new FormEquipe();
-            FormEquipe.ShowDialog();
+            FormEquipe formEquipe = new FormEquipe();
+            if (formEquipe.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

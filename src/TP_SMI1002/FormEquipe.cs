@@ -49,11 +49,13 @@ namespace TP_SMI1002
             if (okay)
             {
                 bd = InterfaceBD.accesInstance();
-                if (id == 0)
+                if (id == 0) //Ajout dans la base de données
                 {
-                    //TODO: Ajouter dans la base de donnée
+                    bd.ajoutBD(new Equipe(txtNom.Text, txtSite.Text));
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else //Update la base de donnée
+                else //Update la base de données
                 {
                     bd.modifierBD(new Equipe(id, txtNom.Text, txtSite.Text));
                     this.DialogResult = DialogResult.OK;

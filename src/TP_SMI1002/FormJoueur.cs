@@ -55,17 +55,18 @@ namespace TP_SMI1002
             if (cbSexe.SelectedText == null)
             {
                 okay = false;
-                MessageBox.Show("Ici");
             }
 
             if (okay)
             {
                 bd = InterfaceBD.accesInstance();
-                if (id == 0)
+                if (id == 0) //Ajout dans la base de données
                 {
-                    //TODO: Ajouter dans la base de donnée
+                    bd.ajoutBD(new Joueur(txtNom.Text, txtGamerTag.Text, txtCourriel.Text, cbSexe.SelectedItem.ToString(), dateTimePicker1.Value));
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else //Update la base de donnée
+                else //Update la base de données
                 {
                     bd.modifierBD(new Joueur(id, txtNom.Text, txtGamerTag.Text, txtCourriel.Text, cbSexe.SelectedItem.ToString(), dateTimePicker1.Value));
                     this.DialogResult = DialogResult.OK;

@@ -250,20 +250,20 @@ namespace TP_SMI1002
             // Ajout d'une équipe
             else if (donnee is Equipe)
 	        {
-                cmd.CommandText = "insert into equipe (nom,siteweb) values (@nom,@siteweb)";
-                cmd.Parameters.Add("@nom", ((Equipe)donnee).Nom);
-                cmd.Parameters.Add("@siteweb", ((Equipe)donnee).Nom);
+                cmd.CommandText = "insert into equipe (nom,siteweb) " + "values (:nom,:siteweb)";                
+                cmd.Parameters.Add("siteweb", ((Equipe)donnee).SiteWeb);
+                cmd.Parameters.Add("nom", ((Equipe)donnee).Nom);
 	        }
             // Ajout d'un joueur
             else if (donnee is Joueur)
 	        {
                 cmd.CommandText = "insert into joueur (nom,gamertag,courriel,sexe,datenaissance) "+
-                    "values (@nom,@gamertag,@courriel,@sexe,@datenaissance)";
-                cmd.Parameters.Add("@nom", ((Joueur)donnee).Nom);
-                cmd.Parameters.Add("@gamertag", ((Joueur)donnee).GamerTag);
-                cmd.Parameters.Add("@courriel", ((Joueur)donnee).Courriel);
-                cmd.Parameters.Add("@sexe", ((Joueur)donnee).Sexe);
-                cmd.Parameters.Add("@datenaissance", ((Joueur)donnee).Date);
+                    "values (:nom,:gamertag,:courriel,:sexe,:datenaissance)";
+                cmd.Parameters.Add("nom", ((Joueur)donnee).Nom);
+                cmd.Parameters.Add("gamertag", ((Joueur)donnee).GamerTag);
+                cmd.Parameters.Add("courriel", ((Joueur)donnee).Courriel);
+                cmd.Parameters.Add("sexe", ((Joueur)donnee).Sexe);
+                cmd.Parameters.Add("datenaissance", ((Joueur)donnee).Date);
 	        }
             // Ajout d'un type de jeu
             else if (donnee is TypeJeu)

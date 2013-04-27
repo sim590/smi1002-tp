@@ -24,7 +24,10 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormJoueur formJoueur = new FormJoueur();
-            formJoueur.ShowDialog();
+            if (formJoueur.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
