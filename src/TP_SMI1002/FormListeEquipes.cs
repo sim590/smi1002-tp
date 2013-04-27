@@ -13,6 +13,8 @@ namespace TP_SMI1002
     public partial class FormListeEquipes : Form
     {
         //ObjOracleConnexion cn;
+        List<Equipe> lstEquipe = new List<Equipe>();
+        InterfaceBD bd;
 
         public FormListeEquipes()
         {
@@ -32,19 +34,7 @@ namespace TP_SMI1002
 
         private void ListeEquipes_Load(object sender, EventArgs e)
         {
-            List<Equipe> lstEquipe = new List<Equipe>();
-            InterfaceBD bd = InterfaceBD.accesInstance();
-            bd.remplirListe(ref lstEquipe);
-
-            ListViewItem lsv;
-            for (int i = 0; i<lstEquipe.Count;i++)
-            {
-                lsv = new ListViewItem(lstEquipe[i].Nom);
-                lsv.SubItems.Add(lstEquipe[i].SiteWeb);
-                lsv.Tag = lstEquipe[i].Id;
-
-                lsvEquipe.Items.Add(lsv);
-            }
+            this.RefreshListe();
 
             /*cn = new ObjOracleConnexion();
             OracleDataReader rs = cn.cmdData("select idequipe, nom, siteweb from equipe order by idequipe");
@@ -59,5 +49,46 @@ namespace TP_SMI1002
             rs.Close();*/
             
         }
+
+        private void RefreshListe()
+        {
+            lstEquipe.Clear();
+            lsvEquipe.Items.Clear();
+            bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstEquipe);
+
+            ListViewItem lsv;
+            for (int i = 0; i < lstEquipe.Count; i++)
+            {
+                lsv = new ListViewItem(lstEquipe[i].Nom);
+                lsv.SubItems.Add(lstEquipe[i].SiteWeb);
+                lsv.Tag = lstEquipe[i].Id;
+
+                lsvEquipe.Items.Add(lsv);
+            }
+
+            lsvEquipe.Refresh();
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            if (lsvEquipe.SelectedItems.Count == 1)
+            {
+                FormEquipe frmEquipe = new FormEquipe((int)lsvEquipe.SelectedItems[0].Tag, lsvEquipe.SelectedItems[0].SubItems[1].Text, lsvEquipe.SelectedItems[0].SubItems[0].Text);
+
+                if (frmEquipe.ShowDialog() == DialogResult.OK)
+                {
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        
     }
 }
