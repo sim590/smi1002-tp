@@ -12,13 +12,45 @@ namespace TP_SMI1002
 {
     public partial class FormListeJoueurs : Form
     {
+        public enum mode { liste, selection}
+
         //ObjOracleConnexion cn;
         List<Joueur> lstJoueur = new List<Joueur>();
         InterfaceBD bd;
+        public List<int> lstSelectedId = null;
 
-        public FormListeJoueurs()
+        public FormListeJoueurs(mode mMode)
         {
             InitializeComponent();
+
+            if (mMode == mode.selection)
+            {
+                btnSupprimer.Text = "Assigner";
+                btnSupprimer.Click -= btnSupprimer_Click;
+                btnSupprimer.Click += btnAssigner_Click;
+                btnSupprimer.Image = ((System.Drawing.Image)(Properties.Resources.Apply));
+                btnAjouter.Visible = false;
+                btnModifier.Visible = false;
+                lsvJoueurs.MultiSelect = true;
+            }
+        }
+
+        private void btnAssigner_Click(object sender, EventArgs e)
+        {
+            if (lsvJoueurs.SelectedItems.Count > 0)
+            {
+                lstSelectedId = new List<int>();
+                for (int i = 0; i < lsvJoueurs.SelectedItems.Count; i++)
+                {
+                    lstSelectedId.Add(((Joueur)(lsvJoueurs.SelectedItems[i].Tag)).Id);
+                }
+
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner au moins un joueur.", "Erreur sélection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -56,7 +88,7 @@ namespace TP_SMI1002
                 lsv.SubItems.Add(lstJoueur[i].Courriel);
                 lsv.SubItems.Add(lstJoueur[i].Sexe);
                 lsv.SubItems.Add(lstJoueur[i].Date.ToString());
-                lsv.Tag = lstJoueur[i].Id;
+                lsv.Tag = lstJoueur[i];
 
                 lsvJoueurs.Items.Add(lsv);
             }
@@ -68,7 +100,7 @@ namespace TP_SMI1002
         {
             if (lsvJoueurs.SelectedItems.Count == 1)
             {
-                FormJoueur frmJoueur = new FormJoueur((int)lsvJoueurs.SelectedItems[0].Tag, lsvJoueurs.SelectedItems[0].SubItems[0].Text, lsvJoueurs.SelectedItems[0].SubItems[1].Text, lsvJoueurs.SelectedItems[0].SubItems[2].Text, lsvJoueurs.SelectedItems[0].SubItems[3].Text, Convert.ToDateTime(lsvJoueurs.SelectedItems[0].SubItems[4].Text));
+                FormJoueur frmJoueur = new FormJoueur(((Joueur)lsvJoueurs.SelectedItems[0].Tag).Id, lsvJoueurs.SelectedItems[0].SubItems[0].Text, lsvJoueurs.SelectedItems[0].SubItems[1].Text, lsvJoueurs.SelectedItems[0].SubItems[2].Text, lsvJoueurs.SelectedItems[0].SubItems[3].Text, Convert.ToDateTime(lsvJoueurs.SelectedItems[0].SubItems[4].Text));
 
                 if (frmJoueur.ShowDialog() == DialogResult.OK)
                 {
@@ -90,7 +122,7 @@ namespace TP_SMI1002
             {
                 if (MessageBox.Show("Voulez-vous vraiment supprimer ce joueur?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    bd.supprimmerDansBD(rechercheJoueur(Convert.ToInt32(lsvJoueurs.SelectedItems[0].Tag)));
+                    bd.supprimmerDansBD((Joueur)((lsvJoueurs.SelectedItems[0].Tag)));
                     this.RefreshListe();
                 }
 
@@ -99,20 +131,6 @@ namespace TP_SMI1002
             {
                 MessageBox.Show("Veuillez choisir un joueur parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private Joueur rechercheJoueur(int idJoueur)
-        {
-            for (int i = 0; i < lstJoueur.Count(); i++)
-            {
-                if (lstJoueur[i].Id == idJoueur)
-                {
-                    return lstJoueur[i];
-                }
-            }
-            return null;
-        }
-
-        
+        }    
     }
 }

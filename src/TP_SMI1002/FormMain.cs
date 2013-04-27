@@ -58,7 +58,7 @@ namespace TP_SMI1002
 
         private void optJoueur_Click(object sender, EventArgs e)
         {
-            FormListeJoueurs FormJoueurs = new FormListeJoueurs();
+            FormListeJoueurs FormJoueurs = new FormListeJoueurs(FormListeJoueurs.mode.liste);
             FormJoueurs.ShowDialog();
         }
 

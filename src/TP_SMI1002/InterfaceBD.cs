@@ -21,7 +21,13 @@ namespace TP_SMI1002
         private OracleConnection cnLanUQTR;
         public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))"
                                                                 +"(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
-
+        public OracleConnection getLanUQTR
+        {
+            get
+            {
+                return cnLanUQTR;
+            }
+        }
         //----------------
         // Constructeur 
         //----------------
@@ -44,6 +50,7 @@ namespace TP_SMI1002
         }
 
         //Fonction pour aller chercher un objet pour le modifier
+        #region retournerObjet
         public void retournerObjet(ref Tournoi mTournoi, int Id)
         {
             mTournoi = null;
@@ -76,6 +83,40 @@ namespace TP_SMI1002
             }
 
            
+            cnLanUQTR.Close();
+        }
+
+        public void retournerObjet(ref Joueur mJoueur, int Id)
+        {
+            mJoueur = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDJOUEUR, NOM, GAMERTAG, COURRIEL, SEXE, DATENAISSANCE FROM JOUEUR WHERE IDJOUEUR = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mJoueur = new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                        rs.GetOracleValue(1).ToString(),
+                                                        rs.GetOracleValue(2).ToString(),
+                                                        rs.GetOracleValue(3).ToString(),
+                                                        rs.GetOracleValue(4).ToString(),
+                                                        Convert.ToDateTime(rs.GetOracleValue(5).ToString()));
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
             cnLanUQTR.Close();
         }
 
@@ -114,6 +155,53 @@ namespace TP_SMI1002
 
             cnLanUQTR.Close();
         }
+
+        public void retournerObjet(ref EquipeAvecJoueurs mEquipeAvecJoueurs, int Id)
+        {
+            mEquipeAvecJoueurs = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDEQUIPE, SITEWEB, NOM FROM EQUIPE WHERE IDEQUIPE = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mEquipeAvecJoueurs = new EquipeAvecJoueurs(Id,
+                                            rs.GetOracleValue(0).ToString(),
+                                            rs.GetOracleValue(1).ToString());
+                rs.Close();
+
+                cmd.CommandText = "SELECT J.IDJOUEUR, J.NOM, J.GAMERTAG, J.COURRIEL, J.SEXE, J.DATENAISSANCE FROM JOUEUR J, JOUEUREQUIPE E WHERE E.IDEQUIPE = :id";
+
+                cmd.Parameters.Add("id", Id);
+
+                while (rs.Read())
+                {
+                    mEquipeAvecJoueurs.lstJoueurs.Add(new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                                    rs.GetOracleValue(1).ToString(),
+                                                                    rs.GetOracleValue(2).ToString(),
+                                                                    rs.GetOracleValue(3).ToString(),
+                                                                    rs.GetOracleValue(4).ToString(),
+                                                                    Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
+                }
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
+            cnLanUQTR.Close();
+        }
+        #endregion 
 
         //Fonction pour remplir les différentes liste
         #region remplirListe

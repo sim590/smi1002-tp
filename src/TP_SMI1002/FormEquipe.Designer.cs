@@ -33,17 +33,17 @@
             this.txtNom = new System.Windows.Forms.TextBox();
             this.txtSite = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lsvMembre = new System.Windows.Forms.ListView();
             this.btnSupprimerMembre = new System.Windows.Forms.Button();
             this.btnAjouterMembre = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.lbMembre = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(27, 24);
+            this.lblNom.Location = new System.Drawing.Point(12, 24);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(35, 13);
             this.lblNom.TabIndex = 18;
@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 46);
+            this.label1.Location = new System.Drawing.Point(12, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 19;
@@ -60,37 +60,26 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(86, 21);
+            this.txtNom.Location = new System.Drawing.Point(71, 21);
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(226, 20);
+            this.txtNom.Size = new System.Drawing.Size(241, 20);
             this.txtNom.TabIndex = 20;
             // 
             // txtSite
             // 
-            this.txtSite.Location = new System.Drawing.Point(88, 46);
+            this.txtSite.Location = new System.Drawing.Point(73, 46);
             this.txtSite.Name = "txtSite";
-            this.txtSite.Size = new System.Drawing.Size(224, 20);
+            this.txtSite.Size = new System.Drawing.Size(239, 20);
             this.txtSite.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 89);
+            this.label2.Location = new System.Drawing.Point(11, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 22;
             this.label2.Text = "Membre :";
-            // 
-            // lsvMembre
-            // 
-            this.lsvMembre.FullRowSelect = true;
-            this.lsvMembre.Location = new System.Drawing.Point(33, 116);
-            this.lsvMembre.MultiSelect = false;
-            this.lsvMembre.Name = "lsvMembre";
-            this.lsvMembre.Size = new System.Drawing.Size(279, 97);
-            this.lsvMembre.TabIndex = 23;
-            this.lsvMembre.UseCompatibleStateImageBehavior = false;
-            this.lsvMembre.View = System.Windows.Forms.View.Details;
             // 
             // btnSupprimerMembre
             // 
@@ -100,6 +89,7 @@
             this.btnSupprimerMembre.Size = new System.Drawing.Size(27, 23);
             this.btnSupprimerMembre.TabIndex = 25;
             this.btnSupprimerMembre.UseVisualStyleBackColor = true;
+            this.btnSupprimerMembre.Click += new System.EventHandler(this.btnSupprimerMembre_Click);
             // 
             // btnAjouterMembre
             // 
@@ -109,6 +99,7 @@
             this.btnAjouterMembre.Size = new System.Drawing.Size(27, 23);
             this.btnAjouterMembre.TabIndex = 24;
             this.btnAjouterMembre.UseVisualStyleBackColor = true;
+            this.btnAjouterMembre.Click += new System.EventHandler(this.btnAjouterMembre_Click);
             // 
             // btnEnregistrer
             // 
@@ -138,14 +129,22 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // lbMembre
+            // 
+            this.lbMembre.FormattingEnabled = true;
+            this.lbMembre.Location = new System.Drawing.Point(12, 114);
+            this.lbMembre.Name = "lbMembre";
+            this.lbMembre.Size = new System.Drawing.Size(300, 108);
+            this.lbMembre.TabIndex = 26;
+            // 
             // FormEquipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 277);
+            this.Controls.Add(this.lbMembre);
             this.Controls.Add(this.btnSupprimerMembre);
             this.Controls.Add(this.btnAjouterMembre);
-            this.Controls.Add(this.lsvMembre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSite);
             this.Controls.Add(this.txtNom);
@@ -171,8 +170,8 @@
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.TextBox txtSite;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView lsvMembre;
         private System.Windows.Forms.Button btnAjouterMembre;
         private System.Windows.Forms.Button btnSupprimerMembre;
+        private System.Windows.Forms.ListBox lbMembre;
     }
 }

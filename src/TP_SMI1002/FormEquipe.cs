@@ -13,6 +13,7 @@ namespace TP_SMI1002
     {
         private int id = 0;
         InterfaceBD bd;
+        EquipeAvecJoueurs mEquipe = null;
 
         //---------------------------------------------
         // Constructeur de base
@@ -20,17 +21,30 @@ namespace TP_SMI1002
         public FormEquipe()
         {
             InitializeComponent();
+            mEquipe = new EquipeAvecJoueurs("", "");
         }
 
         //---------------------------------------------
         // Constructeur pour modifications
         //---------------------------------------------
-        public FormEquipe(int id, string nom, string siteWeb)
+        public FormEquipe(int id)
         {
             InitializeComponent();
             this.id = id;
-            this.txtNom.Text = nom;
-            this.txtSite.Text = siteWeb;
+
+            bd = InterfaceBD.accesInstance();
+            bd.retournerObjet(ref mEquipe, id);
+
+            if (mEquipe != null)
+            {
+                txtNom.Text = mEquipe.Nom;
+                txtSite.Text = mEquipe.SiteWeb;
+
+                for (int i=0;i<mEquipe.lstJoueurs.Count(); i++)
+                {
+                    lbMembre.Items.Add(mEquipe.lstJoueurs[i]);
+                }
+            }
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
@@ -48,18 +62,28 @@ namespace TP_SMI1002
 
             if (okay)
             {
+                AssignerJoueurAListe();
                 bd = InterfaceBD.accesInstance();
                 if (id == 0) //Ajout dans la base de données
                 {
-                    bd.ajoutBD(new Equipe(txtNom.Text, txtSite.Text));
+                    mEquipe.Nom = txtNom.Text;
+                    mEquipe.SiteWeb = txtSite.Text;
+   
+                    bd.ajoutBD(mEquipe);
+
+
+
+                    mEquipe.SaveListeJoueurBD();
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
                 }
                 else //Update la base de données
                 {
-                    bd.modifierBD(new Equipe(id, txtNom.Text, txtSite.Text));
+                    mEquipe.Nom = txtNom.Text;
+                    mEquipe.SiteWeb = txtSite.Text;
+
+                    bd.modifierBD(mEquipe);
+
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
                 }
             }
             else
@@ -78,6 +102,42 @@ namespace TP_SMI1002
 
         }
 
-       
+        private void btnAjouterMembre_Click(object sender, EventArgs e)
+        {
+            FormListeJoueurs formListeJoueurs = new FormListeJoueurs(FormListeJoueurs.mode.selection);
+            if (formListeJoueurs.ShowDialog() == DialogResult.OK)
+            {
+                bd = InterfaceBD.accesInstance();
+                Joueur mJoueur = null;
+                for (int i = 0; i<formListeJoueurs.lstSelectedId.Count; i++)
+                {
+                    bd.retournerObjet(ref mJoueur, formListeJoueurs.lstSelectedId[i]);
+
+                    lbMembre.Items.Add(mJoueur);
+                }
+            }
+        }
+
+        private void btnSupprimerMembre_Click(object sender, EventArgs e)
+        {
+            if (lbMembre.SelectedIndex >= 0)
+            {
+                lbMembre.Items.RemoveAt(lbMembre.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un membre", "Erreur sélection membre", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AssignerJoueurAListe()
+        {
+            mEquipe.lstJoueurs.Clear();
+
+            for (int i = 0; i < lbMembre.Items.Count; i++)
+            {
+                mEquipe.lstJoueurs.Add((Joueur)(lbMembre.Items[i]));
+            }
+        }
     }
 }

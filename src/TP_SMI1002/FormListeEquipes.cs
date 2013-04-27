@@ -64,7 +64,7 @@ namespace TP_SMI1002
         {
             if (lsvEquipe.SelectedItems.Count == 1)
             {
-                FormEquipe frmEquipe = new FormEquipe((int)lsvEquipe.SelectedItems[0].Tag, lsvEquipe.SelectedItems[0].SubItems[1].Text, lsvEquipe.SelectedItems[0].SubItems[0].Text);
+                FormEquipe frmEquipe = new FormEquipe((int)lsvEquipe.SelectedItems[0].Tag);
 
                 if (frmEquipe.ShowDialog() == DialogResult.OK)
                 {
