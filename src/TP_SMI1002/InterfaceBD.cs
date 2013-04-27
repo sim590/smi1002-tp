@@ -44,9 +44,44 @@ namespace TP_SMI1002
         }
 
         //Fonction pour aller chercher un objet pour le modifier
-        public Evenement retournerObjet(int Id)
+        public void retournerObjet(ref Tournoi mTournoi, int Id)
         {
-            Evenement mEvenement = null;
+            mTournoi = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDTOURNOI, NBJOUEURS, IDJEU, DEBUT, FIN, IDEVENEMENT, NOM FROM TOURNOI WHERE IDTOURNOI = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mTournoi = new Tournoi(Id,
+                                            Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                            Convert.ToInt32(rs.GetOracleValue(1).ToString()),
+                                            Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                            Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
+                                            Convert.ToInt32(rs.GetOracleValue(4).ToString()),
+                                            rs.GetOracleValue(5).ToString());
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+           
+            cnLanUQTR.Close();
+        }
+
+        public void retournerObjet(ref Evenement mEvenement, int Id)
+        {
+            mEvenement = null;
 
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
             cmd.Connection = cnLanUQTR;
@@ -76,12 +111,36 @@ namespace TP_SMI1002
 
             }
 
-           
+
             cnLanUQTR.Close();
-            return mEvenement;
         }
 
         //Fonction pour remplir les différentes liste
+        #region remplirListe
+        public void remplirListe(ref List<Jeu> lstJeu)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDJEU, NOM, IDTYPEJEU FROM JEU ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstJeu.Add(new Jeu(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
         public void remplirListe(ref List<Equipe> lstEquipe)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
@@ -216,6 +275,7 @@ namespace TP_SMI1002
 
             cnLanUQTR.Close();
         }
+        #endregion
 
         #region ajoutBD
         //TODO: La query fonctionne pas.................

@@ -12,17 +12,18 @@ namespace TP_SMI1002
     public partial class FormTournoi : Form
     {
         private int IDTournoi = 0;
+        InterfaceBD bd;
 
         public FormTournoi()
         {
             InitializeComponent();
         }
 
-        public FormTournoi(int IDTournois)
+        public FormTournoi(int IDTournoi)
         {
             InitializeComponent();
 
-            //Load Tournoi from BD
+            this.IDTournoi = IDTournoi;
         }
 
         private void FormTournoi_Load(object sender, EventArgs e)
@@ -31,6 +32,14 @@ namespace TP_SMI1002
             dtpDebut.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             dtpFin.Format = DateTimePickerFormat.Custom;
             dtpFin.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+
+            List<Jeu> lstJeu = new List<Jeu>();
+            bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstJeu);
+            for (int i = 0; i < lstJeu.Count();i++)
+            {
+                cbJeu.Items.Add(lstJeu[i]);
+            }
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)

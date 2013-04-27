@@ -80,6 +80,7 @@
             // 
             // cbJeu
             // 
+            this.cbJeu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbJeu.FormattingEnabled = true;
             this.cbJeu.Location = new System.Drawing.Point(116, 123);
             this.cbJeu.Name = "cbJeu";

@@ -25,7 +25,8 @@ namespace TP_SMI1002
 
             bd = InterfaceBD.accesInstance();
 
-            Evenement mEvenement = bd.retournerObjet(IdEvenement);
+            Evenement mEvenement = null;
+            bd.retournerObjet(ref mEvenement, IdEvenement);
             if (mEvenement == null)
             {
                 MessageBox.Show("Cet évènement à été supprimer de la base de données", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);

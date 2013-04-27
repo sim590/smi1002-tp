@@ -50,13 +50,13 @@ namespace TP_SMI1002
                 bd.supprimmerDansBD(rechercheJeu(Convert.ToInt32(lsvJeuAvecType.SelectedItems[0].Tag)));
             }
         }
-        private Evenement rechercheJeu(int idEvenement)
+        private Jeu rechercheJeu(int idEvenement)
         {
             for (int i = 0; i < lstJeuAvecType.Count(); i++)
             {
                 if (lstJeuAvecType[i].Id == idEvenement)
                 {
-                    return null;
+                    return lstJeuAvecType[i];
                 }
             }
             return null;
