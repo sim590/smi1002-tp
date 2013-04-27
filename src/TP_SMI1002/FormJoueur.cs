@@ -10,7 +10,7 @@ using Oracle.DataAccess.Client;
 
 namespace TP_SMI1002
 {
-    public partial class FormJoueur : FormIdiotProof
+    public partial class FormJoueur : Form
     {
         private int id = 0;
         private InterfaceBD bd;
@@ -76,6 +76,11 @@ namespace TP_SMI1002
             {
                 MessageBox.Show("Veuillez remplir tous les champs!", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void FormJoueur_Load(object sender, EventArgs e)
+        {
 
         }
 

@@ -156,6 +156,7 @@
             this.Name = "FormEquipe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Équipe";
+            this.Load += new System.EventHandler(this.FormEquipe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

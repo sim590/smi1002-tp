@@ -38,6 +38,7 @@
             this.Name = "About";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "À propos de...";
+            this.Load += new System.EventHandler(this.About_Load);
             this.ResumeLayout(false);
 
         }

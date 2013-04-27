@@ -252,6 +252,17 @@ namespace TP_SMI1002
                 cmd.Parameters.Add("@idjeu", ((Tournoi)donnee).IdJeu);
                 cmd.Parameters.Add("@idevenement", ((Tournoi)donnee).idEvenement);
             }
+            else if (donnee is Evenement)
+            {
+                cmd.CommandText = "insert into tournoi (nom,debut,fin,nbjoueurs,idjeu,idevenement) " +
+                                                 "values (@nom,@debut,@fin,@nbjoueurs,@idjeu,@idevenement)";
+                cmd.Parameters.Add("@nom", ((Tournoi)donnee).Nom);
+                cmd.Parameters.Add("@debut", ((Tournoi)donnee).dateDebut);
+                cmd.Parameters.Add("@fin", ((Tournoi)donnee).dateFin);
+                cmd.Parameters.Add("@nbjoueurs", ((Tournoi)donnee).nbJoueur);
+                cmd.Parameters.Add("@idjeu", ((Tournoi)donnee).IdJeu);
+                cmd.Parameters.Add("@idevenement", ((Tournoi)donnee).idEvenement);         
+            }
 
             // Envoie la commande
             try
@@ -327,6 +338,7 @@ namespace TP_SMI1002
                 cmd.Parameters.Add("@param1", ((TypeJeu)donnee).NomTypeJeu);
                 cmd.Parameters.Add("@keyValue", ((TypeJeu)donnee).Id);
             }
+
 
             cmd.Connection = cnLanUQTR;
 

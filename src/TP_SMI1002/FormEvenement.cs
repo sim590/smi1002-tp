@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class FormEvenement : FormIdiotProof
+    public partial class FormEvenement : Form
     {
         private int IdEvenement = 0;
         public FormEvenement()
@@ -88,6 +88,7 @@ namespace TP_SMI1002
                 else
                 {
                     //Ajout
+                    
                 }
                 this.DialogResult = DialogResult.OK;
             }

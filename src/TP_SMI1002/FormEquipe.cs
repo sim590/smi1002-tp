@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class FormEquipe : FormIdiotProof
+    public partial class FormEquipe : Form
     {
         private int id = 0;
         InterfaceBD bd;
@@ -59,7 +59,6 @@ namespace TP_SMI1002
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                
             }
             else
             {
@@ -70,6 +69,11 @@ namespace TP_SMI1002
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormEquipe_Load(object sender, EventArgs e)
+        {
+
         }
 
        

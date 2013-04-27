@@ -175,6 +175,7 @@
             this.Name = "FormJoueur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Joueur";
+            this.Load += new System.EventHandler(this.FormJoueur_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

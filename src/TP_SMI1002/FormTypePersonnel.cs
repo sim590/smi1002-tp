@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class FormTypePersonnel : FormIdiotProof
+    public partial class FormTypePersonnel : Form
     {
         InterfaceBD interfaceBD;
         //---------------
@@ -40,7 +40,7 @@ namespace TP_SMI1002
         {
             TypePersonnel type;
 
-            if (pbCouleur.BackColor != null && estNomValide(this.txtNom.Text))
+            if (pbCouleur.BackColor != null && Valider.estNomValide(this.txtNom.Text))
             {
                 type = new TypePersonnel(pbCouleur.BackColor.A, pbCouleur.BackColor.R,
                                                 pbCouleur.BackColor.G,pbCouleur.BackColor.B,this.txtNom.Text);

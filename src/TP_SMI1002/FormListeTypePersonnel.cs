@@ -26,5 +26,10 @@ namespace TP_SMI1002
         {
             this.Close();
         }
+
+        private void FormListeTypePersonnel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -15,5 +15,10 @@ namespace TP_SMI1002
         {
             InitializeComponent();
         }
+
+        private void About_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

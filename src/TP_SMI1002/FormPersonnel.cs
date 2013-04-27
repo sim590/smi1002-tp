@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TP_SMI1002
 {
-    public partial class FormPersonnel : FormIdiotProof
+    public partial class FormPersonnel : Form
     {
         InterfaceBD interfaceBD;
 
@@ -34,7 +34,7 @@ namespace TP_SMI1002
         {
             Personnel personnel; 
             
-            if (estNomValide(txtNom.Text))
+            if (Valider.estNomValide(txtNom.Text))
             {
                 personnel = new Personnel(txtNom.Text, txtCourriel.Text, dtpDateNaissance.Text);
                 if (interfaceBD.ajoutBD(personnel) == -1)

@@ -54,9 +54,6 @@
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="DonneeBD.cs" />
-    <Compile Include="FormIdiotProof.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Evenement.cs" />
     <Compile Include="InterfaceBD.cs" />
     <Compile Include="Jeu.cs" />
@@ -152,6 +149,7 @@
     <Compile Include="Tournoi.cs" />
     <Compile Include="TypeJeu.cs" />
     <Compile Include="TypePersonnel.cs" />
+    <Compile Include="Valider.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -162,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEvenement.resx">
       <DependentUpon>FormEvenement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormIdiotProof.resx">
-      <DependentUpon>FormIdiotProof.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormJeu.resx">
       <DependentUpon>FormJeu.cs</DependentUpon>
