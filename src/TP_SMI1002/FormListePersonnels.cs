@@ -22,7 +22,10 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormPersonnel formPersonnel = new FormPersonnel();
-            formPersonnel.ShowDialog();
+            if (formPersonnel.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -54,6 +57,53 @@ namespace TP_SMI1002
             }
 
             lsvPersonnel.Refresh();
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            if (lsvPersonnel.SelectedItems.Count == 1)
+            {
+                FormPersonnel frmJoueur = new FormPersonnel((int)lsvPersonnel.SelectedItems[0].Tag);
+
+                if (frmJoueur.ShowDialog() == DialogResult.OK)
+                {
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir un joueur parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (lsvPersonnel.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show("Voulez-vous vraiment supprimer cette équipe?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bd.supprimmerDansBD(rechercheEquipe(Convert.ToInt32(lsvPersonnel.SelectedItems[0].Tag)));
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private Personnel rechercheEquipe(int idPersonnel)
+        {
+            for (int i = 0; i < lstPersonnel.Count(); i++)
+            {
+                if (lstPersonnel[i].Id == idPersonnel)
+                {
+                    return lstPersonnel[i];
+                }
+            }
+            return null;
         }
     }
 }

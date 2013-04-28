@@ -11,7 +11,9 @@ namespace TP_SMI1002
 {
     public partial class FormPersonnel : Form
     {
+        private int id = 0;
         InterfaceBD bd;
+        Personnel mPersonnel = null;
 
         //---------------
         // Constructeur
@@ -20,6 +22,25 @@ namespace TP_SMI1002
         {
             bd = InterfaceBD.accesInstance();
             InitializeComponent();
+        }
+
+        //---------------------------------
+        // Constructeur pour modification
+        //---------------------------------
+        public FormPersonnel(int id)
+        {
+            InitializeComponent();
+            this.id = id;
+
+            bd = InterfaceBD.accesInstance();
+            bd.retournerObjet(ref mPersonnel, id);
+
+            if (mPersonnel != null)
+            {
+                txtNom.Text = mPersonnel.Nom;
+                txtCourriel.Text = mPersonnel.Courriel;
+                dtpDateNaissance.Value = mPersonnel.DateNaissance;
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -32,16 +53,26 @@ namespace TP_SMI1002
         //-----------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            if (Valider.estNomValide(txtNom.Text) && Valider.estCourrielValide(txtCourriel.Text))
+            int rangesEcrites = 0;
+            
+            if (Valider.estNomValide(txtNom.Text) && && Valider.estCourrielValide(txtCourriel.Text))
             {
-                if (bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text)) == -1)
+                if (id == 0) // Ajout dans la base de données
+                {
+                    rangesEcrites = bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                }
+                else //Update la base de données
+                {
+                    rangesEcrites = bd.modifierBD(new Personnel(id, txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                }
+                
+                // Erreur lors de l'opération..
+                if (rangesEcrites == -1)
                 {
                     MessageBox.Show("Impossible d'envoyer la requête.");
                     return;
                 }
-
                 this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             else
                 MessageBox.Show("Veuillez entrer un nom et un courriel valide.");

@@ -174,13 +174,15 @@ namespace TP_SMI1002
             {
                 rs.Read();
                 mEquipeAvecJoueurs = new EquipeAvecJoueurs(Id,
-                                            rs.GetOracleValue(0).ToString(),
+                                            rs.GetOracleValue(2).ToString(),
                                             rs.GetOracleValue(1).ToString());
                 rs.Close();
 
-                cmd.CommandText = "SELECT J.IDJOUEUR, J.NOM, J.GAMERTAG, J.COURRIEL, J.SEXE, J.DATENAISSANCE FROM JOUEUR J, JOUEUREQUIPE E WHERE E.IDEQUIPE = :id";
+                cmd.Parameters.Clear();
+                cmd.CommandText = "SELECT J.IDJOUEUR, J.NOM, J.GAMERTAG, J.COURRIEL, J.SEXE, J.DATENAISSANCE FROM JOUEUR J INNER JOIN JOUEUREQUIPE E ON J.IDJOUEUR = E.IDJOUEUR WHERE E.IDEQUIPE= :id";
 
                 cmd.Parameters.Add("id", Id);
+                rs = cmd.ExecuteReader();
 
                 while (rs.Read())
                 {
@@ -191,6 +193,39 @@ namespace TP_SMI1002
                                                                     rs.GetOracleValue(4).ToString(),
                                                                     Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
                 }
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
+            cnLanUQTR.Close();
+        }
+
+        public void retournerObjet(ref Personnel mPersonnel, int Id)
+        {
+            mPersonnel = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL WHERE IDPERSONNEL = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mPersonnel = new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                        rs.GetOracleValue(1).ToString(),
+                                                        Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                                        rs.GetOracleValue(3).ToString());
+                                                        
                 rs.Close();
             }
             catch
@@ -246,7 +281,7 @@ namespace TP_SMI1002
 
             while (rs.Read())
             {
-                lstEquipe.Add(new Equipe(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), rs.GetOracleValue(2).ToString()));
+                lstEquipe.Add(new Equipe(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(2).ToString(), rs.GetOracleValue(1).ToString()));
             }
             rs.Close();           
             
@@ -422,7 +457,7 @@ namespace TP_SMI1002
             // Ajout d'une équipe
             else if (donnee is Equipe)
 	        {
-                cmd.CommandText = "insert into equipe (nom,siteweb) " + "values (:nom,:siteweb)";                
+                cmd.CommandText = "insert into equipe (siteweb, nom) values (:siteweb,:nom)";                
                 cmd.Parameters.Add("siteweb", ((Equipe)donnee).SiteWeb);
                 cmd.Parameters.Add("nom", ((Equipe)donnee).Nom);
 	        }
@@ -589,7 +624,7 @@ namespace TP_SMI1002
             //suppression d'un objet Personnel
             if (donnee is Personnel)
             {
-                cmdString = "DELETE FROM PERSONNEL WHERE ID=" + ((Personnel)donnee).Id;   
+                cmdString = "DELETE FROM PERSONNEL WHERE IDPERSONNEL=" + ((Personnel)donnee).Id;   
             }
             //suppression d'un objet TypePersonnel
             else if (donnee is TypePersonnel)
@@ -599,7 +634,9 @@ namespace TP_SMI1002
             //suppression d'un objet Equipe
             else if (donnee is Equipe)
             {
-                cmdString = "DELETE FROM EQUIPE WHERE IDEQUIPE=" + ((Equipe)donnee).Id;
+                cmdString = "DELETE FROM EQUIPE WHERE IDEQUIPE=:idEquipe";
+                cmd.Parameters.Add("idEquipe", ((Equipe)(donnee)).Id);
+                    
             }
             //suppression d'un objet Joueur
             else if (donnee is Joueur)
@@ -634,6 +671,15 @@ namespace TP_SMI1002
             cmd.CommandText = cmdString;
 
             cmd.ExecuteNonQuery();
+
+            if (donnee is Equipe)
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "DELETE FROM JOUEUREQUIPE WHERE IDEQUIPE=:idequipe";
+                cmd.Parameters.Add("", ((Equipe)(donnee)).Id);
+
+                cmd.ExecuteNonQuery();
+            }
 
             // Fermeture de la connexion
             cnLanUQTR.Close();
