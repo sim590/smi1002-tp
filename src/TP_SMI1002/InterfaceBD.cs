@@ -363,6 +363,30 @@ namespace TP_SMI1002
 
             cnLanUQTR.Close();
         }
+
+        public void remplirListe(ref List<Personnel> lstPersonnel)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstPersonnel.Add(new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToDateTime(rs.GetOracleValue(2).ToString()), rs.GetOracleValue(3).ToString()));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
         #endregion
 
         #region ajoutBD
@@ -383,10 +407,10 @@ namespace TP_SMI1002
             if (donnee is Personnel)
             {
                 cmd.CommandText = "insert into personnel (nom,datenaissance,courriel) " +
-                "values (@nom,@date,@courriel)";
-                cmd.Parameters.Add("@name", ((Personnel)donnee).Nom);
-                cmd.Parameters.Add("@date", ((Personnel)donnee).DateNaissance);
-                cmd.Parameters.Add("@courriel", ((Personnel)donnee).Courriel);
+                "values (:nom,:datenaissance,:courriel)";
+                cmd.Parameters.Add("nom", ((Personnel)donnee).Nom);
+                cmd.Parameters.Add("datenaissance", ((Personnel)donnee).DateNaissance);
+                cmd.Parameters.Add("courriel", ((Personnel)donnee).Courriel);
             }
             // Ajout d'un type de personnel
             else if (donnee is TypePersonnel)

@@ -18,50 +18,28 @@ namespace TP_SMI1002
     class Personnel : DonneeBD
     {
         // Variables d'instances
-        private string nom,courriel,dateNaissance;
+        public string Nom{get ; set;}
+        public string Courriel { get; set; }
+        public DateTime DateNaissance { get; set; }
 
         //----------------
         // Constructeurs
         //----------------
-        public Personnel(string nom, string courriel, string dateNaissance)
+        public Personnel(string nom, DateTime dateNaissance, string courriel)
         {
-            this.nom = nom;
-            this.courriel = courriel;
-            this.dateNaissance = dateNaissance;
+            this.Nom = nom;
+            this.Courriel = courriel;
+            this.DateNaissance = dateNaissance;
         }
-        public Personnel(string nom, string courriel, string dateNaissance, int id)
+        public Personnel(int id, string nom, DateTime dateNaissance, string courriel )
         {
-            this.nom = nom;
-            this.courriel = courriel;
-            this.dateNaissance = dateNaissance;
+            this.Nom = nom;
+            this.Courriel = courriel;
+            this.DateNaissance = dateNaissance;
             this.Id = id;
         }
 
 
-        // Accesseurs, mutateurs
-        public string Nom
-        {
-            get
-            {
-                return this.nom;
-            }
-        }
-
-        public string Courriel
-        {
-            get
-            {
-                return this.courriel;
-            }
-        }
-
-        public string DateNaissance
-        {
-            get
-            {
-                return this.dateNaissance;
-            }
-        }
-        //----------------------
+        
     }
 }

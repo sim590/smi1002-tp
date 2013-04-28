@@ -32,6 +32,10 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.lsvPersonnel = new System.Windows.Forms.ListView();
+            this.clnNom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clnCourriel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSupprimer
@@ -88,11 +92,42 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // lsvPersonnel
+            // 
+            this.lsvPersonnel.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnNom,
+            this.clnDate,
+            this.clnCourriel});
+            this.lsvPersonnel.FullRowSelect = true;
+            this.lsvPersonnel.Location = new System.Drawing.Point(12, 12);
+            this.lsvPersonnel.MultiSelect = false;
+            this.lsvPersonnel.Name = "lsvPersonnel";
+            this.lsvPersonnel.Size = new System.Drawing.Size(571, 260);
+            this.lsvPersonnel.TabIndex = 25;
+            this.lsvPersonnel.UseCompatibleStateImageBehavior = false;
+            this.lsvPersonnel.View = System.Windows.Forms.View.Details;
+            // 
+            // clnNom
+            // 
+            this.clnNom.Text = "Nom équipe";
+            this.clnNom.Width = 184;
+            // 
+            // clnDate
+            // 
+            this.clnDate.Text = "Date de naissance";
+            this.clnDate.Width = 164;
+            // 
+            // clnCourriel
+            // 
+            this.clnCourriel.Text = "Courriel";
+            this.clnCourriel.Width = 219;
+            // 
             // FormListePersonnels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 313);
+            this.Controls.Add(this.lsvPersonnel);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
@@ -111,5 +146,9 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.ListView lsvPersonnel;
+        private System.Windows.Forms.ColumnHeader clnNom;
+        private System.Windows.Forms.ColumnHeader clnDate;
+        private System.Windows.Forms.ColumnHeader clnCourriel;
     }
 }
