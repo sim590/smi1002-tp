@@ -11,7 +11,7 @@ namespace TP_SMI1002
 {
     public partial class FormTournoi : Form
     {
-        private Tournoi tournoi;
+        private Tournoi tournoi= null;
         InterfaceBD interfaceBD;
         List<Jeu> lstJeu; 
 

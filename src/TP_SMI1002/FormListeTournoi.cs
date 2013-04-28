@@ -43,7 +43,7 @@ namespace TP_SMI1002
         //--------------------
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            FormTournoi formTournoi = new FormTournoi((Tournoi)lsvTournoi.SelectedItems[0].Tag);
+            FormTournoi formTournoi = new FormTournoi(Convert.ToInt32((Tournoi)lsvTournoi.SelectedItems[0].Tag));
         }
 
         //----------------------

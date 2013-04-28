@@ -512,8 +512,6 @@ namespace TP_SMI1002
         }
         #endregion
 
-
-
         #region ajoutBD
         //-------------------------------------------
         // Ajout d'une donnée à la base de données
@@ -668,7 +666,7 @@ namespace TP_SMI1002
             }
             else if (donnee is TypeJeu)
             {
-                cmdString = "update typejeu set nom = :param1 where idtype = :keyValue";
+                cmdString = "update typejeu set nom = :param1 where idtypejeu = :keyValue";
                 cmd.CommandText = cmdString;
                 cmd.Parameters.Add("param1", ((TypeJeu)donnee).NomTypeJeu);
                 cmd.Parameters.Add("keyValue", ((TypeJeu)donnee).Id);
@@ -748,7 +746,8 @@ namespace TP_SMI1002
             //suppression d'un objet TypeJeu
             else if (donnee is TypeJeu)
             {
-                cmdString = "DELETE FROM TYPEJEU WHERE ID=" + ((TypeJeu)donnee).Id;
+                cmdString = "DELETE FROM TYPEJEU WHERE IDTYPEJEU=:id";
+                cmd.Parameters.Add("id", donnee.Id);
             }
             //suppression d'un objet Tournoi
             else if (donnee is Tournoi)
