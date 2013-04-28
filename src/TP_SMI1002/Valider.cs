@@ -26,7 +26,7 @@ namespace TP_SMI1002
             // Vérifie que le string est composé que de 
             // 2 à 20 lettres et/ou accents et/ou "-"
             //-------------------------------------------
-            if (!Regex.IsMatch(nom, @"^[a-zA-ZéèàêïÉÈÀÊ-]{2,}$"))
+            if (!Regex.IsMatch(nom, @"^[a-zA-ZéèàêïÉÈÀÊ -]{2,}$"))
                 return false;
             return true;
         }
