@@ -25,9 +25,10 @@ namespace TP_SMI1002
             InitializeComponent();
         }
         //...
-        public FormTournoi(Tournoi tournoi)
+        public FormTournoi(int id)
         {
-            this.tournoi = tournoi;
+            interfaceBD = InterfaceBD.accesInstance();
+            //interfaceBD.retournerObjet(tournoi, id);
             lstJeu = new List<Jeu>();
             InitializeComponent();
         }

@@ -55,7 +55,7 @@ namespace TP_SMI1002
         {
             int rangesEcrites = 0;
             
-            if (Valider.estNomValide(txtNom.Text) && && Valider.estCourrielValide(txtCourriel.Text))
+            if (Valider.estNomValide(txtNom.Text) && Valider.estCourrielValide(txtCourriel.Text))
             {
                 if (id == 0) // Ajout dans la base de données
                 {

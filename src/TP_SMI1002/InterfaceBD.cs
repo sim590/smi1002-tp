@@ -297,36 +297,6 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-        //-------------------------------
-        // Va chercher un jeu par son ID
-        //-------------------------------
-        public void retournerObjet(ref Jeu jeu, int id)
-        {
-            OracleCommand cmd = new OracleCommand();
-            OracleDataReader rs;
-            cmd.Connection = cnLanUQTR;
-
-            // Établie la connexion..... faudrait catch si ça plante..
-            cnLanUQTR.Open();
-
-            cmd.CommandText = "select idjeu,nom,idtypejeu from jeu where idjeu = :idjeu";
-            cmd.Parameters.Add("idjeu", id);
-
-            // Envoie la commande
-            rs = cmd.ExecuteReader();
-
-            // Si on a récupéré une lecture
-            if (rs.Read())
-            {
-                jeu.Id = id;
-                jeu.Nom = rs.GetOracleValue(1).ToString();
-                jeu.IDTypeJeu = Convert.ToInt32(rs.GetOracleValue(2).ToString());
-            }
-
-            rs.Close();
-            cnLanUQTR.Close();
-        }
-
         #endregion 
 
         //Fonction pour remplir les différentes liste
