@@ -13,13 +13,13 @@ namespace TP_SMI1002
         //----------------
         // Constructeurs
         //----------------
-        public Jeu(String Nom,int IDTypeJeu)
+        public Jeu(string Nom,int IDTypeJeu)
         {
             this.Nom = Nom;
             this.IDTypeJeu = IDTypeJeu;
         }
         //...
-        public Jeu(int Id, String Nom, int IDTypeJeu)
+        public Jeu(int Id, string Nom, int IDTypeJeu)
         {
             this.Id = Id;
             this.Nom = Nom;
@@ -39,9 +39,9 @@ namespace TP_SMI1002
 
     class JeuAvecType : Jeu
     {
-        public String TypeJeu { get; set; }
+        public string TypeJeu { get; set; }
 
-        public JeuAvecType(int Id, String Nom, int IDTypeJeu, string TypeJeu)
+        public JeuAvecType(int Id, string Nom, int IDTypeJeu, string TypeJeu)
             :base(Id, Nom, IDTypeJeu)
         {
             this.TypeJeu = TypeJeu;

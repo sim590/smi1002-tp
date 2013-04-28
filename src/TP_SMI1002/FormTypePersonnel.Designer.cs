@@ -110,7 +110,7 @@
             this.pbCouleur.TabIndex = 3;
             this.pbCouleur.TabStop = false;
             // 
-            // TypePersonnel
+            // FormTypePersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +122,7 @@
             this.Controls.Add(this.lblCouleur);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.lblNom);
-            this.Name = "TypePersonnel";
+            this.Name = "FormTypePersonnel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Type personnel";
             ((System.ComponentModel.ISupportInitialize)(this.pbCouleur)).EndInit();

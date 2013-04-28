@@ -46,7 +46,7 @@ namespace TP_SMI1002
                 lsv.SubItems.Add(lstEvenement[i].Adresse.ToString());
                 lsv.SubItems.Add(lstEvenement[i].NbrPlace.ToString());
                 lsv.SubItems.Add(lstEvenement[i].Prix.ToString());
-                lsv.Tag = lstEvenement[i].Id;
+                lsv.Tag = lstEvenement[i];
 
                 lsvEvenement.Items.Add(lsv);
             }
@@ -68,7 +68,7 @@ namespace TP_SMI1002
         {
             if (lsvEvenement.SelectedItems.Count == 1)
             {
-                FormEvenement formEvenement = new FormEvenement(Convert.ToInt32(lsvEvenement.SelectedItems[0].Tag));
+                FormEvenement formEvenement = new FormEvenement(((Evenement)(lsvEvenement.SelectedItems[0].Tag)).Id);
                 if (formEvenement.ShowDialog() == DialogResult.OK)
                 {
                     RefreshListe();
@@ -81,21 +81,10 @@ namespace TP_SMI1002
             if (lsvEvenement.SelectedItems.Count == 1)
             {
                 bd = InterfaceBD.accesInstance();
-                bd.supprimmerDansBD(rechercheEvenement(Convert.ToInt32(lsvEvenement.SelectedItems[0].Tag)));
+                
+                bd.supprimmerDansBD(((Evenement)(lsvEvenement.SelectedItems[0].Tag)));
                 RefreshListe();
             }
-        }
-
-        private Evenement rechercheEvenement(int idEvenement)
-        {
-            for (int i = 0; i < lstEvenement.Count(); i++)
-            {
-                if (lstEvenement[i].Id == idEvenement)
-                {
-                    return lstEvenement[i];
-                }
-            }
-            return null;
         }
     }
 }

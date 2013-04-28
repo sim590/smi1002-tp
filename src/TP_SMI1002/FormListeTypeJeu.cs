@@ -59,7 +59,13 @@ namespace TP_SMI1002
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
+            if (lsvTypeJeu.SelectedItems.Count == 1)
+            {
+                bd = InterfaceBD.accesInstance();
 
+                bd.supprimmerDansBD(((TypeJeu)(lsvTypeJeu.SelectedItems[0].Tag)));
+                RefreshListe();
+            }
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -76,7 +82,7 @@ namespace TP_SMI1002
             }
             else
             {
-                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuillez choisir un type de jeu parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

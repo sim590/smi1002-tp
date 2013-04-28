@@ -29,11 +29,12 @@ namespace TP_SMI1002
             InitializeComponent();
 
             interfaceBD = InterfaceBD.accesInstance();
-            this.id = id;
+            
             interfaceBD.retournerObjet(ref mTypeJeu, id);
 
             if (mTypeJeu != null)
             {
+                this.id = mTypeJeu.Id;
                 txtNom.Text = mTypeJeu.NomTypeJeu;
             }
         }
@@ -55,12 +56,12 @@ namespace TP_SMI1002
                 if (id == 0)
                 {
                     TypeJeu typejeu = new TypeJeu(this.txtNom.Text);
-                    BD.ajoutBD(typejeu);
+                    interfaceBD.ajoutBD(typejeu);
                 }
                 else
                 {
                     mTypeJeu.NomTypeJeu = txtNom.Text;
-                    BD.modifierBD(mTypeJeu);
+                    interfaceBD.modifierBD(mTypeJeu);
                 }
                 this.DialogResult = DialogResult.OK;
             }

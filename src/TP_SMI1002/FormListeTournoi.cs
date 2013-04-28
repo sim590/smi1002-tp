@@ -36,6 +36,10 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormTournoi formTournoi = new FormTournoi();
+            if (formTournoi.ShowDialog() == DialogResult.OK)
+            {
+                rafraichirListe();
+            }
         }
 
         //--------------------
@@ -43,7 +47,18 @@ namespace TP_SMI1002
         //--------------------
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            FormTournoi formTournoi = new FormTournoi((Tournoi)lsvTournoi.SelectedItems[0].Tag);
+            if (lsvTournoi.SelectedItems.Count == 1)
+            {
+                FormTournoi formTournoi = new FormTournoi(Convert.ToInt32(((Tournoi)lsvTournoi.SelectedItems[0].Tag).Id));
+                if (formTournoi.ShowDialog() == DialogResult.OK)
+                {
+                    rafraichirListe();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un tournoi.", "Erreur de sélection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //----------------------
@@ -77,7 +92,8 @@ namespace TP_SMI1002
         {
             ListViewItem lsvItem;
             
-            lsvTournoi.Clear();
+            lstTournoi.Clear();
+            lsvTournoi.Items.Clear();
 
             // Va chercher la liste dans la base de données
             interfaceBD.remplirListe(ref lstTournoi);
@@ -94,6 +110,11 @@ namespace TP_SMI1002
             }
 
             lsvTournoi.Refresh();
+        }
+
+        private void FormListeTournoi_Load(object sender, EventArgs e)
+        {
+            rafraichirListe();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace TP_SMI1002
     public partial class FormTypePersonnel : Form
     {
         InterfaceBD interfaceBD;
+        TypePersonnel mType = null;
+        private int id = 0;
         //---------------
         // Constructeur
         //---------------
@@ -20,6 +22,21 @@ namespace TP_SMI1002
         {
             interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
+        }
+
+        public FormTypePersonnel(int id)
+        {
+            InitializeComponent();
+            this.id = id;
+
+            interfaceBD = InterfaceBD.accesInstance();
+            interfaceBD.retournerObjet(ref mType, id);
+
+            if (mType != null)
+            {
+                txtNom.Text = mType.Nom;
+                pbCouleur.BackColor = Color.FromArgb(mType.Couleur);
+            }
         }
 
         //----------------------
@@ -42,18 +59,23 @@ namespace TP_SMI1002
 
             if (pbCouleur.BackColor != null && Valider.estNomValide(this.txtNom.Text))
             {
-                type = new TypePersonnel(pbCouleur.BackColor.A, pbCouleur.BackColor.R,
-                                                pbCouleur.BackColor.G, pbCouleur.BackColor.B, this.txtNom.Text);
-
-                // Ajout à la BD par le singleton
-                if (interfaceBD.ajoutBD(type) == -1)
+                if (id == 0)
                 {
-                    MessageBox.Show("Impossible d'envoyer la requête.");
-                    return;
+                    type = new TypePersonnel(this.txtNom.Text, pbCouleur.BackColor.ToArgb());
+                    // Ajout à la BD par le singleton
+                    if (interfaceBD.ajoutBD(type) == -1)
+                    {
+                        MessageBox.Show("Impossible d'envoyer la requête.");
+                        return;
+                    }
                 }
-
-                // On ferme la fenêtre
-                this.Close();
+                else
+                {
+                    mType.Nom = txtNom.Text;
+                    mType.Couleur = pbCouleur.BackColor.ToArgb();
+                    interfaceBD.modifierBD(mType);
+                }
+                this.DialogResult = DialogResult.OK;
             }
             else
                 MessageBox.Show("Veuillez entrer un nom valide et faire votre choix de couleur.");

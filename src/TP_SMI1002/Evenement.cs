@@ -38,5 +38,10 @@ namespace TP_SMI1002
             this.NbrPlace = NbrPlace;
             this.Prix = Prix;
         }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }

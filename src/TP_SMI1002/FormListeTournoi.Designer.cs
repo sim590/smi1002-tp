@@ -141,7 +141,9 @@
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.lsvTournoi);
             this.Name = "FormListeTournoi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormListeTournoi";
+            this.Load += new System.EventHandler(this.FormListeTournoi_Load);
             this.ResumeLayout(false);
 
         }
