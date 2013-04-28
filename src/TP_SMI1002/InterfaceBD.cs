@@ -80,6 +80,34 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
+        public void retournerObjet(ref TypePersonnel mTypePersonnel, int Id)
+        {
+            mTypePersonnel = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL WHERE IDTYPEPERSONNEL = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mTypePersonnel = new TypePersonnel(Id, rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString()));
+
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+            cnLanUQTR.Close();
+        }
+
         public void retournerObjet(ref Tournoi mTournoi, int Id)
         {
             mTournoi = null;
@@ -319,6 +347,36 @@ namespace TP_SMI1002
             while (rs.Read())
             {
                 lstJeu.Add(new Jeu(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<TypePersonnel> lstTypePersonnel)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+            int couleur=0;
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                couleur = Convert.ToInt32(rs.GetOracleValue(2).ToString());
+                /*lstTypePersonnel.Add(new TypePersonnel(Convert.ToByte(couleur >> 24), Convert.ToByte((couleur << 8) >> 24), 
+                                                       Convert.ToByte((couleur << 16) >> 24), Convert.ToByte((couleur << 24 ) >> 24), 
+                                                       rs.GetOracleValue(1).ToString(), 
+                                                       Convert.ToInt32(rs.GetOracleValue(0).ToString())));-*/
+                lstTypePersonnel.Add(new TypePersonnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
             }
             rs.Close();
 

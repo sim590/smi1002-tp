@@ -82,7 +82,7 @@ namespace TP_SMI1002
             }
             else
             {
-                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuillez choisir un type de jeu parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

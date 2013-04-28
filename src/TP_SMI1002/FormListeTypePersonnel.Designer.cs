@@ -32,6 +32,9 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.lsvTypePersonnel = new System.Windows.Forms.ListView();
+            this.clnTypePersonnel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clnCouleur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSupprimer
@@ -59,6 +62,7 @@
             this.btnModifier.Text = "Modifier";
             this.btnModifier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // btnAjouter
             // 
@@ -88,11 +92,36 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // lsvTypePersonnel
+            // 
+            this.lsvTypePersonnel.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnTypePersonnel,
+            this.clnCouleur});
+            this.lsvTypePersonnel.FullRowSelect = true;
+            this.lsvTypePersonnel.Location = new System.Drawing.Point(12, 12);
+            this.lsvTypePersonnel.MultiSelect = false;
+            this.lsvTypePersonnel.Name = "lsvTypePersonnel";
+            this.lsvTypePersonnel.Size = new System.Drawing.Size(448, 238);
+            this.lsvTypePersonnel.TabIndex = 26;
+            this.lsvTypePersonnel.UseCompatibleStateImageBehavior = false;
+            this.lsvTypePersonnel.View = System.Windows.Forms.View.Details;
+            // 
+            // clnTypePersonnel
+            // 
+            this.clnTypePersonnel.Text = "Type Personnel";
+            this.clnTypePersonnel.Width = 184;
+            // 
+            // clnCouleur
+            // 
+            this.clnCouleur.Text = "Couleur";
+            this.clnCouleur.Width = 337;
+            // 
             // FormListeTypePersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 291);
+            this.Controls.Add(this.lsvTypePersonnel);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
@@ -111,5 +140,8 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.ListView lsvTypePersonnel;
+        private System.Windows.Forms.ColumnHeader clnTypePersonnel;
+        private System.Windows.Forms.ColumnHeader clnCouleur;
     }
 }
