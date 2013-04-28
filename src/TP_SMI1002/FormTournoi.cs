@@ -22,12 +22,21 @@ namespace TP_SMI1002
             interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
         }
-        //...
+        
+
         public FormTournoi(int id)
         {
+            InitializeComponent();
             interfaceBD = InterfaceBD.accesInstance();
             interfaceBD.retournerObjet(ref tournoi, id);
-            InitializeComponent();
+            if (tournoi != null)
+            {
+                txtNbrJoueurParEquipe.Text = tournoi.nbJoueur.ToString();
+                txtNom.Text = tournoi.nbJoueur.ToString();
+                dtpDebut.Value = tournoi.dateDebut;
+                dtpFin.Value = tournoi.dateFin; 
+            }
+            
         }
 
         //-------------------------------------
@@ -43,7 +52,7 @@ namespace TP_SMI1002
             dtpFin.Format = DateTimePickerFormat.Custom;
             dtpFin.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
-            List<Jeu> lstJeu = null;
+            List<Jeu> lstJeu = new List<Jeu>();
             interfaceBD.remplirListe(ref lstJeu);
             for (int i = 0; i < lstJeu.Count();i++)
                 cbJeu.Items.Add(lstJeu[i]);
@@ -51,7 +60,7 @@ namespace TP_SMI1002
             if (cbJeu.Items.Count > 0)
                 cbJeu.SelectedIndex = 0;
 
-            List<Evenement> lstEvenement = null;
+            List<Evenement> lstEvenement = new List<Evenement>();
             interfaceBD.remplirListe(ref lstEvenement);
             for (int i = 0; i < lstEvenement.Count(); i++)
             {
@@ -153,7 +162,7 @@ namespace TP_SMI1002
         {
             for (int i = 0; i < cbEvenement.Items.Count; i++)
             {
-                if (((Jeu)cbEvenement.Items[i]).Id == id)
+                if (((Evenement)cbEvenement.Items[i]).Id == id)
                 {
                     return i;
                 }
