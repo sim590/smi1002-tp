@@ -11,14 +11,13 @@ namespace TP_SMI1002
 {
     public partial class FormPersonnel : Form
     {
-        InterfaceBD interfaceBD;
+        InterfaceBD bd;
 
         //---------------
         // Constructeur
         //---------------
         public FormPersonnel()
         {
-            interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
         }
 
@@ -32,13 +31,12 @@ namespace TP_SMI1002
         //-----------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            Personnel personnel; 
-            
+            bd = InterfaceBD.accesInstance();
             if (Valider.estNomValide(txtNom.Text))
             {
-                personnel = new Personnel(txtNom.Text, txtCourriel.Text, dtpDateNaissance.Text);
-                if (interfaceBD.ajoutBD(personnel) == -1)
-                    MessageBox.Show("Impossible d'envoyer la requête...");
+                bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 

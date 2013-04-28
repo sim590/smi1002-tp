@@ -133,6 +133,7 @@
             // clmDateNaissance
             // 
             this.clmDateNaissance.Text = "Date de Naissance";
+            this.clmDateNaissance.Width = 99;
             // 
             // FormListeJoueurs
             // 
