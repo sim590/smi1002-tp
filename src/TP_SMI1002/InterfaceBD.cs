@@ -86,6 +86,37 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
+        public void retournerObjet(ref Jeu mJeu, int Id)
+        {
+            mJeu = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDJEU, NOM, IDTYPEJEU FROM JEU WHERE IDJEU = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mJeu = new Jeu(Id, 
+                               rs.GetOracleValue(1).ToString(),
+                               Convert.ToInt32(rs.GetOracleValue(2).ToString()));
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
+            cnLanUQTR.Close();
+        }
+
         public void retournerObjet(ref Joueur mJoueur, int Id)
         {
             mJoueur = null;
@@ -344,7 +375,7 @@ namespace TP_SMI1002
 
             cnLanUQTR.Open();
             // Ouverture d'une connexion
-            cmdString = "SELECT J.IDJEU, J.NOM, J.IDTYPEJEU, T.NOM FROM JEU J, TYPEJEU T ORDER BY J.NOM";
+            cmdString = "SELECT J.IDJEU, J.NOM, J.IDTYPEJEU, T.NOM FROM JEU J INNER JOIN TYPEJEU T ON J.IDTYPEJEU = T.IDTYPEJEU ORDER BY J.NOM";
 
             // Ajout de la commande à la query
             cmd.CommandText = cmdString;
@@ -478,7 +509,7 @@ namespace TP_SMI1002
             // Ajout d'un jeu
             else if (donnee is Jeu)
             {
-                cmd.CommandText = "insert into typejeu (nom,idtypejeu) values (:nom,:idtypejeu)";
+                cmd.CommandText = "insert into jeu (nom,idtypejeu) values (:nom,:idtypejeu)";
                 cmd.Parameters.Add("nom", ((Jeu)donnee).Nom);
                 cmd.Parameters.Add("idtypejeu", ((Jeu)donnee).IDTypeJeu);
             }
@@ -596,6 +627,14 @@ namespace TP_SMI1002
 
                 cmd.Parameters.Add("id", ((Evenement)donnee).Id);
             }
+            else if (donnee is Jeu)
+            {
+                cmdString = "update jeu set nom = :param1, idtypejeu = :param2 where idjeu = :keyValue";
+                cmd.CommandText = cmdString;
+                cmd.Parameters.Add("param1", ((Jeu)donnee).Nom);
+                cmd.Parameters.Add("param2", ((Jeu)donnee).IDTypeJeu);
+                cmd.Parameters.Add("keyValue", ((Jeu)donnee).Id);
+            }
 
 
             cmd.Connection = cnLanUQTR;
@@ -641,7 +680,7 @@ namespace TP_SMI1002
             //suppression d'un objet Jeu
             else if (donnee is Jeu)
             {
-                cmdString = "DELETE FROM JEU WHERE ID=" + ((Jeu)donnee).Id;
+                cmdString = "DELETE FROM JEU WHERE IDJEU=" + ((Jeu)donnee).Id;
             }
             //suppression d'un objet TypeJeu
             else if (donnee is TypeJeu)

@@ -11,9 +11,27 @@ namespace TP_SMI1002
 {
     public partial class FormJeu : Form
     {
+        private int id = 0;
+        InterfaceBD bd;
+        Jeu mJeu = null;
+
         public FormJeu()
         {
             InitializeComponent();
+        }
+
+        public FormJeu(int id)
+        {
+            InitializeComponent();
+            this.id = id;
+
+            bd = InterfaceBD.accesInstance();
+            bd.retournerObjet(ref mJeu, id);
+
+            if (mJeu != null)
+            {
+                txtNom.Text = mJeu.Nom;
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -23,16 +41,20 @@ namespace TP_SMI1002
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            InterfaceBD BD = InterfaceBD.accesInstance();
-            if (Valider.estNomValide(this.txtNom.Text))
+            bd = InterfaceBD.accesInstance();
+
+            if (id == 0)
             {
                 Jeu jeu = new Jeu(this.txtNom.Text, ((TypeJeu)(cbTypeJeu.SelectedItem)).Id);
-                BD.ajoutBD(jeu);
+                bd.ajoutBD(jeu);                
             }
             else
             {
-                MessageBox.Show("Veuillez entrer un nom valide, soit seulement avec des caractères alphabétiques et accents", "Erreur de nom", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Jeu jeu = new Jeu(this.id, this.txtNom.Text, ((TypeJeu)(cbTypeJeu.SelectedItem)).Id);
+                bd.modifierBD(jeu);
             }
+            this.DialogResult = DialogResult.OK;
+            
 
         }
 
@@ -48,7 +70,23 @@ namespace TP_SMI1002
                 cbTypeJeu.Items.Add(lstTypeJeu[i]);
             }
             if (cbTypeJeu.Items.Count > 0) cbTypeJeu.SelectedIndex = 0;
-        }
 
+            if (this.id > 0)
+            {
+                cbTypeJeu.SelectedIndex = RechercheIndexTypeJeu(mJeu.IDTypeJeu);
+            }
+        }
+        private int RechercheIndexTypeJeu(int id)
+        {
+            for(int i=0;i<cbTypeJeu.Items.Count; i++)
+            {
+                if (((TypeJeu)cbTypeJeu.Items[i]).Id == id)
+                {
+                    return i;
+                }
+            }
+           return -1;
+
+        }
     }
 }
