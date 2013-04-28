@@ -23,7 +23,7 @@ namespace TP_SMI1002
             this.IdJeu = IdJeu;
             this.dateDebut = dateDebut;
             this.dateFin = dateFin;
-            this.idEvenement = idEvenement;
+            this.idEvenement = IdEvenement;
             this.Nom = Nom;
         }
         //...
@@ -34,7 +34,7 @@ namespace TP_SMI1002
             this.IdJeu = IdJeu;
             this.dateDebut = dateDebut;
             this.dateFin = dateFin;
-            this.idEvenement = idEvenement;
+            this.idEvenement = IdEvenement;
             this.Nom = Nom;
         }
 

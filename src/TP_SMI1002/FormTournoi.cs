@@ -13,7 +13,6 @@ namespace TP_SMI1002
     {
         private Tournoi tournoi= null;
         InterfaceBD interfaceBD;
-        List<Jeu> lstJeu; 
 
         //---------------
         // Constructeurs
@@ -21,16 +20,23 @@ namespace TP_SMI1002
         public FormTournoi()
         {
             interfaceBD = InterfaceBD.accesInstance();
-            lstJeu = new List<Jeu>();
             InitializeComponent();
         }
-        //...
+        
+
         public FormTournoi(int id)
         {
-            interfaceBD = InterfaceBD.accesInstance();
-            //interfaceBD.retournerObjet(tournoi, id);
-            lstJeu = new List<Jeu>();
             InitializeComponent();
+            interfaceBD = InterfaceBD.accesInstance();
+            interfaceBD.retournerObjet(ref tournoi, id);
+            if (tournoi != null)
+            {
+                txtNbrJoueurParEquipe.Text = tournoi.nbJoueur.ToString();
+                txtNom.Text = tournoi.nbJoueur.ToString();
+                dtpDebut.Value = tournoi.dateDebut;
+                dtpFin.Value = tournoi.dateFin; 
+            }
+            
         }
 
         //-------------------------------------
@@ -46,23 +52,33 @@ namespace TP_SMI1002
             dtpFin.Format = DateTimePickerFormat.Custom;
             dtpFin.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
+            List<Jeu> lstJeu = new List<Jeu>();
             interfaceBD.remplirListe(ref lstJeu);
             for (int i = 0; i < lstJeu.Count();i++)
                 cbJeu.Items.Add(lstJeu[i]);
+
+            if (cbJeu.Items.Count > 0)
+                cbJeu.SelectedIndex = 0;
+
+            List<Evenement> lstEvenement = new List<Evenement>();
+            interfaceBD.remplirListe(ref lstEvenement);
+            for (int i = 0; i < lstEvenement.Count(); i++)
+            {
+                cbEvenement.Items.Add(lstEvenement[i]);   
+            }
+
+
+            if (cbEvenement.Items.Count > 0)
+                cbEvenement.SelectedIndex = 0;
 
             // Si modification
             if (tournoi != null)
             {
                 txtNom.Text = tournoi.Nom;
                 txtNbrJoueurParEquipe.Text = tournoi.nbJoueur.ToString();
-                //TODO: Trouver le bon nom de jeu à mettre
-                //      --> Implémenter la méthode find de List<Jeu>
-                //      http://msdn.microsoft.com/fr-fr/library/vstudio/x0b5b5bc.aspx
-                //      (Comparer par NOM)
-                //
-                //      *Faire une requête à la BD serait trop couteux pour rien
-                //      et on ne veut pas chercher un objet par son NOM dans un BD.
-                // cbJeu.SelectedIndex = 
+
+                cbJeu.SelectedIndex = rechercherIndexJeu(tournoi.IdJeu);
+                cbEvenement.SelectedIndex = rechercherIndexEvenement(tournoi.idEvenement);
             }
         }
 
@@ -101,16 +117,18 @@ namespace TP_SMI1002
                     tournoi.nbJoueur = Convert.ToInt32(txtNbrJoueurParEquipe.Text);
                     tournoi.dateDebut = dtpDebut.Value;
                     tournoi.dateFin = dtpFin.Value;
-
-                    // TODO: rendu à la récupération du jeu dans le combobox.... Voir ligne 57 
-                    // interfaceBD.retournerObjet(jeu, 
+                    tournoi.idEvenement = ((Evenement)(cbEvenement.Items[cbEvenement.SelectedIndex])).Id;
+                    
+                    tournoi.IdJeu = ((Jeu)(cbJeu.Items[cbJeu.SelectedIndex])).Id;
                     rangesEcrites = interfaceBD.modifierBD(tournoi);
                 }
                 // Ajout
                 else
                 {
-                    // TODO: Y faut récupéré le jeu dans le combobox.. Voir ligne 57
-                    //rangesEcrites = interfaceBD.ajoutBD(new Tournoi(args));
+                    rangesEcrites = interfaceBD.ajoutBD(new Tournoi(Convert.ToInt32(txtNbrJoueurParEquipe.Text), 
+                                            ((Jeu)(cbJeu.Items[cbJeu.SelectedIndex])).Id,
+                                            dtpDebut.Value, dtpFin.Value, 
+                                            ((Evenement)cbEvenement.Items[cbEvenement.SelectedIndex]).Id, txtNom.Text));
                 }
                 
                 // Si un problème est survenu..
@@ -119,7 +137,7 @@ namespace TP_SMI1002
                     MessageBox.Show("Impossible d'envoyer la requête.");
                 }
                 else
-                    this.DialogResult = DialogResult.OK; // Est-ce que ça fait le this.close()?
+                    this.DialogResult = DialogResult.OK;
             }
         }
 
@@ -127,5 +145,31 @@ namespace TP_SMI1002
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private int rechercherIndexJeu(int id)
+        {
+            for (int i = 0; i<cbJeu.Items.Count;i++)
+            {
+                if (((Jeu)cbJeu.Items[i]).Id == id)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int rechercherIndexEvenement(int id)
+        {
+            for (int i = 0; i < cbEvenement.Items.Count; i++)
+            {
+                if (((Evenement)cbEvenement.Items[i]).Id == id)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
+
+
 }

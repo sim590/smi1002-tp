@@ -40,6 +40,8 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.lblNom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbEvenement = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -114,7 +116,7 @@
             this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.Image = global::TP_SMI1002.Properties.Resources.Apply;
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnregistrer.Location = new System.Drawing.Point(263, 157);
+            this.btnEnregistrer.Location = new System.Drawing.Point(263, 195);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(84, 23);
             this.btnEnregistrer.TabIndex = 10;
@@ -128,7 +130,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(182, 157);
+            this.btnAnnuler.Location = new System.Drawing.Point(182, 195);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 9;
@@ -153,11 +155,31 @@
             this.txtNom.Size = new System.Drawing.Size(227, 20);
             this.txtNom.TabIndex = 12;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 153);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Évènement :";
+            // 
+            // cbEvenement
+            // 
+            this.cbEvenement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEvenement.FormattingEnabled = true;
+            this.cbEvenement.Location = new System.Drawing.Point(116, 150);
+            this.cbEvenement.Name = "cbEvenement";
+            this.cbEvenement.Size = new System.Drawing.Size(231, 21);
+            this.cbEvenement.TabIndex = 14;
+            // 
             // FormTournoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 192);
+            this.ClientSize = new System.Drawing.Size(355, 230);
+            this.Controls.Add(this.cbEvenement);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.btnEnregistrer);
@@ -193,5 +215,7 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbEvenement;
     }
 }
