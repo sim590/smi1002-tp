@@ -43,11 +43,20 @@ namespace TP_SMI1002
             if (pbCouleur.BackColor != null && Valider.estNomValide(this.txtNom.Text))
             {
                 type = new TypePersonnel(pbCouleur.BackColor.A, pbCouleur.BackColor.R,
-                                                pbCouleur.BackColor.G,pbCouleur.BackColor.B,this.txtNom.Text);
+                                                pbCouleur.BackColor.G, pbCouleur.BackColor.B, this.txtNom.Text);
 
                 // Ajout à la BD par le singleton
-                interfaceBD.ajoutBD(type);
+                if (interfaceBD.ajoutBD(type) == -1)
+                {
+                    MessageBox.Show("Impossible d'envoyer la requête.");
+                    return;
+                }
+
+                // On ferme la fenêtre
+                this.Close();
             }
+            else
+                MessageBox.Show("Veuillez entrer un nom valide et faire votre choix de couleur.");
         }
 
         // Annuler la transaction
