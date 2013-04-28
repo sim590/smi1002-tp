@@ -41,7 +41,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(292, 183);
+            this.btnAnnuler.Location = new System.Drawing.Point(268, 183);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 15;
@@ -55,7 +55,7 @@
             this.btnSupprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupprimer.Image = global::TP_SMI1002.Properties.Resources.Delete;
             this.btnSupprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSupprimer.Location = new System.Drawing.Point(211, 183);
+            this.btnSupprimer.Location = new System.Drawing.Point(187, 183);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
             this.btnSupprimer.TabIndex = 14;
@@ -69,7 +69,7 @@
             this.btnModifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModifier.Image = global::TP_SMI1002.Properties.Resources.Modify;
             this.btnModifier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModifier.Location = new System.Drawing.Point(130, 183);
+            this.btnModifier.Location = new System.Drawing.Point(106, 183);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(75, 23);
             this.btnModifier.TabIndex = 13;
@@ -83,7 +83,7 @@
             this.btnAjouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAjouter.Image = global::TP_SMI1002.Properties.Resources.New_document;
             this.btnAjouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAjouter.Location = new System.Drawing.Point(49, 183);
+            this.btnAjouter.Location = new System.Drawing.Point(25, 183);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(75, 23);
             this.btnAjouter.TabIndex = 12;
@@ -112,7 +112,7 @@
             // 
             // FormListeTypeJeu
             // 
-            this.ClientSize = new System.Drawing.Size(379, 218);
+            this.ClientSize = new System.Drawing.Size(355, 218);
             this.Controls.Add(this.lsvTypeJeu);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);

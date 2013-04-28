@@ -23,7 +23,30 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormJeu formJeu = new FormJeu();
-            formJeu.ShowDialog();
+            if (formJeu.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
+        }
+
+        private void RefreshListe()
+        {
+            lstJeuAvecType.Clear();
+            lsvJeuAvecType.Items.Clear();
+            bd = InterfaceBD.accesInstance();
+            bd.remplirListe(ref lstJeuAvecType);
+
+            ListViewItem lsv;
+            for (int i = 0; i < lstJeuAvecType.Count; i++)
+            {
+                lsv = new ListViewItem(lstJeuAvecType[i].Nom);
+                lsv.SubItems.Add(lstJeuAvecType[i].TypeJeu);
+                lsv.Tag = lstJeuAvecType[i].Id;
+
+                lsvJeuAvecType.Items.Add(lsv);
+            }
+
+            lsvJeuAvecType.Refresh();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -33,21 +56,22 @@ namespace TP_SMI1002
 
         private void FormListeJeux_Load(object sender, EventArgs e)
         {
-            List<JeuAvecType> lstJeuAvecType = new List<JeuAvecType>();
-
-            bd.remplirListe(ref lstJeuAvecType);
-
-            for (int i = 0; i < lstJeuAvecType.Count(); i++)
-            {
-                
-            }
+            RefreshListe();
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             if (lsvJeuAvecType.SelectedItems.Count == 1)
             {
-                bd.supprimmerDansBD(rechercheJeu(Convert.ToInt32(lsvJeuAvecType.SelectedItems[0].Tag)));
+                if (MessageBox.Show("Voulez-vous vraiment supprimer ce jeu?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bd.supprimmerDansBD(rechercheJeu(Convert.ToInt32(lsvJeuAvecType.SelectedItems[0].Tag)));
+                    this.RefreshListe();
+                } 
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir un jeu parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private Jeu rechercheJeu(int idEvenement)
@@ -60,6 +84,24 @@ namespace TP_SMI1002
                 }
             }
             return null;
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            if (lsvJeuAvecType.SelectedItems.Count == 1)
+            {
+                FormJeu formJeu = new FormJeu((int)lsvJeuAvecType.SelectedItems[0].Tag);
+
+                if (formJeu.ShowDialog() == DialogResult.OK)
+                {
+                    this.RefreshListe();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

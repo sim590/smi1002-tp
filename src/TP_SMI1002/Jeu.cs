@@ -30,6 +30,11 @@ namespace TP_SMI1002
         {
             return this.Nom;
         }
+
+        /*
+         * Implémenter le predicate<T> afin d'utiliser
+         * la méthode find de List<Jeu>.. http://msdn.microsoft.com/fr-fr/library/vstudio/x0b5b5bc.aspx
+         */
     }
 
     class JeuAvecType : Jeu

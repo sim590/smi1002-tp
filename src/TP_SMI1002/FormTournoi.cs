@@ -13,6 +13,7 @@ namespace TP_SMI1002
     {
         private Tournoi tournoi;
         InterfaceBD interfaceBD;
+        List<Jeu> lstJeu; 
 
         //---------------
         // Constructeurs
@@ -20,12 +21,14 @@ namespace TP_SMI1002
         public FormTournoi()
         {
             interfaceBD = InterfaceBD.accesInstance();
+            lstJeu = new List<Jeu>();
             InitializeComponent();
         }
         //...
         public FormTournoi(Tournoi tournoi)
         {
             this.tournoi = tournoi;
+            lstJeu = new List<Jeu>();
             InitializeComponent();
         }
 
@@ -42,7 +45,6 @@ namespace TP_SMI1002
             dtpFin.Format = DateTimePickerFormat.Custom;
             dtpFin.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
-            List<Jeu> lstJeu = new List<Jeu>();
             interfaceBD.remplirListe(ref lstJeu);
             for (int i = 0; i < lstJeu.Count();i++)
                 cbJeu.Items.Add(lstJeu[i]);
@@ -52,9 +54,13 @@ namespace TP_SMI1002
             {
                 txtNom.Text = tournoi.Nom;
                 txtNbrJoueurParEquipe.Text = tournoi.nbJoueur.ToString();
-                //TODO: Trouver le bon idJeu à mettre...
-                //      --> On peut s'arranger pour faire la requête pour lstJeu comme: select ...[blablabla] by idjeu
-                //          De cette façon, la liste dans le combobox serait dans l'ordre, c-à-d que lstJeu[i] = BD[idjeu]
+                //TODO: Trouver le bon nom de jeu à mettre
+                //      --> Implémenter la méthode find de List<Jeu>
+                //      http://msdn.microsoft.com/fr-fr/library/vstudio/x0b5b5bc.aspx
+                //      (Comparer par NOM)
+                //
+                //      *Faire une requête à la BD serait trop couteux pour rien
+                //      et on ne veut pas chercher un objet par son NOM dans un BD.
                 // cbJeu.SelectedIndex = 
             }
         }
@@ -95,14 +101,14 @@ namespace TP_SMI1002
                     tournoi.dateDebut = dtpDebut.Value;
                     tournoi.dateFin = dtpFin.Value;
 
-                    // TODO: rendu à la récupération du jeu dans le combobox....  mais comment lui passer son id???? :(
+                    // TODO: rendu à la récupération du jeu dans le combobox.... Voir ligne 57 
                     // interfaceBD.retournerObjet(jeu, 
                     rangesEcrites = interfaceBD.modifierBD(tournoi);
                 }
                 // Ajout
                 else
                 {
-                    // TODO: Y faut récupéré le jeu dans le combobox.. mais comment lui passer son id????
+                    // TODO: Y faut récupéré le jeu dans le combobox.. Voir ligne 57
                     //rangesEcrites = interfaceBD.ajoutBD(new Tournoi(args));
                 }
                 
