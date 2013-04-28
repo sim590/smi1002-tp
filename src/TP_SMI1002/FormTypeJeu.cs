@@ -13,6 +13,8 @@ namespace TP_SMI1002
     public partial class FormTypeJeu : Form
     {
         InterfaceBD interfaceBD;
+        int id = 0;
+        TypeJeu mTypeJeu = null;
         //---------------
         // Constructeur
         //---------------
@@ -20,6 +22,20 @@ namespace TP_SMI1002
         {
             interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
+        }
+
+        public FormTypeJeu(int id)
+        {
+            InitializeComponent();
+
+            interfaceBD = InterfaceBD.accesInstance();
+            this.id = id;
+            interfaceBD.retournerObjet(ref mTypeJeu, id);
+
+            if (mTypeJeu != null)
+            {
+                txtNom.Text = mTypeJeu.NomTypeJeu;
+            }
         }
 
         //-----------------------------------
@@ -43,8 +59,18 @@ namespace TP_SMI1002
             InterfaceBD BD = InterfaceBD.accesInstance();
             if (Valider.estNomValide(this.txtNom.Text))
             {
-                TypeJeu typejeu = new TypeJeu(this.txtNom.Text);
-                BD.ajoutBD(typejeu);
+                
+                if (id == 0)
+                {
+                    TypeJeu typejeu = new TypeJeu(this.txtNom.Text);
+                    BD.ajoutBD(typejeu);
+                }
+                else
+                {
+                    mTypeJeu.NomTypeJeu = txtNom.Text;
+                    BD.modifierBD(mTypeJeu);
+                }
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -55,6 +81,11 @@ namespace TP_SMI1002
         private void btnAnnuler_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormTypeJeu_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

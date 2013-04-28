@@ -55,7 +55,7 @@
             this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.Image = global::TP_SMI1002.Properties.Resources.Apply;
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnregistrer.Location = new System.Drawing.Point(174, 111);
+            this.btnEnregistrer.Location = new System.Drawing.Point(174, 64);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(84, 23);
             this.btnEnregistrer.TabIndex = 7;
@@ -69,7 +69,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(93, 111);
+            this.btnAnnuler.Location = new System.Drawing.Point(93, 64);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 6;
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 146);
+            this.ClientSize = new System.Drawing.Size(270, 99);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.btnAnnuler);
@@ -90,6 +90,7 @@
             this.Name = "FormTypeJeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTypeJeu";
+            this.Load += new System.EventHandler(this.FormTypeJeu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

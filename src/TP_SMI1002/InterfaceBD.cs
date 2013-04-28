@@ -51,6 +51,35 @@ namespace TP_SMI1002
 
         //Fonction pour aller chercher un objet pour le modifier
         #region retournerObjet
+
+        public void retournerObjet(ref TypeJeu mTypeJeu, int Id)
+        {
+            mTypeJeu = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDTYPEJEU, NOM FROM TYPEJEU WHERE IDTYPEJEU = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mTypeJeu = new TypeJeu(Id, rs.GetOracleValue(1).ToString());
+  
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+            cnLanUQTR.Close();
+        }
+
         public void retournerObjet(ref Tournoi mTournoi, int Id)
         {
             mTournoi = null;
@@ -583,8 +612,8 @@ namespace TP_SMI1002
             {
                 cmdString = "update typejeu set nom = :param1 where idtype = :keyValue";
                 cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((TypeJeu)donnee).NomTypeJeu);
-                cmd.Parameters.Add("@keyValue", ((TypeJeu)donnee).Id);
+                cmd.Parameters.Add("param1", ((TypeJeu)donnee).NomTypeJeu);
+                cmd.Parameters.Add("keyValue", ((TypeJeu)donnee).Id);
             }
             else if (donnee is Evenement)
             {
