@@ -179,7 +179,6 @@ namespace TP_SMI1002
                 rs.Close();
 
                 cmd.CommandText = "SELECT J.IDJOUEUR, J.NOM, J.GAMERTAG, J.COURRIEL, J.SEXE, J.DATENAISSANCE FROM JOUEUR J, JOUEUREQUIPE E WHERE E.IDEQUIPE = :id";
-
                 cmd.Parameters.Add("id", Id);
 
                 while (rs.Read())
@@ -191,6 +190,39 @@ namespace TP_SMI1002
                                                                     rs.GetOracleValue(4).ToString(),
                                                                     Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
                 }
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
+            cnLanUQTR.Close();
+        }
+
+        public void retournerObjet(ref Personnel mPersonnel, int Id)
+        {
+            mPersonnel = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL WHERE IDPERSONNEL = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mPersonnel = new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                        rs.GetOracleValue(1).ToString(),
+                                                        Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                                        rs.GetOracleValue(3).ToString());
+                                                        
                 rs.Close();
             }
             catch
@@ -589,7 +621,7 @@ namespace TP_SMI1002
             //suppression d'un objet Personnel
             if (donnee is Personnel)
             {
-                cmdString = "DELETE FROM PERSONNEL WHERE ID=" + ((Personnel)donnee).Id;   
+                cmdString = "DELETE FROM PERSONNEL WHERE IDPERSONNEL=" + ((Personnel)donnee).Id;   
             }
             //suppression d'un objet TypePersonnel
             else if (donnee is TypePersonnel)
