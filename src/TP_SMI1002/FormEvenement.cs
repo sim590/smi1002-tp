@@ -56,10 +56,9 @@ namespace TP_SMI1002
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void btnAjouterMembre_Click(object sender, EventArgs e)
+        private void btnAjouterTournoi_Click(object sender, EventArgs e)
         {
-            FormTournoi formTournoi = new FormTournoi();
-            formTournoi.ShowDialog();
+
         }
 
         private void FormEvenement_Load(object sender, EventArgs e)

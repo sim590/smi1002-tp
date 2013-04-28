@@ -55,6 +55,12 @@
     </Compile>
     <Compile Include="DonneeBD.cs" />
     <Compile Include="Evenement.cs" />
+    <Compile Include="FormListeTournoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListeTournoi.Designer.cs">
+      <DependentUpon>FormListeTournoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormListeTypeJeu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormListePersonnels.resx">
       <DependentUpon>FormListePersonnels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListeTournoi.resx">
+      <DependentUpon>FormListeTournoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListeTypeJeu.resx">
       <DependentUpon>FormListeTypeJeu.cs</DependentUpon>

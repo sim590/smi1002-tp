@@ -39,11 +39,6 @@ namespace TP_SMI1002
             {
                 txtNom.Text = mEquipe.Nom;
                 txtSite.Text = mEquipe.SiteWeb;
-
-                for (int i=0;i<mEquipe.lstJoueurs.Count(); i++)
-                {
-                    lbMembre.Items.Add(mEquipe.lstJoueurs[i]);
-                }
             }
         }
 
@@ -68,10 +63,7 @@ namespace TP_SMI1002
                 {
                     mEquipe.Nom = txtNom.Text;
                     mEquipe.SiteWeb = txtSite.Text;
-   
                     bd.ajoutBD(mEquipe);
-
-
 
                     mEquipe.SaveListeJoueurBD();
                     this.DialogResult = DialogResult.OK;
@@ -99,7 +91,10 @@ namespace TP_SMI1002
 
         private void FormEquipe_Load(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < mEquipe.lstJoueurs.Count(); i++)
+            {
+                lbMembre.Items.Add(mEquipe.lstJoueurs[i]);
+            }
         }
 
         private void btnAjouterMembre_Click(object sender, EventArgs e)
@@ -111,9 +106,12 @@ namespace TP_SMI1002
                 Joueur mJoueur = null;
                 for (int i = 0; i<formListeJoueurs.lstSelectedId.Count; i++)
                 {
-                    bd.retournerObjet(ref mJoueur, formListeJoueurs.lstSelectedId[i]);
+                    if (!JoueurDansEquipe(formListeJoueurs.lstSelectedId[i]))
+                    {
+                        bd.retournerObjet(ref mJoueur, formListeJoueurs.lstSelectedId[i]);
 
-                    lbMembre.Items.Add(mJoueur);
+                        lbMembre.Items.Add(mJoueur);
+                    }
                 }
             }
         }
@@ -138,6 +136,16 @@ namespace TP_SMI1002
             {
                 mEquipe.lstJoueurs.Add((Joueur)(lbMembre.Items[i]));
             }
+        }
+
+        private Boolean JoueurDansEquipe(int IdJoueur)
+        {
+            for (int i = 0; i < lbMembre.Items.Count; i++)
+            {
+                if (((Joueur)lbMembre.Items[i]).Id == IdJoueur)
+                    return true;
+            }
+            return false;
         }
     }
 }

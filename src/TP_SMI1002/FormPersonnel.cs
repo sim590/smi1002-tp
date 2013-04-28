@@ -53,32 +53,29 @@ namespace TP_SMI1002
         //-----------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            int rangesEcrites = 0;
             
-            if (Valider.estNomValide(txtNom.Text))
+            if (Valider.estNomValide(txtNom.Text) && && Valider.estCourrielValide(txtCourriel.Text))
             {
                 if (id == 0) // Ajout dans la base de données
                 {
-                    bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
-                    this.DialogResult = DialogResult.OK;
+                    rangesEcrites = bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
                 }
                 else //Update la base de données
                 {
-                    bd.modifierBD(new Personnel(id, txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
-                    this.DialogResult = DialogResult.OK;
+                    rangesEcrites = bd.modifierBD(new Personnel(id, txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
                 }
+                
+                // Erreur lors de l'opération..
+                if (rangesEcrites == -1)
+                {
+                    MessageBox.Show("Impossible d'envoyer la requête.");
+                    return;
+                }
+                this.DialogResult = DialogResult.OK;
             }
-        }
-
-        private bool courrielEstValide(string courriel)
-        {
-            return true;
-        }
-
-        private void FormPersonnel_Load(object sender, EventArgs e)
-        {
-
-        }
-
-          
+            else
+                MessageBox.Show("Veuillez entrer un nom et un courriel valide.");
+        }   
     }
 }
