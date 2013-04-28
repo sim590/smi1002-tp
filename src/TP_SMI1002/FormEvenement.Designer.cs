@@ -43,10 +43,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.btnSupprimerMembre = new System.Windows.Forms.Button();
-            this.btnAjouterMembre = new System.Windows.Forms.Button();
+            this.btnAjouterTournoi = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnModifierTournoi = new System.Windows.Forms.Button();
             this.txtNbrPlace = new System.Windows.Forms.TextBox();
             this.lblNombrePlace = new System.Windows.Forms.Label();
             this.txtPrix = new System.Windows.Forms.TextBox();
@@ -176,15 +176,15 @@
             this.btnSupprimerMembre.TabIndex = 27;
             this.btnSupprimerMembre.UseVisualStyleBackColor = true;
             // 
-            // btnAjouterMembre
+            // btnAjouterTournoi
             // 
-            this.btnAjouterMembre.Image = global::TP_SMI1002.Properties.Resources.Create;
-            this.btnAjouterMembre.Location = new System.Drawing.Point(276, 208);
-            this.btnAjouterMembre.Name = "btnAjouterMembre";
-            this.btnAjouterMembre.Size = new System.Drawing.Size(27, 23);
-            this.btnAjouterMembre.TabIndex = 26;
-            this.btnAjouterMembre.UseVisualStyleBackColor = true;
-            this.btnAjouterMembre.Click += new System.EventHandler(this.btnAjouterMembre_Click);
+            this.btnAjouterTournoi.Image = global::TP_SMI1002.Properties.Resources.Create;
+            this.btnAjouterTournoi.Location = new System.Drawing.Point(276, 208);
+            this.btnAjouterTournoi.Name = "btnAjouterTournoi";
+            this.btnAjouterTournoi.Size = new System.Drawing.Size(27, 23);
+            this.btnAjouterTournoi.TabIndex = 26;
+            this.btnAjouterTournoi.UseVisualStyleBackColor = true;
+            this.btnAjouterTournoi.Click += new System.EventHandler(this.btnAjouterMembre_Click);
             // 
             // btnEnregistrer
             // 
@@ -214,14 +214,14 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // button1
+            // btnModifierTournoi
             // 
-            this.button1.Image = global::TP_SMI1002.Properties.Resources.Modify;
-            this.button1.Location = new System.Drawing.Point(309, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 28;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnModifierTournoi.Image = global::TP_SMI1002.Properties.Resources.Modify;
+            this.btnModifierTournoi.Location = new System.Drawing.Point(309, 208);
+            this.btnModifierTournoi.Name = "btnModifierTournoi";
+            this.btnModifierTournoi.Size = new System.Drawing.Size(27, 23);
+            this.btnModifierTournoi.TabIndex = 28;
+            this.btnModifierTournoi.UseVisualStyleBackColor = true;
             // 
             // txtNbrPlace
             // 
@@ -264,9 +264,9 @@
             this.Controls.Add(this.lblPrix);
             this.Controls.Add(this.txtNbrPlace);
             this.Controls.Add(this.lblNombrePlace);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnModifierTournoi);
             this.Controls.Add(this.btnSupprimerMembre);
-            this.Controls.Add(this.btnAjouterMembre);
+            this.Controls.Add(this.btnAjouterTournoi);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtVille);
@@ -311,8 +311,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnSupprimerMembre;
-        private System.Windows.Forms.Button btnAjouterMembre;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAjouterTournoi;
+        private System.Windows.Forms.Button btnModifierTournoi;
         private System.Windows.Forms.TextBox txtNbrPlace;
         private System.Windows.Forms.Label lblNombrePlace;
         private System.Windows.Forms.TextBox txtPrix;

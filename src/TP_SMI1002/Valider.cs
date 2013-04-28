@@ -10,11 +10,16 @@ namespace TP_SMI1002
     {
         public static bool estCourrielValide(string courriel)
         {
-            //-------------------------------------------
-            // TODO: est-ce possible d'avoir un accent ou caracteres speciaux dans un adresse courriel ?!
+            // string non-vide
+            if (courriel.Length == 0)
+                return false;
+            //--------------------------------------------------------
+            // TODO: est-ce possible d'avoir un accent ou caracteres 
+            // speciaux dans un adresse courriel ?!
             // Vérifie que le string est composé d'une 
-            // chaîne de caractère puis @ puis une autre chaîne de caractere suivi de . puis com|ca|org|qc.ca
-            //-------------------------------------------
+            // chaîne de caractère puis @ puis une autre chaîne de 
+            // caractere suivi de . puis com|ca|org|qc.ca
+            //--------------------------------------------------------
             if (!Regex.IsMatch(courriel, @"^[a-zA-Z0-9_-\.]+@+[a-zA-Z0-9_]+.+[a-zA-Z0-9\.]{7}$"))
                 return false;
             return true;
@@ -22,6 +27,9 @@ namespace TP_SMI1002
 
         public static bool estNomValide(string nom)
         {
+            // String non-vide
+            if (nom.Length == 0)
+                return false;
             //-------------------------------------------
             // Vérifie que le string est composé que de 
             // 2 à 20 lettres et/ou accents et/ou "-"

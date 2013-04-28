@@ -18,6 +18,7 @@ namespace TP_SMI1002
         //---------------
         public FormPersonnel()
         {
+            bd = InterfaceBD.accesInstance();
             InitializeComponent();
         }
 
@@ -31,25 +32,19 @@ namespace TP_SMI1002
         //-----------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            bd = InterfaceBD.accesInstance();
-            if (Valider.estNomValide(txtNom.Text))
+            if (Valider.estNomValide(txtNom.Text) && Valider.estCourrielValide(txtCourriel.Text))
             {
-                bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                if (bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text)) == -1)
+                {
+                    MessageBox.Show("Impossible d'envoyer la requête.");
+                    return;
+                }
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-        }
-
-        private bool courrielEstValide(string courriel)
-        {
-            return true;
-        }
-
-        private void FormPersonnel_Load(object sender, EventArgs e)
-        {
-
-        }
-
-          
+            else
+                MessageBox.Show("Veuillez entrer un nom et un courriel valide.");
+        }   
     }
 }

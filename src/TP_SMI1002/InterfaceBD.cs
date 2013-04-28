@@ -415,9 +415,9 @@ namespace TP_SMI1002
             // Ajout d'un type de personnel
             else if (donnee is TypePersonnel)
             {
-                cmd.CommandText = "insert into typepersonnel (nom,couleur) values (@nom,@couleur)";
-                cmd.Parameters.Add("@nom", ((TypePersonnel)donnee).Nom);
-                cmd.Parameters.Add("@couleur", ((TypePersonnel)donnee).Couleur);
+                cmd.CommandText = "insert into typepersonnel (nom,couleur) values (:nom,:couleur)";
+                cmd.Parameters.Add("nom", ((TypePersonnel)donnee).Nom);
+                cmd.Parameters.Add("couleur", ((TypePersonnel)donnee).Couleur);
             }
             // Ajout d'une équipe
             else if (donnee is Equipe)
@@ -440,27 +440,27 @@ namespace TP_SMI1002
             // Ajout d'un type de jeu
             else if (donnee is TypeJeu)
             {
-                cmd.CommandText = "insert into typejeu (nom) values (@nom)";
-                cmd.Parameters.Add("@nom", ((TypeJeu)donnee).NomTypeJeu);
+                cmd.CommandText = "insert into typejeu (nom) values (:nom)";
+                cmd.Parameters.Add("nom", ((TypeJeu)donnee).NomTypeJeu);
             }
             // Ajout d'un jeu
             else if (donnee is Jeu)
             {
-                cmd.CommandText = "insert into typejeu (nom,idtypejeu) values (@nom,@idtypejeu)";
-                cmd.Parameters.Add("@nom", ((Jeu)donnee).Nom);
-                cmd.Parameters.Add("@idtypejeu", ((Jeu)donnee).IDTypeJeu);
+                cmd.CommandText = "insert into typejeu (nom,idtypejeu) values (:nom,:idtypejeu)";
+                cmd.Parameters.Add("nom", ((Jeu)donnee).Nom);
+                cmd.Parameters.Add("idtypejeu", ((Jeu)donnee).IDTypeJeu);
             }
             // Ajout d'un tournoi
             else if (donnee is Tournoi)
             {
                 cmd.CommandText = "insert into tournoi (nom,debut,fin,nbjoueurs,idjeu,idevenement) "+
-                                                        "values (@nom,@debut,@fin,@nbjoueurs,@idjeu,@idevenement)";
-                cmd.Parameters.Add("@nom", ((Tournoi)donnee).Nom);
-                cmd.Parameters.Add("@debut", ((Tournoi)donnee).dateDebut);
-                cmd.Parameters.Add("@fin", ((Tournoi)donnee).dateFin);
-                cmd.Parameters.Add("@nbjoueurs", ((Tournoi)donnee).nbJoueur);
-                cmd.Parameters.Add("@idjeu", ((Tournoi)donnee).IdJeu);
-                cmd.Parameters.Add("@idevenement", ((Tournoi)donnee).idEvenement);
+                                                        "values (:nom,:debut,:fin,:nbjoueurs,:idjeu,:idevenement)";
+                cmd.Parameters.Add("nom", ((Tournoi)donnee).Nom);
+                cmd.Parameters.Add("debut", ((Tournoi)donnee).dateDebut);
+                cmd.Parameters.Add("fin", ((Tournoi)donnee).dateFin);
+                cmd.Parameters.Add("nbjoueurs", ((Tournoi)donnee).nbJoueur);
+                cmd.Parameters.Add("idjeu", ((Tournoi)donnee).IdJeu);
+                cmd.Parameters.Add("idevenement", ((Tournoi)donnee).idEvenement);
             }
             else if (donnee is Evenement)
             {
