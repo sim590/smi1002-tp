@@ -12,7 +12,6 @@ namespace TP_SMI1002
 {
     public partial class FormListeEquipes : Form
     {
-        //ObjOracleConnexion cn;
         List<Equipe> lstEquipe = new List<Equipe>();
         InterfaceBD bd;
 

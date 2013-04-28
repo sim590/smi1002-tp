@@ -10,11 +10,15 @@ namespace TP_SMI1002
         public string Nom {get; set;}
         public int IDTypeJeu{get; set;}
 
+        //----------------
+        // Constructeurs
+        //----------------
         public Jeu(String Nom,int IDTypeJeu)
         {
             this.Nom = Nom;
             this.IDTypeJeu = IDTypeJeu;
         }
+        //...
         public Jeu(int Id, String Nom, int IDTypeJeu)
         {
             this.Id = Id;

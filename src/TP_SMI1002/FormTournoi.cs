@@ -11,28 +11,29 @@ namespace TP_SMI1002
 {
     public partial class FormTournoi : Form
     {
-        private int IDTournoi = 0;
-        InterfaceBD bd;
+        private Tournoi tournoi;
+        InterfaceBD interfaceBD;
 
         //---------------
         // Constructeurs
         //---------------
         public FormTournoi()
         {
-            bd = InterfaceBD.accesInstance();
+            interfaceBD = InterfaceBD.accesInstance();
             InitializeComponent();
         }
         //...
-        public FormTournoi(int IDTournoi)
+        public FormTournoi(Tournoi tournoi)
         {
+            this.tournoi = tournoi;
             InitializeComponent();
-
-            this.IDTournoi = IDTournoi;
         }
 
         //-------------------------------------
-        // Lors du chargement de la fenêtre,
-        // rafraichissement de la liste
+        // Lors du chargement de la fenêtre:
+        // - rafraichissement de la liste
+        // - Remplissage des champs selon les
+        //   info avant la modification
         //-------------------------------------
         private void FormTournoi_Load(object sender, EventArgs e)
         {
@@ -42,9 +43,20 @@ namespace TP_SMI1002
             dtpFin.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
             List<Jeu> lstJeu = new List<Jeu>();
-            bd.remplirListe(ref lstJeu);
+            interfaceBD.remplirListe(ref lstJeu);
             for (int i = 0; i < lstJeu.Count();i++)
                 cbJeu.Items.Add(lstJeu[i]);
+
+            // Si modification
+            if (tournoi != null)
+            {
+                txtNom.Text = tournoi.Nom;
+                txtNbrJoueurParEquipe.Text = tournoi.nbJoueur.ToString();
+                //TODO: Trouver le bon idJeu à mettre...
+                //      --> On peut s'arranger pour faire la requête pour lstJeu comme: select ...[blablabla] by idjeu
+                //          De cette façon, la liste dans le combobox serait dans l'ordre, c-à-d que lstJeu[i] = BD[idjeu]
+                // cbJeu.SelectedIndex = 
+            }
         }
 
         //----------------------
@@ -52,6 +64,8 @@ namespace TP_SMI1002
         //----------------------
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            int rangesEcrites=0;
+
             txtNbrJoueurParEquipe.Text.Trim();
             txtNom.Text.Trim();
 
@@ -73,16 +87,32 @@ namespace TP_SMI1002
             }
             else
             {
-                // Modifier 
-                if (IDTournoi != 0)
+                // Modification
+                if (this.tournoi != null)
                 {
+                    tournoi.Nom = txtNom.Text;
+                    tournoi.nbJoueur = Convert.ToInt32(txtNbrJoueurParEquipe.Text);
+                    tournoi.dateDebut = dtpDebut.Value;
+                    tournoi.dateFin = dtpFin.Value;
 
+                    // TODO: rendu à la récupération du jeu dans le combobox....  mais comment lui passer son id???? :(
+                    // interfaceBD.retournerObjet(jeu, 
+                    rangesEcrites = interfaceBD.modifierBD(tournoi);
                 }
+                // Ajout
                 else
                 {
-
+                    // TODO: Y faut récupéré le jeu dans le combobox.. mais comment lui passer son id????
+                    //rangesEcrites = interfaceBD.ajoutBD(new Tournoi(args));
                 }
-                this.DialogResult = DialogResult.OK;
+                
+                // Si un problème est survenu..
+                if (rangesEcrites == -1)
+                {
+                    MessageBox.Show("Impossible d'envoyer la requête.");
+                }
+                else
+                    this.DialogResult = DialogResult.OK; // Est-ce que ça fait le this.close()?
             }
         }
 

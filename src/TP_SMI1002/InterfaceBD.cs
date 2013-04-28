@@ -236,6 +236,37 @@ namespace TP_SMI1002
 
             cnLanUQTR.Close();
         }
+
+        //-------------------------------
+        // Va chercher un jeu par son ID
+        //-------------------------------
+        public void retournerObjet(ref Jeu jeu, int id)
+        {
+            OracleCommand cmd = new OracleCommand();
+            OracleDataReader rs;
+            cmd.Connection = cnLanUQTR;
+
+            // Établie la connexion..... faudrait catch si ça plante..
+            cnLanUQTR.Open();
+
+            cmd.CommandText = "select idjeu,nom,idtypejeu from jeu where idjeu = :idjeu";
+            cmd.Parameters.Add("idjeu", id);
+
+            // Envoie la commande
+            rs = cmd.ExecuteReader();
+
+            // Si on a récupéré une lecture
+            if (rs.Read())
+            {
+                jeu.Id = id;
+                jeu.Nom = rs.GetOracleValue(1).ToString();
+                jeu.IDTypeJeu = Convert.ToInt32(rs.GetOracleValue(2).ToString());
+            }
+
+            rs.Close();
+            cnLanUQTR.Close();
+        }
+
         #endregion 
 
         //Fonction pour remplir les différentes liste
@@ -422,10 +453,38 @@ namespace TP_SMI1002
 
             cnLanUQTR.Close();
         }
+
+        //-----------------------------------------------------
+        // Va chercher toutes les tournois présent dans la BD
+        // et les stock dans une liste
+        //-----------------------------------------------------
+        public void remplirListe(ref List<Tournoi> lstTournoi)
+        {
+            OracleCommand cmd = new OracleCommand();
+            OracleDataReader rs;
+            cmd.Connection = cnLanUQTR;
+
+            cnLanUQTR.Open(); // TODO: Vérifier l'exception si on peut pas se connecter...
+
+            cmd.CommandText = "select idtournoi,nbjoueurs,idjeu,debut,fin,idevenement,nom from tournoi by nom";
+
+            rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstTournoi.Add(new Tournoi(Convert.ToInt32(rs.GetOracleValue(0).ToString()),Convert.ToInt32(rs.GetOracleValue(1).ToString()),
+                                           Convert.ToInt32(rs.GetOracleValue(2)),Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
+                                           Convert.ToDateTime(rs.GetOracleValue(4).ToString()),Convert.ToInt32(rs.GetOracleValue(5).ToString()),
+                                           rs.GetOracleValue(6).ToString()));
+            }
+            rs.Close();
+            cnLanUQTR.Close();
+        }
         #endregion
 
+
+
         #region ajoutBD
-        //TODO: La query fonctionne pas.................
         //-------------------------------------------
         // Ajout d'une donnée à la base de données
         //-------------------------------------------
