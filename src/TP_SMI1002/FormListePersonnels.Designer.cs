@@ -36,6 +36,7 @@
             this.clnNom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnCourriel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSupprimer
@@ -99,7 +100,8 @@
             this.lsvPersonnel.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clnNom,
             this.clnDate,
-            this.clnCourriel});
+            this.clnCourriel,
+            this.clnType});
             this.lsvPersonnel.FullRowSelect = true;
             this.lsvPersonnel.Location = new System.Drawing.Point(12, 12);
             this.lsvPersonnel.MultiSelect = false;
@@ -111,8 +113,8 @@
             // 
             // clnNom
             // 
-            this.clnNom.Text = "Nom équipe";
-            this.clnNom.Width = 184;
+            this.clnNom.Text = "Nom";
+            this.clnNom.Width = 142;
             // 
             // clnDate
             // 
@@ -122,7 +124,12 @@
             // clnCourriel
             // 
             this.clnCourriel.Text = "Courriel";
-            this.clnCourriel.Width = 219;
+            this.clnCourriel.Width = 124;
+            // 
+            // clnType
+            // 
+            this.clnType.Text = "Type";
+            this.clnType.Width = 136;
             // 
             // FormListePersonnels
             // 
@@ -136,7 +143,7 @@
             this.Controls.Add(this.btnAjouter);
             this.Name = "FormListePersonnels";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ListePersonnels";
+            this.Text = "Liste du personnel";
             this.Load += new System.EventHandler(this.FormListePersonnels_Load);
             this.ResumeLayout(false);
 
@@ -152,5 +159,6 @@
         private System.Windows.Forms.ColumnHeader clnNom;
         private System.Windows.Forms.ColumnHeader clnDate;
         private System.Windows.Forms.ColumnHeader clnCourriel;
+        private System.Windows.Forms.ColumnHeader clnType;
     }
 }

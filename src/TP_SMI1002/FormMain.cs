@@ -44,18 +44,6 @@ namespace TP_SMI1002
             FormEquipes.ShowDialog();
         }
 
-        private void optEvenements_Click(object sender, EventArgs e)
-        {
-            FormListeEvenements FormEvenements = new FormListeEvenements();
-            FormEvenements.ShowDialog();
-        }
-
-        private void optJeux_Click(object sender, EventArgs e)
-        {
-            FormListeJeux FormJeux = new FormListeJeux();
-            FormJeux.ShowDialog();
-        }
-
         private void optJoueur_Click(object sender, EventArgs e)
         {
             FormListeJoueurs FormJoueurs = new FormListeJoueurs(FormListeJoueurs.mode.liste);
@@ -78,18 +66,6 @@ namespace TP_SMI1002
         {
             About formAbout = new About();
             formAbout.ShowDialog();
-        }
-
-        private void typeDeJeuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormListeTypeJeu TypeJeu = new FormListeTypeJeu();
-            TypeJeu.ShowDialog();
-        }
-
-        private void tournoiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormListeTournoi Tournoi = new FormListeTournoi();
-            Tournoi.ShowDialog();
         }
     }
 }

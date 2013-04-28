@@ -1,14 +1,4 @@
-﻿//-----------------------------------------------------------
-// Fichier: TypePersonnel.cs    Auteur: Simon DÉSAULNIERS
-//                                      Christophe Diammond
-//                                      Daniel St-Pierre
-//                                      Jordan Blanchette
-//-----------------------------------------------------------
-// Classe représentant un type de personnel requis pour
-// l'événement (p. ex: technicien serveurs, animation, etc).
-//-----------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +38,11 @@ namespace TP_SMI1002
             this.Couleur = couleur;
             this.Nom = nom;
             this.Id = id;
+        }
+
+        public override string ToString()
+        {
+            return this.Nom;
         }
     }
 }

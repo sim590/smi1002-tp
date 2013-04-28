@@ -20,7 +20,7 @@ namespace TP_SMI1002
             // chaîne de caractère puis @ puis une autre chaîne de 
             // caractere suivi de . puis com|ca|org|qc.ca
             //--------------------------------------------------------
-            if (!Regex.IsMatch(courriel, @"^[a-zA-Z0-9_-\.]+@+[a-zA-Z0-9_]+.+[a-zA-Z0-9\.]{7}$"))
+            if (!Regex.IsMatch(courriel, @"^[a-zA-Z0-9_\-\.]+@+[a-zA-Z0-9_]+\."))
                 return false;
             return true;
         }

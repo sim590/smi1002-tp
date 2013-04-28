@@ -11,7 +11,7 @@ namespace TP_SMI1002
 {
     public partial class FormListePersonnels : Form
     {
-        List<Personnel> lstPersonnel = new List<Personnel>();
+        List<PersonnelAvecType> lstPersonnel = new List<PersonnelAvecType>();
         InterfaceBD bd;
 
         public FormListePersonnels()
@@ -51,6 +51,7 @@ namespace TP_SMI1002
                 lsv = new ListViewItem(lstPersonnel[i].Nom);
                 lsv.SubItems.Add(lstPersonnel[i].DateNaissance.ToString());
                 lsv.SubItems.Add(lstPersonnel[i].Courriel);
+                lsv.SubItems.Add(lstPersonnel[i].TypePersonnel);
                 lsv.Tag = lstPersonnel[i].Id;
 
                 lsvPersonnel.Items.Add(lsv);
@@ -73,7 +74,7 @@ namespace TP_SMI1002
             }
             else
             {
-                MessageBox.Show("Veuillez choisir un joueur parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuillez choisir un membre du personnel parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -81,20 +82,20 @@ namespace TP_SMI1002
         {
             if (lsvPersonnel.SelectedItems.Count == 1)
             {
-                if (MessageBox.Show("Voulez-vous vraiment supprimer cette équipe?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Voulez-vous vraiment supprimer ce membre du personnel?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    bd.supprimmerDansBD(rechercheEquipe(Convert.ToInt32(lsvPersonnel.SelectedItems[0].Tag)));
+                    bd.supprimmerDansBD(recherchePersonnel(Convert.ToInt32(lsvPersonnel.SelectedItems[0].Tag)));
                     this.RefreshListe();
                 }
 
             }
             else
             {
-                MessageBox.Show("Veuillez choisir une équipe parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuillez choisir un membre du personnel parmis la liste.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private Personnel rechercheEquipe(int idPersonnel)
+        private Personnel recherchePersonnel(int idPersonnel)
         {
             for (int i = 0; i < lstPersonnel.Count(); i++)
             {

@@ -13,7 +13,7 @@ namespace TP_SMI1002
     {
         private int id = 0;
         InterfaceBD bd;
-        Personnel mPersonnel = null;
+        PersonnelAvecType mPersonnel = null;
 
         //---------------
         // Constructeur
@@ -76,6 +76,38 @@ namespace TP_SMI1002
             }
             else
                 MessageBox.Show("Veuillez entrer un nom et un courriel valide.");
-        }   
+        }
+
+        private void FormPersonnel_Load(object sender, EventArgs e)
+        {
+            bd = InterfaceBD.accesInstance();
+            List<TypePersonnel> lstTypePersonnel = new List<TypePersonnel>();
+
+            bd.remplirListe(ref lstTypePersonnel);
+
+            for (int i = 0; i < lstTypePersonnel.Count(); i++)
+            {
+                cbTypePersonnel.Items.Add(lstTypePersonnel[i]);
+            }
+            if (cbTypePersonnel.Items.Count > 0)
+            {
+                cbTypePersonnel.SelectedIndex = 0;
+            }
+            if (this.id > 0)
+            {
+                cbTypePersonnel.SelectedIndex = RechercheIndexTypePersonnel(mPersonnel.Id);
+            }
+        }
+        private int RechercheIndexTypePersonnel(int id)
+        {
+            for (int i = 0; i < cbTypePersonnel.Items.Count; i++)
+            {
+                if(((TypePersonnel)cbTypePersonnel.Items[i]).Id==id)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

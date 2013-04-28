@@ -66,7 +66,6 @@ namespace TP_SMI1002
                     bd.ajoutBD(mEquipe);
 
                     mEquipe.SaveListeJoueurBD();
-                    this.DialogResult = DialogResult.OK;
                 }
                 else //Update la base de données
                 {
@@ -75,8 +74,9 @@ namespace TP_SMI1002
 
                     bd.modifierBD(mEquipe);
                     mEquipe.SaveListeJoueurBD();
-                    this.DialogResult = DialogResult.OK;
+                    
                 }
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
