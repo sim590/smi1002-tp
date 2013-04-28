@@ -85,5 +85,11 @@ namespace TP_SMI1002
             FormListeTypeJeu TypeJeu = new FormListeTypeJeu();
             TypeJeu.ShowDialog();
         }
+
+        private void tournoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormListeTournoi Tournoi = new FormListeTournoi();
+            Tournoi.ShowDialog();
+        }
     }
 }
