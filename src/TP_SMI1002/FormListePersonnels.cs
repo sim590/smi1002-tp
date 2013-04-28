@@ -22,7 +22,10 @@ namespace TP_SMI1002
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             FormPersonnel formPersonnel = new FormPersonnel();
-            formPersonnel.ShowDialog();
+            if (formPersonnel.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListe();
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

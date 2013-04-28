@@ -52,36 +52,34 @@ namespace TP_SMI1002
         public void SaveListeJoueurBD()
         {
             InterfaceBD bd = InterfaceBD.accesInstance();
-            if (Id == 0)
-            {
+            //if (Id == 0)
+            //{
                 OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
                 cmd.Connection = bd.getLanUQTR;
 
                 // Ouverture d'une connexion
                 bd.getLanUQTR.Open();
 
-                cmd.CommandText = "SELECT IDEQUIPE FROM EQUIPE WHERE NOM=:nom";
-                cmd.Parameters.Add("nom", this.Nom.ToString());
+                //cmd.CommandText = "SELECT IDEQUIPE FROM EQUIPE WHERE NOM=:nom";
+                //cmd.Parameters.Add("nom", this.Nom.ToString());
 
-                /*Oracle rs = new OracleDataReader();
-                rs = cmd.ExecuteReader();
-                rs.Read();
-                string allo = rs.GetOracleValue(0).ToString();
- 
-                this.Id = Convert.ToInt32(rs.GetOracleValue(0).ToString());
-                rs.Close();
+                //OracleDataReader rs = cmd.ExecuteReader();
+               // rs = cmd.ExecuteReader();
+                //rs.Read(); 
+                //this.Id = Convert.ToInt32(rs.GetOracleValue(0).ToString());
+                //rs.Close();
 
                 for (int i = 0; i < lstJoueurs.Count; i++)
                 {
-                    cmd.CommandText = "INSERT INTO JOUEUREQUIPE (IDJOUEUR, IDEQUIPE) VALUES(:idjoueur, :idequipe)";
-                    cmd.Parameters.Add("idequipe", Id);
-                    cmd.Parameters.Add("idjoueur", lstJoueurs[i].Id);
-                    cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO JOUEUREQUIPE (idjoueur, idequipe) VALUES(:idjoueur,:idequipe)";
+                    cmd.Parameters.Add("idjoueur", lstJoueurs[i].Id);
+                    cmd.Parameters.Add("idequipe", this.Id);                    
+                    cmd.ExecuteNonQuery();
                 }
-
-                bd.getLanUQTR.Close();*/
-            }
+                
+                bd.getLanUQTR.Close();
+            //}
         }
     }
 }

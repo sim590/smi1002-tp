@@ -36,7 +36,6 @@ namespace TP_SMI1002
             {
                 bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
                 this.DialogResult = DialogResult.OK;
-                this.Close();
             }
         }
 

@@ -82,7 +82,7 @@ namespace TP_SMI1002
                     mEquipe.SiteWeb = txtSite.Text;
 
                     bd.modifierBD(mEquipe);
-
+                    mEquipe.SaveListeJoueurBD();
                     this.DialogResult = DialogResult.OK;
                 }
             }
