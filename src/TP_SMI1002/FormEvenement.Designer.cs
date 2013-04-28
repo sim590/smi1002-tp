@@ -40,13 +40,8 @@
             this.txtLieu = new System.Windows.Forms.TextBox();
             this.txtAdresse = new System.Windows.Forms.TextBox();
             this.txtVille = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.btnSupprimerMembre = new System.Windows.Forms.Button();
-            this.btnAjouterMembre = new System.Windows.Forms.Button();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.txtNbrPlace = new System.Windows.Forms.TextBox();
             this.lblNombrePlace = new System.Windows.Forms.Label();
             this.txtPrix = new System.Windows.Forms.TextBox();
@@ -149,49 +144,12 @@
             this.txtVille.Size = new System.Drawing.Size(248, 20);
             this.txtVille.TabIndex = 21;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 218);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Liste des tournois";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(28, 234);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(341, 167);
-            this.listView1.TabIndex = 25;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnSupprimerMembre
-            // 
-            this.btnSupprimerMembre.Image = global::TP_SMI1002.Properties.Resources.Delete;
-            this.btnSupprimerMembre.Location = new System.Drawing.Point(342, 208);
-            this.btnSupprimerMembre.Name = "btnSupprimerMembre";
-            this.btnSupprimerMembre.Size = new System.Drawing.Size(27, 23);
-            this.btnSupprimerMembre.TabIndex = 27;
-            this.btnSupprimerMembre.UseVisualStyleBackColor = true;
-            // 
-            // btnAjouterMembre
-            // 
-            this.btnAjouterMembre.Image = global::TP_SMI1002.Properties.Resources.Create;
-            this.btnAjouterMembre.Location = new System.Drawing.Point(276, 208);
-            this.btnAjouterMembre.Name = "btnAjouterMembre";
-            this.btnAjouterMembre.Size = new System.Drawing.Size(27, 23);
-            this.btnAjouterMembre.TabIndex = 26;
-            this.btnAjouterMembre.UseVisualStyleBackColor = true;
-            this.btnAjouterMembre.Click += new System.EventHandler(this.btnAjouterMembre_Click);
-            // 
             // btnEnregistrer
             // 
             this.btnEnregistrer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnregistrer.Image = global::TP_SMI1002.Properties.Resources.Apply;
             this.btnEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnregistrer.Location = new System.Drawing.Point(286, 410);
+            this.btnEnregistrer.Location = new System.Drawing.Point(286, 206);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(84, 23);
             this.btnEnregistrer.TabIndex = 15;
@@ -205,7 +163,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Image = global::TP_SMI1002.Properties.Resources.Cancel;
             this.btnAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnnuler.Location = new System.Drawing.Point(205, 410);
+            this.btnAnnuler.Location = new System.Drawing.Point(205, 206);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 14;
@@ -213,15 +171,6 @@
             this.btnAnnuler.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::TP_SMI1002.Properties.Resources.Modify;
-            this.button1.Location = new System.Drawing.Point(309, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 28;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // txtNbrPlace
             // 
@@ -259,16 +208,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 445);
+            this.ClientSize = new System.Drawing.Size(380, 241);
             this.Controls.Add(this.txtPrix);
             this.Controls.Add(this.lblPrix);
             this.Controls.Add(this.txtNbrPlace);
             this.Controls.Add(this.lblNombrePlace);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnSupprimerMembre);
-            this.Controls.Add(this.btnAjouterMembre);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtVille);
             this.Controls.Add(this.txtAdresse);
             this.Controls.Add(this.txtLieu);
@@ -308,11 +252,6 @@
         private System.Windows.Forms.TextBox txtLieu;
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.TextBox txtVille;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button btnSupprimerMembre;
-        private System.Windows.Forms.Button btnAjouterMembre;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtNbrPlace;
         private System.Windows.Forms.Label lblNombrePlace;
         private System.Windows.Forms.TextBox txtPrix;
