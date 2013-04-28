@@ -39,11 +39,6 @@ namespace TP_SMI1002
             {
                 txtNom.Text = mEquipe.Nom;
                 txtSite.Text = mEquipe.SiteWeb;
-
-                for (int i=0;i<mEquipe.lstJoueurs.Count(); i++)
-                {
-                    lbMembre.Items.Add(mEquipe.lstJoueurs[i]);
-                }
             }
         }
 
@@ -68,10 +63,7 @@ namespace TP_SMI1002
                 {
                     mEquipe.Nom = txtNom.Text;
                     mEquipe.SiteWeb = txtSite.Text;
-   
                     bd.ajoutBD(mEquipe);
-
-
 
                     mEquipe.SaveListeJoueurBD();
                     this.DialogResult = DialogResult.OK;
@@ -99,7 +91,10 @@ namespace TP_SMI1002
 
         private void FormEquipe_Load(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < mEquipe.lstJoueurs.Count(); i++)
+            {
+                lbMembre.Items.Add(mEquipe.lstJoueurs[i]);
+            }
         }
 
         private void btnAjouterMembre_Click(object sender, EventArgs e)
