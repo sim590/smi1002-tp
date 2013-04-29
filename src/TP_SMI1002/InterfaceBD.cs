@@ -80,6 +80,34 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
+        public void retournerObjet(ref TypePersonnel mTypePersonnel, int Id)
+        {
+            mTypePersonnel = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL WHERE IDTYPEPERSONNEL = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mTypePersonnel = new TypePersonnel(Id, rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString()));
+
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+            cnLanUQTR.Close();
+        }
+
         public void retournerObjet(ref Tournoi mTournoi, int Id)
         {
             mTournoi = null;
@@ -98,12 +126,12 @@ namespace TP_SMI1002
             {
                 rs.Read();
                 mTournoi = new Tournoi(Id,
-                                            Convert.ToInt32(rs.GetOracleValue(0).ToString()),
                                             Convert.ToInt32(rs.GetOracleValue(1).ToString()),
-                                            Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                            Convert.ToInt32(rs.GetOracleValue(2).ToString()),
                                             Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
-                                            Convert.ToInt32(rs.GetOracleValue(4).ToString()),
-                                            rs.GetOracleValue(5).ToString());
+                                            Convert.ToDateTime(rs.GetOracleValue(4).ToString()),
+                                            Convert.ToInt32(rs.GetOracleValue(5).ToString()),
+                                            rs.GetOracleValue(6).ToString());
                 rs.Close();
             }
             catch
@@ -325,6 +353,36 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
+        public void remplirListe(ref List<TypePersonnel> lstTypePersonnel)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+            int couleur=0;
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                couleur = Convert.ToInt32(rs.GetOracleValue(2).ToString());
+                /*lstTypePersonnel.Add(new TypePersonnel(Convert.ToByte(couleur >> 24), Convert.ToByte((couleur << 8) >> 24), 
+                                                       Convert.ToByte((couleur << 16) >> 24), Convert.ToByte((couleur << 24 ) >> 24), 
+                                                       rs.GetOracleValue(1).ToString(), 
+                                                       Convert.ToInt32(rs.GetOracleValue(0).ToString())));-*/
+                lstTypePersonnel.Add(new TypePersonnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
         public void remplirListe(ref List<Equipe> lstEquipe)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
@@ -496,14 +554,14 @@ namespace TP_SMI1002
 
             cnLanUQTR.Open(); // TODO: Vérifier l'exception si on peut pas se connecter...
 
-            cmd.CommandText = "select idtournoi,nbjoueurs,idjeu,debut,fin,idevenement,nom from tournoi by nom";
+            cmd.CommandText = "select idtournoi,nbjoueurs,idjeu,debut,fin,idevenement,nom from tournoi order by nom";
 
             rs = cmd.ExecuteReader();
 
             while (rs.Read())
             {
                 lstTournoi.Add(new Tournoi(Convert.ToInt32(rs.GetOracleValue(0).ToString()),Convert.ToInt32(rs.GetOracleValue(1).ToString()),
-                                           Convert.ToInt32(rs.GetOracleValue(2)),Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
+                                           Convert.ToInt32(rs.GetOracleValue(2).ToString()),Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
                                            Convert.ToDateTime(rs.GetOracleValue(4).ToString()),Convert.ToInt32(rs.GetOracleValue(5).ToString()),
                                            rs.GetOracleValue(6).ToString()));
             }
@@ -694,6 +752,19 @@ namespace TP_SMI1002
                 cmd.Parameters.Add("param2", ((Jeu)donnee).IDTypeJeu);
                 cmd.Parameters.Add("keyValue", ((Jeu)donnee).Id);
             }
+            else if (donnee is Tournoi)
+            {
+                cmd.CommandText = "update tournoi set nom = :nom, debut = :debut,fin =:fin,nbjoueurs=:nbjoueurs,idjeu=:idjeu,idevenement=:idevenement " +
+                                                        "where idtournoi = :keyvalue";
+                cmd.Parameters.Add("nom", ((Tournoi)donnee).Nom);
+                cmd.Parameters.Add("debut", ((Tournoi)donnee).dateDebut);
+                cmd.Parameters.Add("fin", ((Tournoi)donnee).dateFin);
+                cmd.Parameters.Add("nbjoueurs", ((Tournoi)donnee).nbJoueur);
+                cmd.Parameters.Add("idjeu", ((Tournoi)donnee).IdJeu);
+                cmd.Parameters.Add("idevenement", ((Tournoi)donnee).idEvenement);
+
+                cmd.Parameters.Add("keyvalue", ((Tournoi)donnee).Id);
+            }
 
 
             cmd.Connection = cnLanUQTR;
@@ -752,7 +823,8 @@ namespace TP_SMI1002
             //suppression d'un objet Tournoi
             else if (donnee is Tournoi)
             {
-                cmdString = "DELETE FROM TOURNOI WHERE ID=" + ((Tournoi)donnee).Id;
+                cmdString = "DELETE FROM TOURNOI WHERE IDTOURNOI=:id";
+                cmd.Parameters.Add("id", donnee.Id);
             }
             //suppression d'un objet Evenement
             else if (donnee is Evenement)
