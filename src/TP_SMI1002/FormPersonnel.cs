@@ -13,7 +13,7 @@ namespace TP_SMI1002
     {
         private int id = 0;
         InterfaceBD bd;
-        PersonnelAvecType mPersonnel = null;
+        Personnel mPersonnel = null;
 
         //---------------
         // Constructeur
@@ -59,11 +59,11 @@ namespace TP_SMI1002
             {
                 if (id == 0) // Ajout dans la base de données
                 {
-                    rangesEcrites = bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                    rangesEcrites = bd.ajoutBD(new Personnel(txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text, ((TypePersonnel)cbTypePersonnel.SelectedItem).Id));
                 }
                 else //Update la base de données
                 {
-                    rangesEcrites = bd.modifierBD(new Personnel(id, txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text));
+                    rangesEcrites = bd.modifierBD(new Personnel(id, txtNom.Text, dtpDateNaissance.Value, txtCourriel.Text, ((TypePersonnel)cbTypePersonnel.SelectedItem).Id));
                 }
                 
                 // Erreur lors de l'opération..
@@ -95,7 +95,7 @@ namespace TP_SMI1002
             }
             if (this.id > 0)
             {
-                cbTypePersonnel.SelectedIndex = RechercheIndexTypePersonnel(mPersonnel.Id);
+                cbTypePersonnel.SelectedIndex = RechercheIndexTypePersonnel(mPersonnel.IdTypePersonnel);
             }
         }
         private int RechercheIndexTypePersonnel(int id)

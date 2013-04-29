@@ -67,5 +67,11 @@ namespace TP_SMI1002
             About formAbout = new About();
             formAbout.ShowDialog();
         }
+
+        private void événementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormListeEvenements formEvenement = new FormListeEvenements();
+            formEvenement.ShowDialog();
+        }
     }
 }

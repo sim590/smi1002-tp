@@ -106,6 +106,8 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
+        
+
         public void retournerObjet(ref EquipeAvecJoueurs mEquipeAvecJoueurs, int Id)
         {
             mEquipeAvecJoueurs = null;
@@ -154,7 +156,7 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-        public void retournerObjet(ref PersonnelAvecType mPersonnel, int Id)
+        public void retournerObjet(ref Personnel mPersonnel, int Id)
         {
             mPersonnel = null;
 
@@ -163,7 +165,7 @@ namespace TP_SMI1002
 
             // Ouverture d'une connexion
             cnLanUQTR.Open();
-            cmd.CommandText = "SELECT P.IDPERSONNEL, P.NOM, P.DATENAISSANCE, P.COURRIEL, T.NOM FROM PERSONNEL P INNER JOIN TYPEPERSONNEL T ON P.IDTYPEPERSONNEL = T.IDTYPEPERSONNEL WHERE IDPERSONNEL = :id";
+            cmd.CommandText = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL, IDTYPEPERSONNEL FROM PERSONNEL WHERE IDPERSONNEL = :id";
             cmd.Parameters.Add("id", Id);
 
             OracleDataReader rs = cmd.ExecuteReader();
@@ -171,12 +173,48 @@ namespace TP_SMI1002
             try
             {
                 rs.Read();
-                mPersonnel = new PersonnelAvecType(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                mPersonnel = new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
                                                         rs.GetOracleValue(1).ToString(),
                                                         Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
                                                         rs.GetOracleValue(3).ToString(), 
-                                                        rs.GetOracleValue(4).ToString());
+                                                        Convert.ToInt32(rs.GetOracleValue(4).ToString()));
                                                         
+                rs.Close();
+            }
+            catch
+            {
+
+            }
+
+
+            cnLanUQTR.Close();
+        }
+
+        public void retournerObjet(ref Evenement mEvenement, int Id)
+        {
+            mEvenement = null;
+
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+
+            // Ouverture d'une connexion
+            cnLanUQTR.Open();
+            cmd.CommandText = "SELECT NOM, DEBUT, FIN, LIEU, ADRESSE, NBRPLACES, PRIX FROM EVENEMENT WHERE IDEVENEMENT = :id";
+            cmd.Parameters.Add("id", Id);
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            try
+            {
+                rs.Read();
+                mEvenement = new Evenement(Id,
+                                            rs.GetOracleValue(0).ToString(),
+                                            Convert.ToDateTime(rs.GetOracleValue(1).ToString()),
+                                            Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                            rs.GetOracleValue(3).ToString(),
+                                            rs.GetOracleValue(4).ToString(),
+                                            Convert.ToInt32(rs.GetOracleValue(5).ToString()),
+                                            Convert.ToDouble(rs.GetOracleValue(6).ToString()));
                 rs.Close();
             }
             catch
@@ -192,32 +230,6 @@ namespace TP_SMI1002
 
         //Fonction pour remplir les différentes liste
         #region remplirListe
-
-        public void remplirListe(ref List<PersonnelAvecType> lstTypePersonnel)
-        {
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-            string cmdString = "";
-            int couleur = 0;
-
-            cnLanUQTR.Open();
-            // Ouverture d'une connexion
-            cmdString = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL ORDER BY NOM";
-
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            while (rs.Read())
-            {
-                couleur = Convert.ToInt32(rs.GetOracleValue(2).ToString());
-                lstTypePersonnel.Add(new TypePersonnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
-            }
-            rs.Close();
-
-            cnLanUQTR.Close();
-        }
         public void remplirListe(ref List<TypePersonnel> lstTypePersonnel)
         {
             OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
@@ -303,7 +315,7 @@ namespace TP_SMI1002
 
             cnLanUQTR.Open();
             // Ouverture d'une connexion
-            cmdString = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL ORDER BY NOM";
+            cmdString = "SELECT P.IDPERSONNEL, P.NOM, P.DATENAISSANCE, P.COURRIEL, IDTYPEPERSONNEL FROM PERSONNEL P INNER JOIN TYPEPERSONNEL T ON P.IDTYPEPERSONNEL = T.IDTYPEPERSONNEL";
 
             // Ajout de la commande à la query
             cmd.CommandText = cmdString;
@@ -312,7 +324,64 @@ namespace TP_SMI1002
 
             while (rs.Read())
             {
-                lstPersonnel.Add(new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToDateTime(rs.GetOracleValue(2).ToString()), rs.GetOracleValue(3).ToString()));
+                lstPersonnel.Add(new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToDateTime(rs.GetOracleValue(2).ToString()), rs.GetOracleValue(3).ToString(), Convert.ToInt32(rs.GetOracleValue(4).ToString())));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<PersonnelAvecType> lstPersonnel)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT P.IDPERSONNEL, P.NOM, P.DATENAISSANCE, P.COURRIEL, P.IDTYPEPERSONNEL, T.NOM FROM PERSONNEL P INNER JOIN TYPEPERSONNEL T ON P.IDTYPEPERSONNEL = T.IDTYPEPERSONNEL";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstPersonnel.Add(new PersonnelAvecType(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToDateTime(rs.GetOracleValue(2).ToString()), rs.GetOracleValue(3).ToString(), Convert.ToInt32(rs.GetOracleValue(4).ToString()), rs.GetOracleValue(5).ToString()));
+            }
+            rs.Close();
+
+            cnLanUQTR.Close();
+        }
+
+        public void remplirListe(ref List<Evenement> lstEvenement)
+        {
+            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
+            cmd.Connection = cnLanUQTR;
+            string cmdString = "";
+
+            cnLanUQTR.Open();
+            // Ouverture d'une connexion
+            cmdString = "SELECT IDEVENEMENT, NOM, DEBUT, FIN, LIEU, ADRESSE, NBRPLACES, PRIX FROM EVENEMENT ORDER BY NOM";
+
+            // Ajout de la commande à la query
+            cmd.CommandText = cmdString;
+
+            OracleDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                lstEvenement.Add(new Evenement(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
+                                                    rs.GetOracleValue(1).ToString(),
+                                                    Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
+                                                    Convert.ToDateTime(rs.GetOracleValue(3).ToString()),
+                                                    rs.GetOracleValue(4).ToString(),
+                                                    rs.GetOracleValue(5).ToString(),
+                                                    Convert.ToInt32(rs.GetOracleValue(6).ToString()),
+                                                    Convert.ToDouble(rs.GetOracleValue(7).ToString())));
+
+
             }
             rs.Close();
 
@@ -334,13 +403,14 @@ namespace TP_SMI1002
             cnLanUQTR.Open();
 
             // Ajout d'un personnel
-            if (donnee is Personnel)
+            if (donnee is PersonnelAvecType)
             {
-                cmd.CommandText = "insert into personnel (nom,datenaissance,courriel) " +
-                "values (:nom,:datenaissance,:courriel)";
-                cmd.Parameters.Add("nom", ((Personnel)donnee).Nom);
-                cmd.Parameters.Add("datenaissance", ((Personnel)donnee).DateNaissance);
-                cmd.Parameters.Add("courriel", ((Personnel)donnee).Courriel);
+                cmd.CommandText = "insert into personnel (nom,datenaissance,courriel,idtypepersonnel) " +
+                "values (:nom,:datenaissance,:courriel,:idtypepersonnel)";
+                cmd.Parameters.Add("nom", ((PersonnelAvecType)donnee).Nom);
+                cmd.Parameters.Add("datenaissance", ((PersonnelAvecType)donnee).DateNaissance);
+                cmd.Parameters.Add("courriel", ((PersonnelAvecType)donnee).Courriel);
+                cmd.Parameters.Add("idtypepersonnel", ((PersonnelAvecType)donnee).IdTypePersonnel);
             }
             // Ajout d'un type de personnel
             else if (donnee is TypePersonnel)
@@ -367,6 +437,18 @@ namespace TP_SMI1002
                 cmd.Parameters.Add("sexe", ((Joueur)donnee).Sexe);
                 cmd.Parameters.Add("datenaissance", ((Joueur)donnee).Date);
 	        }
+            else if (donnee is Evenement)
+            {
+                cmd.CommandText = "insert into EVENEMENT (nom,debut,fin,lieu,adresse,nbrplaces,prix) " +
+                                                 "values (:nom,:debut,:fin,:lieu,:adresse,:nbrplaces,:prix)";
+                cmd.Parameters.Add("nom", ((Evenement)donnee).Nom);
+                cmd.Parameters.Add("debut", ((Evenement)donnee).Debut);
+                cmd.Parameters.Add("fin", ((Evenement)donnee).Fin);
+                cmd.Parameters.Add("lieu", ((Evenement)donnee).Lieu);
+                cmd.Parameters.Add("adresse", ((Evenement)donnee).Adresse);
+                cmd.Parameters.Add("nbrplaces", ((Evenement)donnee).NbrPlace);
+                cmd.Parameters.Add("prix", ((Evenement)donnee).Prix);
+            }
 
             // Envoie la commande
             try
@@ -401,12 +483,13 @@ namespace TP_SMI1002
 
             if (donnee is Personnel)
             {
-                cmdString = "update personnel set nom = :param1, datenaissance = :param2, courriel = :param3 where idpersonnel = :keyValue";
+                cmdString = "update personnel set nom = :param1, datenaissance = :param2, courriel = :param3, idtypepersonnel = :param4 where idpersonnel = :keyValue";
                 cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((Personnel)donnee).Nom);
-                cmd.Parameters.Add("@param2", ((Personnel)donnee).DateNaissance);
-                cmd.Parameters.Add("@param3", ((Personnel)donnee).Courriel);
-                cmd.Parameters.Add("@keyValue", ((Personnel)donnee).Id);
+                cmd.Parameters.Add("param1", ((Personnel)donnee).Nom);
+                cmd.Parameters.Add("param2", ((Personnel)donnee).DateNaissance);
+                cmd.Parameters.Add("param3", ((Personnel)donnee).Courriel);
+                cmd.Parameters.Add("param4", ((Personnel)donnee).IdTypePersonnel);
+                cmd.Parameters.Add("@keyValue", ((PersonnelAvecType)donnee).Id);
             }
             else if (donnee is TypePersonnel)
             {

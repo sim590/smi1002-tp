@@ -36,6 +36,7 @@
             this.optJoueur = new System.Windows.Forms.ToolStripMenuItem();
             this.optPersonnel = new System.Windows.Forms.ToolStripMenuItem();
             this.optTypePersonnel = new System.Windows.Forms.ToolStripMenuItem();
+            this.événementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAide = new System.Windows.Forms.ToolStripMenuItem();
             this.optAProposDe = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
@@ -64,7 +65,7 @@
             // optQuitter
             // 
             this.optQuitter.Name = "optQuitter";
-            this.optQuitter.Size = new System.Drawing.Size(152, 22);
+            this.optQuitter.Size = new System.Drawing.Size(111, 22);
             this.optQuitter.Text = "&Quitter";
             this.optQuitter.Click += new System.EventHandler(this.optQuitter_Click);
             // 
@@ -74,7 +75,8 @@
             this.optEquipes,
             this.optJoueur,
             this.optPersonnel,
-            this.optTypePersonnel});
+            this.optTypePersonnel,
+            this.événementToolStripMenuItem});
             this.mnuListe.Name = "mnuListe";
             this.mnuListe.Size = new System.Drawing.Size(43, 20);
             this.mnuListe.Text = "&Liste";
@@ -106,6 +108,13 @@
             this.optTypePersonnel.Size = new System.Drawing.Size(171, 22);
             this.optTypePersonnel.Text = "&Type de personnel";
             this.optTypePersonnel.Click += new System.EventHandler(this.optTypePersonnel_Click);
+            // 
+            // événementToolStripMenuItem
+            // 
+            this.événementToolStripMenuItem.Name = "événementToolStripMenuItem";
+            this.événementToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.événementToolStripMenuItem.Text = "&Événement";
+            this.événementToolStripMenuItem.Click += new System.EventHandler(this.événementToolStripMenuItem_Click);
             // 
             // mnuAide
             // 
@@ -153,6 +162,7 @@
         private System.Windows.Forms.ToolStripMenuItem optJoueur;
         private System.Windows.Forms.ToolStripMenuItem optPersonnel;
         private System.Windows.Forms.ToolStripMenuItem optTypePersonnel;
+        private System.Windows.Forms.ToolStripMenuItem événementToolStripMenuItem;
     }
 }
 

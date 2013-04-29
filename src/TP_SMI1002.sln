@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_SMI1002", "TP_SMI1002\TP_SMI1002.csproj", "{72DF7B79-687D-4CCA-8022-072F4DEC6B4B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4F2AA3B-72D9-43F5-966A-E1C4144C6DFF}"
+	ProjectSection(SolutionItems) = preProject
+		TP_SMI1002\Evenement.cs = TP_SMI1002\Evenement.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
