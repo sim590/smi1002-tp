@@ -1,5 +1,6 @@
 ﻿//-----------------------------------------------------
 // Fichier: InterfaceBD.cs  Auteur: Simon DÉSAULNIERS
+//                                  Daniel St-Pierre
 //
 //-----------------------------------------------------
 // Singleton gérant l'ajout, la modification et la
@@ -20,7 +21,7 @@ namespace TP_SMI1002
         private static InterfaceBD instance;
         private OracleConnection cnLanUQTR;
         public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=neptune.uqtr.ca)(PORT=1521)))"
-                                                                +"(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_37;Password=86nsed58;";
+                                                                +"(CONNECT_DATA=(SERVER=DEDICATED)(SID=coursbd)));User Id=SMI1002_33;Password=27bfpy84;";
         public OracleConnection getLanUQTR
         {
             get
@@ -71,34 +72,6 @@ namespace TP_SMI1002
                 rs.Read();
                 mTypeJeu = new TypeJeu(Id, rs.GetOracleValue(1).ToString());
   
-                rs.Close();
-            }
-            catch
-            {
-
-            }
-            cnLanUQTR.Close();
-        }
-
-        public void retournerObjet(ref TypePersonnel mTypePersonnel, int Id)
-        {
-            mTypePersonnel = null;
-
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-
-            // Ouverture d'une connexion
-            cnLanUQTR.Open();
-            cmd.CommandText = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL WHERE IDTYPEPERSONNEL = :id";
-            cmd.Parameters.Add("id", Id);
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            try
-            {
-                rs.Read();
-                mTypePersonnel = new TypePersonnel(Id, rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString()));
-
                 rs.Close();
             }
             catch
@@ -174,39 +147,6 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-        public void retournerObjet(ref Joueur mJoueur, int Id)
-        {
-            mJoueur = null;
-
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-
-            // Ouverture d'une connexion
-            cnLanUQTR.Open();
-            cmd.CommandText = "SELECT IDJOUEUR, NOM, GAMERTAG, COURRIEL, SEXE, DATENAISSANCE FROM JOUEUR WHERE IDJOUEUR = :id";
-            cmd.Parameters.Add("id", Id);
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            try
-            {
-                rs.Read();
-                mJoueur = new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
-                                                        rs.GetOracleValue(1).ToString(),
-                                                        rs.GetOracleValue(2).ToString(),
-                                                        rs.GetOracleValue(3).ToString(),
-                                                        rs.GetOracleValue(4).ToString(),
-                                                        Convert.ToDateTime(rs.GetOracleValue(5).ToString()));
-                rs.Close();
-            }
-            catch
-            {
-
-            }
-
-
-            cnLanUQTR.Close();
-        }
 
         public void retournerObjet(ref Evenement mEvenement, int Id)
         {
@@ -244,87 +184,6 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-        public void retournerObjet(ref EquipeAvecJoueurs mEquipeAvecJoueurs, int Id)
-        {
-            mEquipeAvecJoueurs = null;
-
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-
-            // Ouverture d'une connexion
-            cnLanUQTR.Open();
-            cmd.CommandText = "SELECT IDEQUIPE, SITEWEB, NOM FROM EQUIPE WHERE IDEQUIPE = :id";
-            cmd.Parameters.Add("id", Id);
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            try
-            {
-                rs.Read();
-                mEquipeAvecJoueurs = new EquipeAvecJoueurs(Id,
-                                            rs.GetOracleValue(2).ToString(),
-                                            rs.GetOracleValue(1).ToString());
-                rs.Close();
-
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT J.IDJOUEUR, J.NOM, J.GAMERTAG, J.COURRIEL, J.SEXE, J.DATENAISSANCE FROM JOUEUR J INNER JOIN JOUEUREQUIPE E ON J.IDJOUEUR = E.IDJOUEUR WHERE E.IDEQUIPE= :id";
-
-                cmd.Parameters.Add("id", Id);
-                rs = cmd.ExecuteReader();
-
-                while (rs.Read())
-                {
-                    mEquipeAvecJoueurs.lstJoueurs.Add(new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
-                                                                    rs.GetOracleValue(1).ToString(),
-                                                                    rs.GetOracleValue(2).ToString(),
-                                                                    rs.GetOracleValue(3).ToString(),
-                                                                    rs.GetOracleValue(4).ToString(),
-                                                                    Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
-                }
-                rs.Close();
-            }
-            catch
-            {
-
-            }
-
-
-            cnLanUQTR.Close();
-        }
-
-        public void retournerObjet(ref Personnel mPersonnel, int Id)
-        {
-            mPersonnel = null;
-
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-
-            // Ouverture d'une connexion
-            cnLanUQTR.Open();
-            cmd.CommandText = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL WHERE IDPERSONNEL = :id";
-            cmd.Parameters.Add("id", Id);
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            try
-            {
-                rs.Read();
-                mPersonnel = new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()),
-                                                        rs.GetOracleValue(1).ToString(),
-                                                        Convert.ToDateTime(rs.GetOracleValue(2).ToString()),
-                                                        rs.GetOracleValue(3).ToString());
-                                                        
-                rs.Close();
-            }
-            catch
-            {
-
-            }
-
-
-            cnLanUQTR.Close();
-        }
-
         #endregion 
 
         //Fonction pour remplir les différentes liste
@@ -347,87 +206,6 @@ namespace TP_SMI1002
             while (rs.Read())
             {
                 lstJeu.Add(new Jeu(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
-            }
-            rs.Close();
-
-            cnLanUQTR.Close();
-        }
-
-        public void remplirListe(ref List<TypePersonnel> lstTypePersonnel)
-        {
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-            string cmdString = "";
-            int couleur=0;
-
-            cnLanUQTR.Open();
-            // Ouverture d'une connexion
-            cmdString = "SELECT IDTYPEPERSONNEL, NOM, COULEUR FROM TYPEPERSONNEL ORDER BY NOM";
-
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            while (rs.Read())
-            {
-                couleur = Convert.ToInt32(rs.GetOracleValue(2).ToString());
-                /*lstTypePersonnel.Add(new TypePersonnel(Convert.ToByte(couleur >> 24), Convert.ToByte((couleur << 8) >> 24), 
-                                                       Convert.ToByte((couleur << 16) >> 24), Convert.ToByte((couleur << 24 ) >> 24), 
-                                                       rs.GetOracleValue(1).ToString(), 
-                                                       Convert.ToInt32(rs.GetOracleValue(0).ToString())));-*/
-                lstTypePersonnel.Add(new TypePersonnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToInt32(rs.GetOracleValue(2).ToString())));
-            }
-            rs.Close();
-
-            cnLanUQTR.Close();
-        }
-
-        public void remplirListe(ref List<Equipe> lstEquipe)
-        {
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-            string cmdString = "";
-
-            cnLanUQTR.Open();
-            // Ouverture d'une connexion
-            cmdString = "SELECT IDEQUIPE, SITEWEB, NOM FROM EQUIPE ORDER BY NOM";
-            
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            while (rs.Read())
-            {
-                lstEquipe.Add(new Equipe(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(2).ToString(), rs.GetOracleValue(1).ToString()));
-            }
-            rs.Close();           
-            
-            cnLanUQTR.Close();
-        }
-
-        public void remplirListe(ref List<Joueur> lstJoueur)
-        {
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-            string cmdString = "";
-
-            cnLanUQTR.Open();
-            // Ouverture d'une connexion
-            cmdString = "SELECT IDJOUEUR, NOM, GAMERTAG, COURRIEL, SEXE, DATENAISSANCE  FROM JOUEUR ORDER BY NOM";
-
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            while (rs.Read())
-            {
-                lstJoueur.Add(new Joueur(Convert.ToInt32(rs.GetOracleValue(0).ToString()), 
-                                                    rs.GetOracleValue(1).ToString(), rs.GetOracleValue(2).ToString(), 
-                                                    rs.GetOracleValue(3).ToString(), rs.GetOracleValue(4).ToString(),
-                                                    Convert.ToDateTime(rs.GetOracleValue(5).ToString())));
             }
             rs.Close();
 
@@ -518,30 +296,6 @@ namespace TP_SMI1002
             cnLanUQTR.Close();
         }
 
-        public void remplirListe(ref List<Personnel> lstPersonnel)
-        {
-            OracleCommand cmd = new OracleCommand(); // fournir objet OracleConnection et le string de commande
-            cmd.Connection = cnLanUQTR;
-            string cmdString = "";
-
-            cnLanUQTR.Open();
-            // Ouverture d'une connexion
-            cmdString = "SELECT IDPERSONNEL, NOM, DATENAISSANCE, COURRIEL FROM PERSONNEL ORDER BY NOM";
-
-            // Ajout de la commande à la query
-            cmd.CommandText = cmdString;
-
-            OracleDataReader rs = cmd.ExecuteReader();
-
-            while (rs.Read())
-            {
-                lstPersonnel.Add(new Personnel(Convert.ToInt32(rs.GetOracleValue(0).ToString()), rs.GetOracleValue(1).ToString(), Convert.ToDateTime(rs.GetOracleValue(2).ToString()), rs.GetOracleValue(3).ToString()));
-            }
-            rs.Close();
-
-            cnLanUQTR.Close();
-        }
-
         //-----------------------------------------------------
         // Va chercher toutes les tournois présent dans la BD
         // et les stock dans une liste
@@ -583,42 +337,8 @@ namespace TP_SMI1002
             // Ouverture d'une connexion
             cnLanUQTR.Open();
 
-            // Ajout d'un personnel
-            if (donnee is Personnel)
-            {
-                cmd.CommandText = "insert into personnel (nom,datenaissance,courriel) " +
-                "values (:nom,:datenaissance,:courriel)";
-                cmd.Parameters.Add("nom", ((Personnel)donnee).Nom);
-                cmd.Parameters.Add("datenaissance", ((Personnel)donnee).DateNaissance);
-                cmd.Parameters.Add("courriel", ((Personnel)donnee).Courriel);
-            }
-            // Ajout d'un type de personnel
-            else if (donnee is TypePersonnel)
-            {
-                cmd.CommandText = "insert into typepersonnel (nom,couleur) values (:nom,:couleur)";
-                cmd.Parameters.Add("nom", ((TypePersonnel)donnee).Nom);
-                cmd.Parameters.Add("couleur", ((TypePersonnel)donnee).Couleur);
-            }
-            // Ajout d'une équipe
-            else if (donnee is Equipe)
-	        {
-                cmd.CommandText = "insert into equipe (siteweb, nom) values (:siteweb,:nom)";                
-                cmd.Parameters.Add("siteweb", ((Equipe)donnee).SiteWeb);
-                cmd.Parameters.Add("nom", ((Equipe)donnee).Nom);
-	        }
-            // Ajout d'un joueur
-            else if (donnee is Joueur)
-	        {
-                cmd.CommandText = "insert into joueur (nom,gamertag,courriel,sexe,datenaissance) "+
-                    "values (:nom,:gamertag,:courriel,:sexe,:datenaissance)";
-                cmd.Parameters.Add("nom", ((Joueur)donnee).Nom);
-                cmd.Parameters.Add("gamertag", ((Joueur)donnee).GamerTag);
-                cmd.Parameters.Add("courriel", ((Joueur)donnee).Courriel);
-                cmd.Parameters.Add("sexe", ((Joueur)donnee).Sexe);
-                cmd.Parameters.Add("datenaissance", ((Joueur)donnee).Date);
-	        }
             // Ajout d'un type de jeu
-            else if (donnee is TypeJeu)
+            if (donnee is TypeJeu)
             {
                 cmd.CommandText = "insert into typejeu (nom) values (:nom)";
                 cmd.Parameters.Add("nom", ((TypeJeu)donnee).NomTypeJeu);
@@ -686,43 +406,7 @@ namespace TP_SMI1002
 
             cnLanUQTR.Open();
 
-            if (donnee is Personnel)
-            {
-                cmdString = "update personnel set nom = :param1, datenaissance = :param2, courriel = :param3 where idpersonnel = :keyValue";
-                cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((Personnel)donnee).Nom);
-                cmd.Parameters.Add("@param2", ((Personnel)donnee).DateNaissance);
-                cmd.Parameters.Add("@param3", ((Personnel)donnee).Courriel);
-                cmd.Parameters.Add("@keyValue", ((Personnel)donnee).Id);
-            }
-            else if (donnee is TypePersonnel)
-            {
-                cmdString = "update typepersonnel set nom = :param1, couleur = :param2 where idtypepersonnel = :keyValue";
-                cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((TypePersonnel)donnee).Nom);
-                cmd.Parameters.Add("@param2", ((TypePersonnel)donnee).Couleur);
-                cmd.Parameters.Add("@keyValue", ((TypePersonnel)donnee).Id);
-            }
-            else if (donnee is Equipe)
-            {
-                cmdString = "update equipe set nom = :param1, siteweb = :param2 where idequipe = :keyValue";
-                cmd.CommandText = cmdString;
-                cmd.Parameters.Add("param1", ((Equipe)donnee).Nom);
-                cmd.Parameters.Add("param2", ((Equipe)donnee).SiteWeb);
-                cmd.Parameters.Add("keyValue", ((Equipe)donnee).Id);
-            }
-            else if (donnee is Joueur)
-            {
-                cmdString = "update joueur set nom = :param1, gamertag = :param2, courriel = :param3, sexe = :param4, datenaissance = :param5 where idjoueur = :keyValue";
-                cmd.CommandText = cmdString;
-                cmd.Parameters.Add("@param1", ((Joueur)donnee).Nom);
-                cmd.Parameters.Add("@param2", ((Joueur)donnee).GamerTag);
-                cmd.Parameters.Add("@param3", ((Joueur)donnee).Courriel);
-                cmd.Parameters.Add("@param4", ((Joueur)donnee).Sexe);
-                cmd.Parameters.Add("@param5", ((Joueur)donnee).Date);
-                cmd.Parameters.Add("@keyValue", ((Joueur)donnee).Id);
-            }
-            else if (donnee is TypeJeu)
+            if (donnee is TypeJeu)
             {
                 cmdString = "update typejeu set nom = :param1 where idtypejeu = :keyValue";
                 cmd.CommandText = cmdString;
@@ -787,30 +471,8 @@ namespace TP_SMI1002
 
             cnLanUQTR.Open();
 
-            //suppression d'un objet Personnel
-            if (donnee is Personnel)
-            {
-                cmdString = "DELETE FROM PERSONNEL WHERE IDPERSONNEL=" + ((Personnel)donnee).Id;   
-            }
-            //suppression d'un objet TypePersonnel
-            else if (donnee is TypePersonnel)
-            {
-                cmdString = "DELETE FROM TYPEPERSONNEL WHERE IDTYPEPERSONNEL=" + ((TypePersonnel)donnee).Id;
-            }
-            //suppression d'un objet Equipe
-            else if (donnee is Equipe)
-            {
-                cmdString = "DELETE FROM EQUIPE WHERE IDEQUIPE=:idEquipe";
-                cmd.Parameters.Add("idEquipe", ((Equipe)(donnee)).Id);
-                    
-            }
-            //suppression d'un objet Joueur
-            else if (donnee is Joueur)
-            {
-                cmdString = "DELETE FROM JOUEUR WHERE IDJOUEUR=" + ((Joueur)donnee).Id;
-            }
             //suppression d'un objet Jeu
-            else if (donnee is Jeu)
+            if (donnee is Jeu)
             {
                 cmdString = "DELETE FROM JEU WHERE IDJEU=" + ((Jeu)donnee).Id;
             }
@@ -839,15 +501,6 @@ namespace TP_SMI1002
             cmd.CommandText = cmdString;
 
             cmd.ExecuteNonQuery();
-
-            if (donnee is Equipe)
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "DELETE FROM JOUEUREQUIPE WHERE IDEQUIPE=:idequipe";
-                cmd.Parameters.Add("", ((Equipe)(donnee)).Id);
-
-                cmd.ExecuteNonQuery();
-            }
 
             // Fermeture de la connexion
             cnLanUQTR.Close();

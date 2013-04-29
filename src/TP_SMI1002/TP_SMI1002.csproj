@@ -75,14 +75,6 @@
     </Compile>
     <Compile Include="InterfaceBD.cs" />
     <Compile Include="Jeu.cs" />
-    <Compile Include="Joueur.cs" />
-    <Compile Include="Equipe.cs" />
-    <Compile Include="FormEquipe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEquipe.Designer.cs">
-      <DependentUpon>FormEquipe.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEvenement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,18 +86,6 @@
     </Compile>
     <Compile Include="FormJeu.Designer.cs">
       <DependentUpon>FormJeu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormJoueur.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormJoueur.Designer.cs">
-      <DependentUpon>FormJoueur.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormListeEquipes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormListeEquipes.Designer.cs">
-      <DependentUpon>FormListeEquipes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormListeEvenements.cs">
       <SubType>Form</SubType>
@@ -119,37 +99,12 @@
     <Compile Include="FormListeJeux.Designer.cs">
       <DependentUpon>FormListeJeux.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormListeJoueurs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormListeJoueurs.Designer.cs">
-      <DependentUpon>FormListeJoueurs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormListePersonnels.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormListePersonnels.Designer.cs">
-      <DependentUpon>FormListePersonnels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormListeTypePersonnel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormListeTypePersonnel.Designer.cs">
-      <DependentUpon>FormListeTypePersonnel.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPersonnel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPersonnel.Designer.cs">
-      <DependentUpon>FormPersonnel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Personnel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormTournoi.cs">
@@ -158,22 +113,11 @@
     <Compile Include="FormTournoi.Designer.cs">
       <DependentUpon>FormTournoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTypePersonnel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTypePersonnel.Designer.cs">
-      <DependentUpon>FormTypePersonnel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tournoi.cs" />
     <Compile Include="TypeJeu.cs" />
-    <Compile Include="TypePersonnel.cs" />
     <Compile Include="Valider.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormEquipe.resx">
-      <DependentUpon>FormEquipe.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEvenement.resx">
@@ -182,23 +126,11 @@
     <EmbeddedResource Include="FormJeu.resx">
       <DependentUpon>FormJeu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormJoueur.resx">
-      <DependentUpon>FormJoueur.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormListeEquipes.resx">
-      <DependentUpon>FormListeEquipes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormListeEvenements.resx">
       <DependentUpon>FormListeEvenements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListeJeux.resx">
       <DependentUpon>FormListeJeux.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormListeJoueurs.resx">
-      <DependentUpon>FormListeJoueurs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormListePersonnels.resx">
-      <DependentUpon>FormListePersonnels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListeTournoi.resx">
       <DependentUpon>FormListeTournoi.cs</DependentUpon>
@@ -206,14 +138,8 @@
     <EmbeddedResource Include="FormListeTypeJeu.resx">
       <DependentUpon>FormListeTypeJeu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormListeTypePersonnel.resx">
-      <DependentUpon>FormListeTypePersonnel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPersonnel.resx">
-      <DependentUpon>FormPersonnel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTypeJeu.resx">
       <DependentUpon>FormTypeJeu.cs</DependentUpon>
@@ -230,9 +156,6 @@
     </Compile>
     <EmbeddedResource Include="FormTournoi.resx">
       <DependentUpon>FormTournoi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTypePersonnel.resx">
-      <DependentUpon>FormTypePersonnel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -264,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\League_of_legend-katarina_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

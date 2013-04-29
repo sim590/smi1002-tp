@@ -32,16 +32,12 @@
             this.mnuFichier = new System.Windows.Forms.ToolStripMenuItem();
             this.optQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListe = new System.Windows.Forms.ToolStripMenuItem();
-            this.optEquipes = new System.Windows.Forms.ToolStripMenuItem();
             this.optEvenements = new System.Windows.Forms.ToolStripMenuItem();
             this.optJeux = new System.Windows.Forms.ToolStripMenuItem();
-            this.optJoueur = new System.Windows.Forms.ToolStripMenuItem();
-            this.optPersonnel = new System.Windows.Forms.ToolStripMenuItem();
-            this.optTypePersonnel = new System.Windows.Forms.ToolStripMenuItem();
             this.typeDeJeuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tournoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAide = new System.Windows.Forms.ToolStripMenuItem();
             this.optAProposDe = new System.Windows.Forms.ToolStripMenuItem();
-            this.tournoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,66 +71,41 @@
             // mnuListe
             // 
             this.mnuListe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optEquipes,
             this.optEvenements,
             this.optJeux,
-            this.optJoueur,
-            this.optPersonnel,
-            this.optTypePersonnel,
             this.typeDeJeuToolStripMenuItem,
             this.tournoiToolStripMenuItem});
             this.mnuListe.Name = "mnuListe";
             this.mnuListe.Size = new System.Drawing.Size(43, 20);
             this.mnuListe.Text = "&Liste";
             // 
-            // optEquipes
-            // 
-            this.optEquipes.Name = "optEquipes";
-            this.optEquipes.Size = new System.Drawing.Size(171, 22);
-            this.optEquipes.Text = "&Équipes";
-            this.optEquipes.Click += new System.EventHandler(this.optEquipes_Click);
-            // 
             // optEvenements
             // 
             this.optEvenements.Name = "optEvenements";
-            this.optEvenements.Size = new System.Drawing.Size(171, 22);
+            this.optEvenements.Size = new System.Drawing.Size(136, 22);
             this.optEvenements.Text = "&Évènement";
             this.optEvenements.Click += new System.EventHandler(this.optEvenements_Click);
             // 
             // optJeux
             // 
             this.optJeux.Name = "optJeux";
-            this.optJeux.Size = new System.Drawing.Size(171, 22);
+            this.optJeux.Size = new System.Drawing.Size(136, 22);
             this.optJeux.Text = "&Jeux";
             this.optJeux.Click += new System.EventHandler(this.optJeux_Click);
-            // 
-            // optJoueur
-            // 
-            this.optJoueur.Name = "optJoueur";
-            this.optJoueur.Size = new System.Drawing.Size(171, 22);
-            this.optJoueur.Text = "&Joueur";
-            this.optJoueur.Click += new System.EventHandler(this.optJoueur_Click);
-            // 
-            // optPersonnel
-            // 
-            this.optPersonnel.Name = "optPersonnel";
-            this.optPersonnel.Size = new System.Drawing.Size(171, 22);
-            this.optPersonnel.Text = "&Personnel";
-            this.optPersonnel.Click += new System.EventHandler(this.optPersonnel_Click);
-            // 
-            // optTypePersonnel
-            // 
-            this.optTypePersonnel.Name = "optTypePersonnel";
-            this.optTypePersonnel.Size = new System.Drawing.Size(171, 22);
-            this.optTypePersonnel.Text = "&Type de personnel";
-            this.optTypePersonnel.Click += new System.EventHandler(this.optTypePersonnel_Click);
             // 
             // typeDeJeuToolStripMenuItem
             // 
             this.typeDeJeuToolStripMenuItem.Name = "typeDeJeuToolStripMenuItem";
-            this.typeDeJeuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.typeDeJeuToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.typeDeJeuToolStripMenuItem.Text = "Type de Jeu";
             this.typeDeJeuToolStripMenuItem.Click += new System.EventHandler(this.typeDeJeuToolStripMenuItem_Click);
+            // 
+            // tournoiToolStripMenuItem
+            // 
+            this.tournoiToolStripMenuItem.Name = "tournoiToolStripMenuItem";
+            this.tournoiToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.tournoiToolStripMenuItem.Text = "Tournoi";
+            this.tournoiToolStripMenuItem.Click += new System.EventHandler(this.tournoiToolStripMenuItem_Click);
             // 
             // mnuAide
             // 
@@ -151,17 +122,12 @@
             this.optAProposDe.Text = "À propos de...";
             this.optAProposDe.Click += new System.EventHandler(this.optAProposDe_Click);
             // 
-            // tournoiToolStripMenuItem
-            // 
-            this.tournoiToolStripMenuItem.Name = "tournoiToolStripMenuItem";
-            this.tournoiToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.tournoiToolStripMenuItem.Text = "Tournoi";
-            this.tournoiToolStripMenuItem.Click += new System.EventHandler(this.tournoiToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::TP_SMI1002.Properties.Resources.images;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(699, 480);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
@@ -185,12 +151,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAide;
         private System.Windows.Forms.ToolStripMenuItem optAProposDe;
         private System.Windows.Forms.ToolStripMenuItem mnuListe;
-        private System.Windows.Forms.ToolStripMenuItem optEquipes;
         private System.Windows.Forms.ToolStripMenuItem optEvenements;
         private System.Windows.Forms.ToolStripMenuItem optJeux;
-        private System.Windows.Forms.ToolStripMenuItem optJoueur;
-        private System.Windows.Forms.ToolStripMenuItem optPersonnel;
-        private System.Windows.Forms.ToolStripMenuItem optTypePersonnel;
         private System.Windows.Forms.ToolStripMenuItem typeDeJeuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tournoiToolStripMenuItem;
     }

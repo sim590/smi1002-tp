@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------
+// Fichier: InterfaceBD.cs  Auteur: Simon DÉSAULNIERS
+//                                  Daniel St-Pierre
+//
+//-----------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;

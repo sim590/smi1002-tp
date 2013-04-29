@@ -1,5 +1,6 @@
 ﻿//----------------------------------------------------------------
-// Fichier: FormListeTournoi.cs     Auteur(s): Simon DÉSAULNIERS
+// Fichier: InterfaceBD.cs  Auteur: Simon DÉSAULNIERS
+//                                  Daniel St-Pierre
 //
 //----------------------------------------------------------------
 // Affichage de la liste des tournois dans la BD

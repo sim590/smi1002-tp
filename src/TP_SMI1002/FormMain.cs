@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------
+// Fichier: InterfaceBD.cs  Auteur: Simon DÉSAULNIERS
+//                                  Daniel St-Pierre
+//
+//-----------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,8 +46,7 @@ namespace TP_SMI1002
 
         private void optEquipes_Click(object sender, EventArgs e)
         {
-            FormListeEquipes FormEquipes = new FormListeEquipes();
-            FormEquipes.ShowDialog();
+
         }
 
         private void optEvenements_Click(object sender, EventArgs e)
@@ -58,20 +63,16 @@ namespace TP_SMI1002
 
         private void optJoueur_Click(object sender, EventArgs e)
         {
-            FormListeJoueurs FormJoueurs = new FormListeJoueurs(FormListeJoueurs.mode.liste);
-            FormJoueurs.ShowDialog();
         }
 
         private void optPersonnel_Click(object sender, EventArgs e)
         {
-            FormListePersonnels FormPersonnels = new FormListePersonnels();
-            FormPersonnels.ShowDialog();
+
         }
 
         private void optTypePersonnel_Click(object sender, EventArgs e)
         {
-            FormListeTypePersonnel FormTypePersonnel = new FormListeTypePersonnel();
-            FormTypePersonnel.ShowDialog();
+
         }
 
         private void optAProposDe_Click(object sender, EventArgs e)
